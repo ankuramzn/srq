@@ -1,0 +1,32 @@
+<table class="compliance_docs">
+  <tbody>
+
+
+    <% if !f.object.id.nil? then %>
+        <tr>
+          <th>
+            Document URL
+          </th>
+          <td>
+            <%= f.text_field :url %>
+          </td>
+        </tr>
+    <% else %>
+      <tr>
+        <th>
+          Select File to Upload
+        </th>
+        <td>
+          <%= f.file_field :file %>
+        </td>
+      </tr>
+    <% end %>
+
+
+    <tr>
+      <td colspan="2">
+        <%= f.link_to_remove "Remove this document" %>
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  code: MyString
+  vendor_id: 1
+  condition: MyString
+  delivery_date: 2011-04-25
+  marketplace: MyString
+  status: MyString
+
+two:
+  code: MyString
+  vendor_id: 1
+  condition: MyString
+  delivery_date: 2011-04-25
+  marketplace: MyString
+  status: MyString

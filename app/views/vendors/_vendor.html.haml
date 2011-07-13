@@ -1,0 +1,21 @@
+- counter = defined?(vendor_counter) ? vendor_counter : 0
+%tr{ :class => css(counter)}
+    %td
+        %strong
+            = vendor.code
+        %table{ :class => "vendor_data" }
+            %tbody
+                %tr
+                    %th Vendor Name
+                    %td
+                        = vendor.name
+                %tr
+                    %th Vendor Contact
+                    %td
+                        = vendor.contact
+
+        %small.expand_button
+            = link_to "Vendors POs", { :controller => 'vendors', :action => 'vendors_purchaseorders', :format => :js, :id => vendor.id }, :remote => true
+        %div{ :id=>"purchaseorders_#{vendor.id}" }
+
+

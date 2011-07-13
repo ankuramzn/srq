@@ -1,0 +1,2 @@
+module AsinsHelper
+end

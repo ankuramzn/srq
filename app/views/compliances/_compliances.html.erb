@@ -1,0 +1,42 @@
+
+<% if !compliances.nil? && !compliances.empty? then %>
+    <h1>Compliance Sets for ASIN <%= compliances.first.sku %> from Vendor <%= compliances.first.vendor.code %></h1>
+    <table>
+      <tr>
+        <th>Select Me</th>
+        <th>Sku</th>
+        <th>Vendor</th>
+        <th>Status</th>
+        <th>Last activity at</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th>DIV</th>
+      </tr>
+      <% compliances.each do |compliance| %>
+          <tr>
+            <td>
+
+
+              <%= radio_button_tag 'compliance_set_selector', compliance.id, true, :class => "compliance_set_selector_radio" %>
+
+
+            </td>
+            <td><%= compliance.sku %></td>
+            <td><%= compliance.vendor.code %></td>
+            <td><%= compliance.status %></td>
+            <td><%= compliance.last_activity_at %></td>
+            <td><%= link_to 'Show', compliance %></td>
+            <td><%= link_to 'Edit', edit_compliance_path(compliance) %></td>
+            <td><%= link_to 'Destroy', compliance, :confirm => 'Are you sure?', :method => :delete %></td>
+            <td>
+              <div id="compliance_set_div_<%= compliance.id %>">
+              </div>
+
+            </td>
+          </tr>
+      <% end %>
+    </table>
+<% else %>
+    <h1> No Matching Compliance Sets found </h1>
+<% end %>

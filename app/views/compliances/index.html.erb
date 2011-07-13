@@ -1,0 +1,6 @@
+
+<div class="compliance">
+    <%= render :partial => 'compliance_summary_list', :locals => { :compliances => @compliances, :type => "General" } %>
+</div>
+
+<%= link_to 'Create a New Compliance Set', :controller => "compliances", :action => "new", :sku => @sku, :vendor_id => @vendor_id %>

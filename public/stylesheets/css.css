@@ -1,0 +1,492 @@
+/* Entire Body */
+* {
+   padding: 0;
+   margin: 0;
+}
+
+body {
+   font-family:Arial, Helvectia, sans-serif;
+   font-size:10pt;
+}
+
+table {
+   font-size:10pt;
+}
+
+td,th {
+   vertical-align:center;
+}
+
+form {
+   margin-left:auto;
+   margin-right:auto;
+}
+
+.formpage {
+   padding:1em;
+}
+
+button {
+   margin-left:auto;
+   margin-right:auto;
+}
+
+textarea {
+    font-size:8pt;
+}
+
+
+/* Title Bar */
+
+.title_box {
+   background:#F4F8FF;
+   padding:0;
+   padding-left:3%;
+   height:9%;
+   border-bottom:1px black solid;
+}
+
+.title_box h1 {
+   padding-top:1%;
+}
+
+/* Action Bar */
+
+.actions_bar {
+   float:left;
+   padding-left:2%;
+   padding-top:2em;
+   background:#FFFCD0;
+   width:11em;
+}
+
+.actions_bar li {
+   margin-top:.4em;
+}
+
+.actions_bar ul {
+   list-style: none; margin:0 .2em;
+}
+
+/* Core Body replaces yield */
+
+div.core {
+   margin-left:13em;
+}
+
+
+/* Vendor List Page */
+
+.vendortable {
+   text-align:center;
+}
+
+.vendortable table {
+   border-collapse:collapse;
+}
+
+.vendortable td,th {
+   text-align:left;
+   padding:5px;
+}
+
+.vendortable th {
+   width:7em;
+}
+
+.vendortable div {
+   text-align:left;
+}
+
+.indent { /* Used to render the indented PO and ASIN lists */
+   margin-left:1em;
+   margin-right:auto;
+}
+
+div.vendortable {
+   padding-top:3em;
+   padding-left:3em;
+   padding-bottom:5em;
+   align:center;
+   background:#FFFFFF;
+}
+
+.vendortable li {
+   margin-bottom:.7em
+}
+
+table.vendors {
+   width:90%;
+   border:1px black solid;
+}
+
+.purchaseorder_list {
+   padding-left:.5em;
+   padding-top:.2em;
+   padding-bottom:.3em;
+   margin-top:.5em;
+   margin-left:1em;
+   margin-right:auto;
+   width:95%;
+   margin-right:auto;
+   background:#F8F8F8;
+   border:1px black solid;
+   line-height:130%;
+}
+
+.asin_list {
+   padding-left:.5em;
+   width:95%;
+   margin-left:1em;
+   margin-right:auto;
+   padding-top:.5em;
+   padding-left:.5em;
+   padding-bottom:.6em;
+   border:1px black solid;
+   background:#F8F8F8;
+}
+
+.asin_list tr:first-child td {
+   margin-top:.4em;
+}
+
+.asin_list tr td {
+   margin-bottom:0.2em;
+}
+
+.asin_list tr:last-child td {
+   margin-bottom:0.3em;
+}
+
+.expand_button {
+   font-size:9pt;
+   font-color:#000000;
+}
+
+.expand_button * {
+   font-size:9pt;
+   font-color:#000000;
+}
+
+.expand_button a:link {
+   color:#0000FF;
+}
+
+.expand_button a:visited {
+   color:#0000FF;
+}
+
+.expand_button a:active {
+   color:#0000FF;
+}
+
+.expand_button a:hover {
+   color:#0050FF;
+}
+
+.complete {
+   color:#00D000;
+}
+
+.incomplete {
+   color:#C0C000;
+}
+
+.pending_vendor_input {
+   color:#D00000;
+}
+
+.approved {
+   color:#00D000;
+}
+
+.rejected {
+   color:#D00000;
+}
+
+
+tr.zebra1 {
+   background:#FFFFFF;
+}
+
+tr.zebra2 {
+   background:#F0F0F0;
+}
+
+tr.zebra1 tr.zebra1 {
+   background:#F0F0F0;
+}
+
+tr.zebra1 tr.zebra2 {
+   background:#FFFFFF;
+}
+
+tr.zebra1 tr.zebra1 tr.zebra1 {
+   background:#FFFFFF;
+}
+
+tr.zebra1 tr.zebra1 tr.zebra2 {
+   background:#F0F0F0;
+}
+
+tr.zebra1 tr.zebra1 tr.zebra1 tr.zebra1 {
+   background:#F0F0F0;
+}
+
+tr.zebra1 tr.zebra1 tr.zebra1 tr.zebra2 {
+   background:#FFFFFF;
+}
+
+
+/* Compliance Form page */
+
+.compliance_form {
+    text-align:center;
+	padding:1em;
+}
+
+.compliance_form div {
+    text-align:center;
+}
+
+.compliance_form table {
+   margin-left:auto;
+   margin-right:auto;
+   width:60%;
+   background:#4682b4;
+   border:1px solid black;
+}
+
+.compliance_form td, .compliance_form th {
+   padding:2px;
+   text-align:center;
+   background-color:#E5E5E5;
+   border:1px solid black;
+}
+
+
+.compliance_form .asin_data {
+    margin-top:1em;
+}
+
+.compliance_form .asin_data table {
+    padding:5px;
+}
+
+.compliance_form .asin_data th {
+    width:40%;
+}
+
+.compliance_form .asin_data td {
+    width:auto;
+}
+
+.compliance_tests {
+    margin-top:1em;
+}
+
+table.compliance_tests {
+    padding:5px;
+    border-bottom:none;
+    border-top:none;
+}
+
+.compliance_tests table.compliance_tests:first-child {
+    border-top:1px solid black;
+    padding-top:5px;
+}
+
+.compliance_tests table.compliance_tests:last-child {
+    border-bottom:1px solid black;
+    padding-bottom:5px;
+}
+
+.compliance_tests th {
+    text-align:center;
+    width:25%;
+}
+
+.compliance_tests td {
+    text-align:center;
+    width:auto;
+}
+
+.record_data {
+    margin-top:.5em;
+}
+
+.record_data table {
+    padding:5px;
+}
+
+/* CSS for the status update of Compliance Set */
+.compliance_set_status {
+    margin-top:.5em;
+}
+
+.compliance_set_status table {
+    padding:5px;
+}
+
+
+/* CSS for the status update of Compliance Docs */
+.compliance_docs {
+    margin-top:.5em;
+}
+
+table.compliance_docs {
+    padding:5px;
+    border-top:none;
+    border-bottom:none;
+}
+
+.compliance_docs table.compliance_docs:first-child {
+    border-top:1px solid black;
+    padding-top:5px;
+}
+
+.compliance_docs table.compliance_docs:last-child {
+    border-bottom:1px solid black;
+    padding-bottom:5px;
+}
+
+.compliance_docs th {
+    width:40%;
+}
+
+.compliance_docs td {
+    width:auto;
+}
+
+/* CSS for rendering collection of Compliance Sets */
+
+.compliance table,.compliance th,.compliance td {
+    border:1px solid black;
+}
+
+.compliance th, .compliance td {
+   font-size:10pt;
+   padding:2px;
+   text-align:center;
+   vertical-align:center;
+   background-color:#E5E5E5;
+}
+
+.compliance table {
+    margin-left:auto;
+    margin-right:auto;
+    width:60%;
+    font-size:10pt;
+    background-color:#4682b4;
+}
+
+.compliance .compliance_set_list {
+   width:55%;
+   margin-left:5%;
+   background:#FFFFFF;
+}
+
+.compliance table {
+   width:100%;
+}
+
+.compliance th,.compliance td {
+   border:0;
+   background:#FFFFFF;
+   margin:0;
+   padding:0;
+   text-align:left;
+}
+
+.compliance .compliance_set {
+   margin-left:5%;
+   margin-right:5%;
+}
+
+.compliance .compliance_set_selected {
+  width:90%;
+  border:10px solid red;
+
+}
+.compliance .compliance_sets {
+   background:#FFFFFF;
+}
+
+.compliance .compliance_set th {
+   width:45%;
+   border:1px solid black;
+   padding:2px;
+   text-align:center;
+   vertical-align:center;
+   background-color:#E5E5E5;}
+
+.compliance .compliance_set td {
+   width:*;
+   border:1px solid black;
+   padding:2px;
+   text-align:center;
+   vertical-align:center;
+   background-color:#E5E5E5;
+}
+
+.compliance table.csheader {
+   background:#FFFFFF;
+   border:0;
+   padding:0;
+   margin:0;
+}
+
+
+.compliance table.csheader th {
+   text-align:left;
+   background:#FFFFFF;
+   border:0;
+   padding:0;
+   margin:0;
+}
+
+.compliance table.csheader td {
+   text-align:right;
+   background-color:#FFFFFF;
+   border:0;
+   padding:0;
+   margin:0;
+}
+
+.compliance .associate_poid_form {
+   background-color:#FFFFFF;
+   text-align:left;
+}
+
+.compliance .associate_poid_form tr {
+   text-align:left;
+   background-color:#FFFFFF;
+   border:0;
+   padding:0;
+   margin:0;
+}
+
+.compliance .associate_poid_form h3 {
+    text-align:left;
+}
+
+.compliance .associate_poid_form table {
+   margin-left:5%;
+   text-align:left;
+   background-color:#FFFFFF;
+   width:45%;
+   border:0;
+   padding:0;
+}
+
+.compliance .associate_poid_form th {
+   background-color:#FFFFFF;
+   text-align:left;
+   border:0;
+}
+
+.compliance .associate_poid_form td {
+   background-color:#FFFFFF;
+   text-align:right;
+   border:0;
+}

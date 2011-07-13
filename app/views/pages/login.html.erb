@@ -1,0 +1,12 @@
+<p id="notice"><%= notice %></p>
+
+<% form_tag :action => 'authenticate' do %>
+
+    login as : <%= text_field_tag 'code' %>
+    <br />
+    Vendor <%= radio_button_tag 'session_selector', "vendor", false  %>
+    PC <%= radio_button_tag 'session_selector', "pc", false  %>
+
+    <br />
+    <%= submit_tag('Login') %>
+<% end %>

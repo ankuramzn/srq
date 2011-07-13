@@ -1,0 +1,165 @@
+<p id="notice"><%= notice %></p>
+
+<div class="compliance_form">
+    <div class="asin_data">
+        <table>
+        <tbody>
+            <tr>
+                <th>
+                    ASIN
+                </th>
+                <td>
+                    <%= @compliance.sku %>
+                </td>
+            </tr>
+
+            <tr>
+                <th>
+                    Vendor Product Number
+                </th>
+                <td>
+                    <%= @compliance.vendor_product_number %>
+                </td>
+            </tr>
+
+            <tr>
+                <th>
+                    Brand
+                </th>
+                <td>
+                    <%= @compliance.brand %>
+                </td>
+            </tr>
+
+            <tr>
+                <th>
+                    Vendor
+                </th>
+                <td>
+                    <%= @compliance.vendor_id %>
+                </td>
+            </tr>
+
+            <tr>
+                <th>
+                    Status
+                </th>
+                <td>
+                    <%= @compliance.status %>
+                </td>
+            </tr>
+
+        </tbody>
+        </table>
+    </div>
+
+
+
+    <!-- Associated Lab Details -->
+    <div class="compliance_tests">
+
+    <%= render :partial => "lab", :collection => @compliance.labs %>
+
+    </div>
+
+    <!-- Associated Document Details -->
+    <div class="compliance_docs">
+
+    <%= render :partial => "document", :collection => @compliance.documents %>
+
+    </div>
+
+
+    <div class="record_data">
+        <table>
+        <tbody>
+            <tr>
+                <th>
+                    Importer of Record
+                </th>
+                <td>
+                    <%= @compliance.importer_of_record %>
+                </td>
+            </tr>
+
+            <tr>
+                <th>
+                    Keeper of Record
+                </th>
+                <td>
+                    <%= @compliance.keeper_of_record %>
+                </td>
+            </tr>
+
+            <tr>
+                <th>
+                    Manufacture Date
+                </th>
+                <td>
+                    <%= @compliance.manufacture_date %>
+                </td>
+            </tr>
+
+            <tr>
+                <th>
+                    Manufacture Place
+                </th>
+                <td>
+                    <%= @compliance.manufacture_place %>
+                </td>
+            </tr>
+
+            <tr>
+                <th>
+                    Esignature
+                </th>
+                <td>
+                    <%= @compliance.esignature %>
+                </td>
+            </tr>
+
+            <tr>
+                <th>
+                    Position in Company
+                </th>
+                <td>
+                    <%= @compliance.position %>
+                </td>
+            </tr>
+
+            <tr>
+                <th>
+                    Comments (Internal)
+                </th>
+                <td>
+                    <%= @compliance.comments_internal %>
+                </td>
+            </tr>
+
+            <tr>
+                <th>
+                    Comments (External)
+                </th>
+                <td>
+                    <%= @compliance.comments_external %>
+                </td>
+            </tr>
+
+            <tr>
+                <th>
+                    Vendor Notes
+                </th>
+                <td>
+                    <%= @compliance.vendor_notes %>
+                </td>
+            </tr>
+
+          </tbody>
+        </table>
+    </div>
+
+
+</div>
+
+<%= link_to 'Edit', edit_compliance_path(@compliance) %> |
+<%= link_to 'Back', compliances_path %>

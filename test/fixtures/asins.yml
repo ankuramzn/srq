@@ -1,0 +1,19 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  sku: MyString
+  purchaseorder_id: 1
+  compliance_id: 1
+  association_at: 2011-04-26 11:05:33
+  title: MyString
+  srq_impact_source: MyString
+  status: MyString
+
+two:
+  sku: MyString
+  purchaseorder_id: 1
+  compliance_id: 1
+  association_at: 2011-04-26 11:05:33
+  title: MyString
+  srq_impact_source: MyString
+  status: MyString

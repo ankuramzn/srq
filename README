@@ -1,0 +1,22 @@
+Model Generate scripts :
+
+vendor code:string name:string contact:string is_import:boolean is_private_label:boolean
+purchaseorder code:string vendor_id:integer condition:string delivery_date:date marketplace:string status:string
+asin sku:string purchaseorder_id:integer compliance_id:integer association_at:datetime title:string srq_impact_source:string status:string
+
+Generated the Scaffold for compliance :
+compliance sku:string vendor_product_number:string brand:string vendor_id:integer status:string standard_id:integer importer_of_record:text keeper_of_record:text manufacture_date:date manufacture_place:string esignature:string position:string comments_internal:text comments_external:text vendor_notes:string last_activity_at:datetime
+
+
+lab compliance_id:integer info:text testing_date:date report_number:string standards:text
+document compliance_id:integer url:string type:string
+
+Gem status :
+
+gem 'mysql2'
+gem 'haml'
+gem 'nested_form'
+
+For DB reset :
+ db:setup (recreates db/schema.rb and loads data from db/seeds.rb
+

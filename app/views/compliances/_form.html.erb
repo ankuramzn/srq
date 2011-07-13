@@ -1,0 +1,192 @@
+<div class="compliance_form">
+  <%= nested_form_for @compliance, :html => { :multipart => true } do |f| %>
+
+  <% if @compliance.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@compliance.errors.count, "error") %> prohibited this compliance from being saved:</h2>
+
+      <ul>
+      <% @compliance.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+    <div class="compliance_set_status">
+      <table>
+        <tbody>
+          <tr>
+            <th>
+              Status
+            </th>
+            <td>
+              <%= f.select(:status, compliance_set_status) %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+
+  <div class="asin_data">
+    <table>
+      <tbody>
+
+      <tr>
+        <th>
+            <%= f.label :sku %>
+        </th>
+        <td>
+            <%= @compliance.sku  %>
+            <%=  hidden_field( :compliance, :sku, :value => @compliance.sku) %>
+        </td>
+      </tr>
+
+      <tr>
+        <th>
+            <%= f.label :vendor_product_number %>
+        </th>
+        <td>
+            <%= f.text_field :vendor_product_number %>
+        </td>
+      </tr>
+
+      <tr>
+        <th>
+            <%= f.label :brand %>
+        </th>
+        <td>
+            <%= f.text_field :brand %>
+        </td>
+      </tr>
+
+      <tr>
+        <th>
+            <%= f.label :vendor_id %>
+        </th>
+        <td>
+            <%= @compliance.vendor.code %>
+            <%=  hidden_field( :compliance, :vendor_id, :value => @compliance.vendor.id) %>
+        </td>
+      </tr>
+
+      </tbody>
+    </table>
+  </div>
+
+
+  <!-- Insert Form for Lab -->
+  <div class="compliance_tests">
+    <%= f.fields_for :labs %>
+  </div>
+  <div class="add_test">
+    <%= f.link_to_add "Add a lab", :labs %>
+  </div>
+
+
+  <!-- Insert Form for Document-->
+  <div class="compliance_docs">
+    <%= f.fields_for :documents %>
+  </div>
+  <div>
+    <%= f.link_to_add "Add a Document", :documents %>
+  </div>
+
+
+  <div class="record_data">
+    <table>
+      <tbody>
+
+      <tr>
+        <th>
+            <%= f.label :importer_of_record %>
+        </th>
+        <td>
+            <%= f.text_area :importer_of_record, :rows => 4, :cols => 36 %>
+        </td>
+      </tr>
+
+      <tr>
+        <th>
+            <%= f.label :keeper_of_record %>
+        </th>
+        <td>
+            <%= f.text_area :keeper_of_record, :rows => 4, :cols => 36 %>
+        </td>
+      </tr>
+
+      <tr>
+        <th>
+            <%= f.label :manufacture_date %>
+        </th>
+        <td>
+            <%= f.date_select :manufacture_date %>
+        </td>
+      </tr>
+
+      <tr>
+        <th>
+            <%= f.label :manufacture_place %>
+        </th>
+        <td>
+            <%= f.text_field :manufacture_place %>
+        </td>
+      </tr>
+
+      <tr>
+        <th>
+            <%= f.label :esignature %>
+        </th>
+        <td>
+            <%= f.text_field :esignature %>
+        </td>
+      </tr>
+
+      <tr>
+        <th>
+            <%= f.label :position %>
+        </th>
+        <td>
+            <%= f.text_field :position %>
+        </td>
+      </tr>
+
+      <tr>
+        <th>
+            <%= f.label :comments_internal %>
+        </th>
+        <td>
+            <%= f.text_area :comments_internal, :rows => 4, :cols => 36 %>
+        </td>
+      </tr>
+
+      <tr>
+        <th>
+            <%= f.label :comments_external %>
+        </th>
+        <td>
+            <%= f.text_area :comments_external, :rows => 4, :cols => 36 %>
+        </td>
+      </tr>
+
+      <tr>
+        <th>
+            <%= f.label :vendor_notes %>
+        </th>
+        <td>
+            <%= f.text_area :vendor_notes, :rows => 4, :cols => 36 %>
+        </td>
+      </tr>
+
+      </tbody>
+    </table>
+  </div>
+
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+</div>

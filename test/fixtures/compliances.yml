@@ -1,0 +1,37 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  sku: MyString
+  vendor_product_number: MyString
+  brand: MyString
+  vendor_id: 1
+  status: MyString
+  standard_id: 1
+  importer_of_record: MyText
+  keeper_of_record: MyText
+  manufacture_date: 2011-05-20
+  manufacture_place: MyString
+  esignature: MyString
+  position: MyString
+  comments_internal: MyText
+  comments_external: MyText
+  vendor_notes: MyString
+  last_activity_at: 2011-05-20 13:31:31
+
+two:
+  sku: MyString
+  vendor_product_number: MyString
+  brand: MyString
+  vendor_id: 1
+  status: MyString
+  standard_id: 1
+  importer_of_record: MyText
+  keeper_of_record: MyText
+  manufacture_date: 2011-05-20
+  manufacture_place: MyString
+  esignature: MyString
+  position: MyString
+  comments_internal: MyText
+  comments_external: MyText
+  vendor_notes: MyString
+  last_activity_at: 2011-05-20 13:31:31

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Srq</title>
+  <%= stylesheet_link_tag 'css.css' %>
+  <%= javascript_include_tag 'jquery.js', 'rails.js', 'application', 'nested_form' %>
+  <%= csrf_meta_tag %>
+</head>
+<body>
+
+
+
+<div class="title_box">
+<h1>SRQ v2.0</h1>
+</div>
+
+
+
+<div class="actions_bar">
+   <p><h2>Actions</h2></p>
+   <ul>
+      <li>
+         <a href="">action1</a>
+      </li>
+      <li>
+         <a href="">action2</a>
+      </li>
+     <li>
+        <a href="">action2</a>
+     </li>
+     <li>
+        <a href="">action2</a>
+     </li>
+   </ul>
+</div>
+
+<div class="core">
+    <%= yield %>
+</div>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  compliance_id: 1
+  info: MyText
+  testing_date: 2011-05-21
+  report_number: MyString
+  standards: MyText
+
+two:
+  compliance_id: 1
+  info: MyText
+  testing_date: 2011-05-21
+  report_number: MyString
+  standards: MyText

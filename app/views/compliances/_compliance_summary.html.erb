@@ -1,0 +1,72 @@
+<tr>
+  <td>
+    <div class="compliance_set" id="compliance_set_<%= compliance.id %>">
+      <table class="csheader">
+        <tr>
+          <th><h3>Compliance Set</h3></th>
+          <td align="right">
+            Use this Compliance Set <%= radio_button_tag 'compliance_set_selector', compliance.id, false, :class => "compliance_set_selector_radio" %>
+          </td>
+        </tr>
+      </table>
+      <table class="csdata">
+        <tr>
+          <th>Last Activity:</th>
+          <td><%= compliance.last_activity_at %></td>
+        </tr>
+        <tr>
+          <th>Notes:</th>
+          <td><form><textarea cols="50" rows="3"><%= compliance.vendor_notes %></textarea></form></td>
+        </tr>
+        <tr>
+          <th>Status:</th>
+          <td><%= compliance.status %></td>
+        </tr>
+        <tr>
+          <th>Submitter:</th>
+          <td><%= compliance.esignature %></td>
+        </tr>
+
+
+
+          <tr id="associate_pos_form_<%= compliance.id %>" class="associate_poid_form">
+
+            <td colspan="2">
+
+            <h3>Associate Purchase Orders:</h3>
+              <table>
+
+              <%= form_tag( { :controller => "compliances", :action => "associate_purchase_orders" }, :method => :put) do %>
+
+                  <% @asins.each do |asin| %>
+                    <tr>
+                      <th> <%=  asin.purchaseorder.code %></th>
+                        <td>
+                          <%= check_box_tag( "asins[]", value = asin.id, checked = false ) %>
+                          <%= hidden_field_tag 'compliance_id', compliance.id %>
+                        </td>
+                    </tr>
+                  <% end %>
+
+                  <tr>
+                    <td colspan="2">
+                      <%= submit_tag( "Associate", :class => "button") %>
+                    </td>
+                  </tr>
+              <% end %>
+              </table>
+
+            </td>
+          </tr>
+
+
+
+        <tr>
+          <th>View Details</th>
+          <td><%= link_to 'Show', compliance %></td>
+        </tr>
+
+      </table>
+    </div>
+  </td>
+</tr>

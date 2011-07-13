@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  code: MyString
+  name: MyString
+  contact: MyString
+  is_import: false
+  is_private_label: false
+
+two:
+  code: MyString
+  name: MyString
+  contact: MyString
+  is_import: false
+  is_private_label: false

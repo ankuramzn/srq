@@ -1,0 +1,25 @@
+- counter = defined?(asin_counter) ? asin_counter : 0
+%tr{ :class => css(counter)}
+    %td
+        = asin.sku
+        %table
+            %tbody
+                %tr
+                    %th Title
+                    %td
+                        = asin.title
+                    %tr
+                    %th Status
+                    %td
+                        %strong{ :class =>  asin.status }
+                            = asin.status
+                    %tr
+                    - if pending_vendor_input(asin)
+                        %th Create / Associate
+                        %td
+                            = link_to 'Compliance Set', { :controller =>  "compliances", :action => "vendor_asin_compliance_management", :sku => asin.sku, :vendor_id => asin.purchaseorder.vendor.id }
+                    - else
+                        %th Associated Compliance Set
+                        %td
+                            = link_to 'Compliance Set', asin.compliance
+

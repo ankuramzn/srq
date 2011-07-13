@@ -1,0 +1,8 @@
+<div class="compliance_set_list">
+  <h2>Listing <%= type %> Compliance Sets</h2>
+  <table class="compliance_sets">
+    <% compliances.each do |compliance| %>
+        <%= render :partial => 'compliance_summary', :locals => { :compliance => compliance} %>
+    <% end %>
+  </table>
+</div>

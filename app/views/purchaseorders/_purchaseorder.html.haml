@@ -1,0 +1,26 @@
+- counter = defined?(purchaseorder_counter) ? purchaseorder_counter : 0
+%tr{ :class => css(counter)}
+    %td
+        %strong
+            = purchaseorder.code
+        %table
+            %tbody
+                %tr
+                    %th Delivery Date
+                    %td
+                        = purchaseorder.delivery_date
+                %tr
+                    %th Marketplace
+                    %td
+                        = purchaseorder.marketplace
+                %tr
+                    %th Status
+                    %td
+                        %strong{ :class =>  purchaseorder.status }
+                            = purchaseorder.status
+
+
+        %small{ :class => "expand_button" }
+            = link_to 'PO Asins', {   :controller => 'purchaseorders', :action => 'purchaseorder_asins', :format => :js, :id => purchaseorder.id }, :remote => true
+        %div{:id => "asins_#{purchaseorder.id}" }
+
