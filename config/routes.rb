@@ -1,8 +1,12 @@
 Srq::Application.routes.draw do
 
-  match 'pages/login' => 'pages#login', :as => :signup
+
   match 'pages/authenticate' => 'pages#authenticate'
-  get "pages/login"
+
+  get "log_in" => "pages#login", :as => "log_in"
+  root :to => "pages#login"
+
+
 
   match 'compliances/vendor_asin_compliance_management/:vendor_id/:sku' => 'compliances#vendor_asin_compliance_management'
   match 'compliances/associate_purchase_orders' => 'compliances#associate_purchase_orders'
