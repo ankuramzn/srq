@@ -20,3 +20,23 @@ gem 'nested_form'
 For DB reset :
  db:setup (recreates db/schema.rb and loads data from db/seeds.rb
 
+
+Branching instructions
+
+Listing branches
+
+* git branch
+* git branch -a
+
+Creating a new branch
+
+* git branch <branch_name>
+
+Push to Git hub
+
+* git push origin -u <branch_name>
+
+Switch local copy to branch
+
+* git co <branch_name>
+
