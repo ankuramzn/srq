@@ -40,3 +40,8 @@ Switch local copy to branch
 
 * git co <branch_name>
 
+Merge changes back to master
+
+* git co master
+* git merge <branch_name>
+* git push
