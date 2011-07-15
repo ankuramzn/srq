@@ -1,12 +1,30 @@
-<p id="notice"><%= notice %></p>
+<h1>Application Login Page</h1>
 
 <% form_tag :action => 'authenticate' do %>
 
-    login as : <%= text_field_tag 'code' %>
-    <br />
-    Vendor <%= radio_button_tag 'session_selector', "vendor", false  %>
-    PC <%= radio_button_tag 'session_selector', "pc", false  %>
+    <table class = "vendor_data">
+      <tr>
+        <td>
+            <%= label_tag :username %>
+        </td>
+        <td>
+            <%= text_field_tag :username, params[:username] %>
+        </td>
+      </tr>
 
-    <br />
-    <%= submit_tag('Login') %>
+      <tr>
+        <td>
+            <%= label_tag :password %>
+        </td>
+        <td>
+            <%= password_field_tag :password %>
+        </td>
+      </tr>
+
+      <tr>
+        <td colspan="2">
+            <%= submit_tag('Login') %>
+        </td>
+      </tr>
+
 <% end %>

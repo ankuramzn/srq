@@ -1,0 +1,66 @@
+<h1>Application Registration Page</h1>
+
+<%= form_for @user do |f| %>
+
+    <!-- Error message handling -->
+
+    <% if @user.errors.any? %>
+
+        <div class="error_messages" >
+          <h1> Errors </h1>
+          <% for message in @user.errors.full_messages %>
+          <ul>
+            <li> <%= message %></li>
+          </ul>
+          <% end %>
+        </div>
+
+    <% end %>
+
+
+    <table class = "vendor_data">
+
+        <tr>
+          <td>
+            <%= f.label :username %>
+          </td>
+          <td>
+            <%= f.text_field :username %>
+          </td>
+        </tr>
+
+      <tr>
+        <td>
+          <%= f.label :password %>
+        </td>
+        <td>
+          <%= f.password_field :password %>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <%= f.label :password_confirmation  %>
+        </td>
+        <td>
+          <%= f.password_field :password_confirmation %>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <%= f.label :user_type  %>
+        </td>
+        <td>
+          <%= f.select(:user_type, ['vendor', 'compliance']) %>
+        </td>
+      </tr>
+
+      <tr>
+        <td colspan="2">
+          <%= f.submit 'Register' %>
+        </td>
+      </tr>
+
+    </table>
+<% end %>

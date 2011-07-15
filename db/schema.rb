@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110521233005) do
+ActiveRecord::Schema.define(:version => 20110715191946) do
 
   create_table "asins", :force => true do |t|
     t.string   "sku"
@@ -70,6 +70,15 @@ ActiveRecord::Schema.define(:version => 20110521233005) do
     t.date     "delivery_date"
     t.string   "marketplace"
     t.string   "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "users", :force => true do |t|
+    t.string   "username"
+    t.string   "password_hash"
+    t.string   "password_salt"
+    t.string   "user_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

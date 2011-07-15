@@ -1,10 +1,13 @@
 Srq::Application.routes.draw do
 
 
+  get "sign_up" => "users#new", :as => "sign_up"
+  resources :users
+
   match 'pages/authenticate' => 'pages#authenticate'
 
   get "log_in" => "pages#login", :as => "log_in"
-  root :to => "pages#login"
+  root :to => "pages#root"
 
 
 
