@@ -43,7 +43,7 @@ Srq::Application.routes.draw do
   match 'purchaseorders/purchaseorder_asins' => 'purchaseorders#purchaseorder_asins'
 
 
-  get "vendors/new" => "vendors#new"
+  get "vendor_registration" => "vendors#new", :as => "vendor_registration"
   resources :vendors
 
 

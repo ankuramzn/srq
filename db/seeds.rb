@@ -10,7 +10,8 @@
     :code=>'BEFR7',
     :contact=>'TimChen@lifungsz.com.cn',
     :is_import=>true,
-    :name=>'Boni & Hanson (Li & Fung)'
+    :name=>'Boni & Hanson (Li & Fung)',
+    :password=>'123'
 )
 
 @po = @vendor.purchaseorders.create!(
@@ -88,9 +89,10 @@
 
 @vendor = Vendor.create!(
     :code=>'KIJT9',
-    :contact=>'TimChen@lifungsz.com.cn',
+    :contact=>'TimChen@lifungsz.com.cn1',
     :is_import=>true,
-    :name=>'Friends - Tom Douglas Only (Li & Fung)'
+    :name=>'Friends - Tom Douglas Only (Li & Fung)',
+    :password=>'123'
 )
 
 @po = @vendor.purchaseorders.create!(
@@ -110,9 +112,10 @@
 
 @vendor = Vendor.create!(
     :code => 'EMEBI',
-    :contact => 'TimChen@lifungsz.com.cn',
+    :contact => 'TimChen@lifungsz.com.cn2',
     :is_import => false,
-    :name => 'Friends Enterprises (HK) Ltd (Li & Fung)'
+    :name => 'Friends Enterprises (HK) Ltd (Li & Fung)',
+    :password=>'123'
 )
 
 @po = @vendor.purchaseorders.create!(
@@ -132,9 +135,10 @@
 
 @vendor = Vendor.create!(
     :code => 'CBIK8',
-    :contact => 'TimChen@lifungsz.com.cn',
+    :contact => 'TimChen@lifungsz.com.cn3',
     :is_import => true,
-    :name => 'Good Things - Tom Douglas Only (Li & Fung)'
+    :name => 'Good Things - Tom Douglas Only (Li & Fung)',
+    :password=>'123'
 )
 
 @po = @vendor.purchaseorders.create!(
@@ -199,9 +203,10 @@
 
 @vendor = Vendor.create!(
     :code => 'LECU7',
-    :contact => 'TimChen@lifungsz.com.cn',
+    :contact => 'TimChen@lifungsz.com.cn4',
     :is_import => false,
-    :name => 'Good Things - Tom Douglas Only (Li & Fung)'
+    :name => 'Good Things - Tom Douglas Only (Li & Fung)',
+    :password=>'123'
 )
 
 @po = @vendor.purchaseorders.create!(
