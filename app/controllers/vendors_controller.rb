@@ -1,4 +1,5 @@
 class VendorsController < ApplicationController
+  layout :choose_layout
 
   def index
     @vendors = Vendor.all
@@ -32,5 +33,15 @@ class VendorsController < ApplicationController
       render "new"
     end
   end
+
+  private
+  def choose_layout
+    if [ 'new' ].include? action_name
+      'pages'
+    else
+      'application'
+    end
+  end
+
 
 end

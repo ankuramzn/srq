@@ -46,5 +46,7 @@ Srq::Application.routes.draw do
   get "vendor_registration" => "vendors#new", :as => "vendor_registration"
   resources :vendors
 
+  get "contacts" => "pages#contacts", :as => "contacts"
+
 
 end
