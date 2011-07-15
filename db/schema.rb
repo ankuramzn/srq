@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110715191946) do
+ActiveRecord::Schema.define(:version => 20110715202422) do
 
   create_table "asins", :force => true do |t|
     t.string   "sku"
@@ -91,6 +91,8 @@ ActiveRecord::Schema.define(:version => 20110715191946) do
     t.boolean  "is_private_label"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "password_salt"
+    t.string   "password_hash"
   end
 
 end

@@ -1,4 +1,5 @@
 class VendorsController < ApplicationController
+
   def index
     @vendors = Vendor.all
   end
@@ -16,6 +17,20 @@ class VendorsController < ApplicationController
         format.js {  }
     end
 
+  end
+
+  def new
+    @vendor = Vendor.new
+  end
+
+  def create
+    @vendor = Vendor.new(params[:vendor])
+    puts @vendor.inspect
+    if @vendor.save
+      redirect_to :controller => "vendors", :action => "show", :id => @vendor.id
+    else
+      render "new"
+    end
   end
 
 end
