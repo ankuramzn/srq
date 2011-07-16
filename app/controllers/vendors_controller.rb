@@ -1,6 +1,15 @@
 class VendorsController < ApplicationController
   layout :choose_layout
 
+  before_filter :do_something
+
+  def do_something
+    if session[:type] != "vendor" or session[:id].nil?
+      redirect_to log_in_path, :notice => "Please Log in"
+    end
+  end
+
+
   def index
     @vendors = Vendor.all
   end

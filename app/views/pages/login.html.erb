@@ -2,7 +2,7 @@
 
 <% form_tag :action => 'authenticate' do %>
 
-    <table class = "vendor_data">
+    <table class = "vendortable">
       <tr>
         <td>
             <%= label_tag :username %>
@@ -22,9 +22,20 @@
       </tr>
 
       <tr>
+        <td>
+            <%= label_tag :session_selector %>
+        </td>
+        <td>
+          Vendor        <%= radio_button_tag 'session_selector', "vendor", false %>
+          Compliance    <%= radio_button_tag 'session_selector', "compliance", false %>
+        </td>
+      </tr>
+
+      <tr>
         <td colspan="2">
             <%= submit_tag('Login') %>
         </td>
       </tr>
+    </table>
 
 <% end %>

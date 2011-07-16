@@ -7,6 +7,9 @@ Srq::Application.routes.draw do
   match 'pages/authenticate' => 'pages#authenticate'
 
   get "log_in" => "pages#login", :as => "log_in"
+
+  get "log_out" => "pages#logout", :as => "log_out"
+
   root :to => "pages#root"
 
 

@@ -19,5 +19,15 @@ class Vendor < ActiveRecord::Base
     self.password_hash = BCrypt::Engine.hash_secret(password, password_salt)
   end
 
+  #  Function to authenticate Vendor
+  def self.authenticate(code, password)
+    vendor = Vendor.find_by_code(code)
+    if vendor and vendor.password_hash == BCrypt::Engine.hash_secret(password, vendor.password_salt)
+      return vendor
+    else
+      return nil
+    end
+  end
+
 
 end
