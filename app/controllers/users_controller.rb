@@ -9,7 +9,9 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
-      redirect_to root_path, :notice => "Thanks for Registering!!!"
+      session[:type] = "user"
+      session[:id] = user.id
+      redirect_to vendors_list_path, :notice => "Thanks for Registering!!!"
     else
       render "new"
     end

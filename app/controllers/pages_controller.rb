@@ -21,10 +21,10 @@ class PagesController < ApplicationController
       else
         redirect_to log_in_path, :notice => "Login Failed"
       end
-    elsif params["session_selector"] == "compliance"
+    elsif params["session_selector"] == "user"
       user = User.authenticate(params["username"], params["password"])
       if user
-        session[:type] = "compliance"
+        session[:type] = "user"
         session[:id] = user.id
         redirect_to vendors_list_path
       else

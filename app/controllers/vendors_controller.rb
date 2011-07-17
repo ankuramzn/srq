@@ -51,7 +51,7 @@ class VendorsController < ApplicationController
     end
 
     def validated_user
-      if session[:type] != "vendor" and session[:type] != "compliance"
+      if session[:type] != "vendor" and session[:type] != "user"
         redirect_to log_in_path, :notice => "Please Log in to access Compliance details."
       end
     end
@@ -63,7 +63,7 @@ class VendorsController < ApplicationController
     end
 
     def validated_compliance
-      if session[:type] != "compliance"
+      if session[:type] != "user"
         redirect_to log_in_path, :notice => "Compliance User Please Log in to access Vendor details."
       end
     end
