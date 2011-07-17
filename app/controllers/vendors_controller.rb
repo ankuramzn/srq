@@ -1,7 +1,8 @@
 class VendorsController < ApplicationController
   layout :choose_layout
 
-  before_filter :validated_vendor, :only => [:show, :vendors_purchaseorders]
+  before_filter :validated_user, :only => [:vendors_purchaseorders]
+  before_filter :validated_vendor, :only => [:show]
   before_filter :validated_compliance, :only => [:index]
 
   public
@@ -30,9 +31,10 @@ class VendorsController < ApplicationController
 
     def create
       @vendor = Vendor.new(params[:vendor])
-      puts @vendor.inspect
       if @vendor.save
-        redirect_to :controller => "vendors", :action => "show", :id => @vendor.id
+        session[:type] = "vendor"
+        session[:id] = @vendor.id
+        redirect_to vendor_home_path
       else
         render "new"
       end
@@ -48,6 +50,12 @@ class VendorsController < ApplicationController
       end
     end
 
+    def validated_user
+      if session[:type] != "vendor" and session[:type] != "compliance"
+        redirect_to log_in_path, :notice => "Please Log in to access Compliance details."
+      end
+    end
+
     def validated_vendor
       if session[:type] != "vendor" or session[:id].nil?
         redirect_to log_in_path, :notice => "Vendor Please Log in to access Compliance details."
@@ -59,7 +67,5 @@ class VendorsController < ApplicationController
         redirect_to log_in_path, :notice => "Compliance User Please Log in to access Vendor details."
       end
     end
-
-
 
 end
