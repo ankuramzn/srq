@@ -14,6 +14,21 @@ Srq::Application.routes.draw do
   # Application Root
   root :to => "pages#root"
 
+  # Asin related routes
+  get "asins/index"
+  match 'asins/index' => 'asins#index'
+  get "asins/show"
+  match 'asins/show/:id' => 'asins#show'
+  match 'purchaseorders/purchaseorder_asins' => 'purchaseorders#purchaseorder_asins'
+
+  # Purchaseorder related routes
+  get "purchaseorders/index"
+  match 'purchaseorders/index' => 'purchaseorders#index'
+  get "purchaseorders/show"
+  match 'purchaseorders/show/:id' => 'purchaseorders#show'
+  match 'vendors/vendors_purchaseorders' => 'vendors#vendors_purchaseorders'
+
+
   # Vendor related routes
   get "vendor_registration" => "vendors#new", :as => "vendor_registration"
   get "vendors_list" => "vendors#index", :as => "vendors_list"
@@ -27,18 +42,6 @@ Srq::Application.routes.draw do
   match 'compliances/:vendor_id/:asin' => 'compliances#index'
   resources :compliances
 
-  # Purchaseorder related routes
-  get "purchaseorders/index"
-  match 'purchaseorders/index' => 'purchaseorders#index'
-  get "purchaseorders/show"
-  match 'purchaseorders/show/:id' => 'purchaseorders#show'
-  match 'vendors/vendors_purchaseorders' => 'vendors#vendors_purchaseorders'
 
-  # Asin related routes
-  get "asins/index"
-  match 'asins/index' => 'asins#index'
-  get "asins/show"
-  match 'asins/show/:id' => 'asins#show'
-  match 'purchaseorders/purchaseorder_asins' => 'purchaseorders#purchaseorder_asins'
 
 end
