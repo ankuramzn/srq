@@ -1,13 +1,14 @@
 class PagesController < ApplicationController
   layout 'pages'
 
+  # Home page for the application
   def root
+    clear_session
   end
 
-
+  # Common login page for Vendors and Users
   def login
-    session[:type] = nil
-    session[:id] = nil
+    clear_session
   end
 
   def authenticate
@@ -21,20 +22,27 @@ class PagesController < ApplicationController
         redirect_to log_in_path, :notice => "Login Failed"
       end
     elsif params["session_selector"] == "compliance"
-      session[:type] = "compliance"
-      redirect_to vendors_list_path
+      user = User.authenticate(params["username"], params["password"])
+      if user
+        session[:type] = "compliance"
+        session[:id] = user.id
+        redirect_to vendors_list_path
+      else
+        redirect_to log_in_path, :notice => "Login Failed"
+      end
     else
       redirect_to log_in_path, :notice => "Login Failed, please select Type of Login"
     end
   end
 
+  # Common signout page for vendors and users
   def logout
-    session[:type] = nil
-    session[:id] = nil
+    clear_session
     redirect_to root_path
   end
 
   def contacts
+    clear_session
   end
 
 end

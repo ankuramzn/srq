@@ -2,7 +2,7 @@ class VendorsController < ApplicationController
   layout :choose_layout
 
   before_filter :validated_vendor, :only => [:show, :vendors_purchaseorders]
-  before_filter :validated_compliance, :only => [:index, :new, :create]
+  before_filter :validated_compliance, :only => [:index]
 
   public
     def index

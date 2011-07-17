@@ -6,6 +6,20 @@
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
 
+@user = User.create!(
+    :username=>'reviewer',
+    :contact=>'saksena@amazon.com',
+    :user_type=>'default',
+    :password=>'123'
+)
+
+@user = User.create!(
+    :username=>'admin',
+    :contact=>'saksena@amazon.com',
+    :user_type=>'default',
+    :password=>'123'
+)
+
 @vendor = Vendor.create!(
     :code=>'BEFR7',
     :contact=>'TimChen@lifungsz.com.cn',
