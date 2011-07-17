@@ -44,4 +44,4 @@ Merge changes back to master
 
 * git co master
 * git merge <branch_name>
-* git push
+* git push 'blah blah blah'
