@@ -19,6 +19,20 @@
 <div class="actions_bar">
 
    <ul>
+     <% if session[:type] == "vendor" %>
+      <li>
+        Hi <%= Vendor.find(session[:id]).code %>
+      </li>
+     <% end %>
+
+     <% if session[:type] == "user" %>
+      <li>
+        Hi <%= User.find(session[:id]).username %>
+      </li>
+      <li>
+        <%= link_to "View All Vendors", vendors_list_path %>
+      </li>
+     <% end %>
      <li>
         <%= link_to 'Log Out', log_out_path %>
      </li>
