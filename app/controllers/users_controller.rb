@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
 
-  layout 'pages'
+  layout :choose_layout
+
+  before_filter :validated_user,    :only => [:home]
 
   def new
     @user = User.new
@@ -16,5 +18,9 @@ class UsersController < ApplicationController
       render "new"
     end
   end
+
+  def home
+  end
+
 
 end

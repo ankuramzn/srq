@@ -2,6 +2,7 @@ Srq::Application.routes.draw do
 
   # User related routes
   get "sign_up" => "users#new", :as => "sign_up"
+  get "user_home" => "users#home", :as => "user_home"
   resources :users
 
   # Non model Pages

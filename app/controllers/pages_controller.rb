@@ -26,7 +26,7 @@ class PagesController < ApplicationController
       if user
         session[:type] = "user"
         session[:id] = user.id
-        redirect_to vendors_list_path
+        redirect_to user_home_path
       else
         redirect_to log_in_path, :notice => "Login Failed"
       end
