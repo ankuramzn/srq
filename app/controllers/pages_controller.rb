@@ -6,6 +6,8 @@ class PagesController < ApplicationController
 
 
   def login
+    session[:type] = nil
+    session[:id] = nil
   end
 
   def authenticate
@@ -14,13 +16,13 @@ class PagesController < ApplicationController
       if vendor
         session[:type] = "vendor"
         session[:id] = vendor.id
-        redirect_to :controller => "vendors", :action => "show", :id => vendor.id
+        redirect_to vendor_home_path
       else
         redirect_to log_in_path, :notice => "Login Failed"
       end
     elsif params["session_selector"] == "compliance"
       session[:type] = "compliance"
-      redirect_to :controller => "vendors", :action => "index"
+      redirect_to vendors_list_path
     else
       redirect_to log_in_path, :notice => "Login Failed, please select Type of Login"
     end

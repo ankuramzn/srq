@@ -33,11 +33,14 @@ Srq::Application.routes.draw do
   get "purchaseorders/show"
   match 'purchaseorders/show/:id' => 'purchaseorders#show'
 
-  get "vendors/index"
-  match 'vendors/index' => 'vendors#index'
+  #get "vendors/index"
+  #match 'vendors/index' => 'vendors#index'
 
-  get "vendors/show"
-  match 'vendors/show/:id' => 'vendors#show', :as => :vendor
+  get "vendors_list" => "vendors#index", :as => "vendors_list"
+
+  get "vendor_home" => "vendors#show", :as => "vendor_home"
+
+
   #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
   # This route can be invoked with purchase_url(:id => product.id)
 
