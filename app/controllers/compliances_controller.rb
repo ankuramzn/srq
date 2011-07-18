@@ -26,8 +26,17 @@ class CompliancesController < ApplicationController
   def new
 
     @compliance = Compliance.new
-    @compliance.sku = params[:sku]
-    @compliance.vendor_id = params[:vendor_id]
+    if params[:sku]
+      @compliance.sku = params[:sku]
+    end
+    if params[:vendor_id]
+      @compliance.vendor_id = params[:vendor_id]
+    elsif session[:type] == "vendor"
+      @compliance.vendor_id = session[:id]
+    else
+      redirect_to sign_up_path
+    end
+
     @compliance.status = "vendor"
     respond_to do |format|
       format.html # new.html.erb

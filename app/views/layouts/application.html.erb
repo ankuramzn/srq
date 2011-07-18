@@ -18,25 +18,35 @@
 
 <div class="actions_bar">
 
-   <ul>
-     <% if session[:type] == "vendor" %>
-      <li>
-        Hi <%= Vendor.find(session[:id]).code %>
-      </li>
-     <% end %>
+    <ul>
+        <% if session[:type] == "vendor" %>
+            <li>
+                Hi <%= Vendor.find(session[:id]).code %>
+            </li>
+            <li>
+                <%= link_to "Home", vendor_home_path %>
+            </li>
+            <li>
+                <%= link_to "New Compliance Set", new_compliance_path %>
+            </li>
 
-     <% if session[:type] == "user" %>
-      <li>
-        Hi <%= User.find(session[:id]).username %>
-      </li>
-      <li>
-        <%= link_to "View All Vendors", vendors_list_path %>
-      </li>
-     <% end %>
-     <li>
+        <% end %>
+
+        <% if session[:type] == "user" %>
+            <li>
+                Hi <%= User.find(session[:id]).username %>
+            </li>
+            <li>
+                <%= link_to "View All Vendors", vendors_list_path %>
+            </li>
+        <% end %>
+        <li>
+          <%= link_to "Research PO", research_purchaseorder_path %>
+        </li>
+        <li>
         <%= link_to 'Log Out', log_out_path %>
-     </li>
-   </ul>
+        </li>
+    </ul>
 </div>
 
 <div class="core">

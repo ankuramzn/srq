@@ -25,9 +25,14 @@ Srq::Application.routes.draw do
   # Purchaseorder related routes
   get "purchaseorders/index"
   match 'purchaseorders/index' => 'purchaseorders#index'
-  get "purchaseorders/show"
-  match 'purchaseorders/show/:id' => 'purchaseorders#show'
+
+
+  #get "purchaseorders/show"
+  #match 'purchaseorders/show/:id' => 'purchaseorders#show'
+  get "purchaseorder_home" => "purchaseorders#show", :as => "purchaseorder_home"
+
   match 'vendors/vendors_purchaseorders' => 'vendors#vendors_purchaseorders'
+  get "research_purchaseorder" => "purchaseorders#research", :as => "research_purchaseorder"
 
 
   # Vendor related routes

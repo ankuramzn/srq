@@ -127,14 +127,16 @@
                 </td>
             </tr>
 
-            <tr>
-                <th>
-                    Comments (Internal)
-                </th>
-                <td>
-                    <%= @compliance.comments_internal %>
-                </td>
-            </tr>
+            <% if session[:type] == "user" then %>
+                <tr>
+                    <th>
+                        Comments (Internal)
+                    </th>
+                    <td>
+                        <%= @compliance.comments_internal %>
+                    </td>
+                </tr>
+            <% end %>
 
             <tr>
                 <th>
@@ -160,6 +162,3 @@
 
 
 </div>
-
-<%= link_to 'Edit', edit_compliance_path(@compliance) %> |
-<%= link_to 'Back', compliances_path %>

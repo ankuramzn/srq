@@ -1,0 +1,22 @@
+
+<%= form_tag(purchaseorder_home_path,:method => 'get' ) do %>
+
+    <table class = "vendortable">
+      <tr>
+        <td>
+            <%= label_tag :purchaseorder_id %>
+        </td>
+        <td>
+            <%= text_field_tag :purchaseorder_id, params[:purchaseorder_id] %>
+        </td>
+      </tr>
+
+      <tr>
+        <td colspan="2">
+            <%= submit_tag 'Research' %>
+        </td>
+      </tr>
+
+    </table>
+<% end %>
+

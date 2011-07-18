@@ -39,8 +39,12 @@
             <%= f.label :sku %>
         </th>
         <td>
+        <% if @compliance.sku then %>
             <%= @compliance.sku  %>
             <%=  hidden_field( :compliance, :sku, :value => @compliance.sku) %>
+        <% else %>
+            <%= f.text_field :sku %>
+        <% end %>
         </td>
       </tr>
 
