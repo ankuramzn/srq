@@ -14,12 +14,17 @@
                         %strong{ :class =>  asin.status }
                             = asin.status
                     %tr
-                    - if pending_vendor_input(asin)
+                    - if pending_vendor_input(asin) and session[:type] == "vendor"
                         %th Create / Associate
                         %td
                             = link_to 'Compliance Set', { :controller =>  "compliances", :action => "vendor_asin_compliance_management", :sku => asin.sku, :vendor_id => asin.purchaseorder.vendor.id }
+
+                    - elsif pending_vendor_input(asin) and session[:type] == "user"
+                        %th Associated Compliance Set
+                        %td No Vendor input
                     - else
                         %th Associated Compliance Set
                         %td
                             = link_to 'Compliance Set', asin.compliance
+
 
