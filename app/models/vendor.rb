@@ -29,5 +29,13 @@ class Vendor < ActiveRecord::Base
     end
   end
 
+  # Function to get Vendor's purchase Orders which contain a specific sku
+  def sku_purchaseorders(sku)
+    sku_purchaseorders_return = Array.new
+    purchaseorders.each do |purchaseorder|
+      sku_purchaseorders_return << purchaseorder unless purchaseorder.contains_sku(sku).nil?
+    end
+    sku_purchaseorders_return
+  end
 
 end

@@ -1,5 +1,6 @@
 class PurchaseordersController < ApplicationController
 
+  before_filter :validated_all
 
   #  TODO Only certain parties should be able to use thins function
   def index

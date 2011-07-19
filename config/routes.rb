@@ -20,17 +20,15 @@ Srq::Application.routes.draw do
   match 'asins/index' => 'asins#index'
   get "asins/show"
   match 'asins/show/:id' => 'asins#show'
+
+  get "asin_status" => "asins#status", :as => "asin_status"
+  get "research_asin" => "asins#research", :as => "research_asin"
   match 'purchaseorders/purchaseorder_asins' => 'purchaseorders#purchaseorder_asins'
 
   # Purchaseorder related routes
   get "purchaseorders/index"
   match 'purchaseorders/index' => 'purchaseorders#index'
-
-
-  #get "purchaseorders/show"
-  #match 'purchaseorders/show/:id' => 'purchaseorders#show'
   get "purchaseorder_home" => "purchaseorders#show", :as => "purchaseorder_home"
-
   match 'vendors/vendors_purchaseorders' => 'vendors#vendors_purchaseorders'
   get "research_purchaseorder" => "purchaseorders#research", :as => "research_purchaseorder"
 

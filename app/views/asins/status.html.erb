@@ -1,0 +1,18 @@
+<h2>Purchase Orders</h2>
+
+<table class="purchaseorder_list">
+  <tbody>
+    <%= render @purchaseorders %>
+  </tbody>
+</table>
+
+<h2>Compliance Sets submitted by Vendor for ASIN</h2>
+
+<div class="compliance_set_list">
+  <table class="compliance_sets">
+    <% @compliances.each do |compliance| %>
+        <%= render :partial => 'compliance_summary', :locals => { :compliance => compliance} %>
+    <% end %>
+  </table>
+</div>
+
