@@ -17,7 +17,7 @@
                     - if pending_vendor_input(asin) and session[:type] == "vendor"
                         %th Create / Associate
                         %td
-                            = link_to 'Compliance Set', vendor_asin_compliance_home_path(:sku => asin.sku, :vendor_id => asin.purchaseorder.vendor.id)
+                            = link_to 'Manage Compliance Set', vendor_asin_compliance_home_path(:sku => asin.sku, :vendor_id => asin.purchaseorder.vendor.id)
 
                     - elsif pending_vendor_input(asin) and session[:type] == "user"
                         %th Associated Compliance Set

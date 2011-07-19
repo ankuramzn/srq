@@ -19,9 +19,9 @@ class Compliance < ActiveRecord::Base
     }
   }
 
-  scope :by_asin, lambda { |asin|
+  scope :by_sku, lambda { |sku|
     {
-      :conditions => { :sku => asin}
+      :conditions => { :sku => sku}
     }
   }
 

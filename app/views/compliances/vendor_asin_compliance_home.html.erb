@@ -1,0 +1,25 @@
+<h2> Management Page for Compliance Set</h2>
+<div class="compliance">
+  <ul>
+      <li>
+        <%= Vendor.find(@vendor_id).code unless @vendor_id.nil? %>
+      </li>
+      <li>
+        <%= @sku unless @sku.nil? %>
+      </li>
+  </ul>
+</div>
+
+<div class="compliance">
+    <%= render :partial => 'compliance_summary_list', :locals => { :compliances => @compliances_vendor, :type => "Vendor Owned" } unless @compliances_vendor.empty? %>
+</div>
+
+<div class="compliance">
+    <%= render :partial => 'compliance_summary_list', :locals => { :compliances => @compliances_pc, :type => "PC Owned" } unless  @compliances_pc.empty? %>
+</div>
+
+<div class="compliance">
+  <%= link_to "New Compliance Set", new_compliance_path(:sku => @sku, :vendor_id => @vendor_id) %>
+</div>
+
+

@@ -121,8 +121,8 @@ class CompliancesController < ApplicationController
   def vendor_asin_compliance_home
     puts params.inspect
     if !params[:vendor_id].nil? && !params[:sku].nil?
-      @compliances_vendor = Compliance.by_vendor(Vendor.find(params[:vendor_id])).by_asin(params[:sku]).by_status("vendor")
-      @compliances_pc = Compliance.by_vendor(Vendor.find(params[:vendor_id])).by_asin(params[:sku]).by_status("pc")
+      @compliances_vendor = Compliance.by_vendor(Vendor.find(params[:vendor_id])).by_sku(params[:sku]).by_status("vendor")
+      @compliances_pc = Compliance.by_vendor(Vendor.find(params[:vendor_id])).by_sku(params[:sku]).by_status("pc")
 
 #      TODO: VERIFY IS THIS A GOOD WAY TO PASS THROUGH VALUES
       @sku = params[:sku]
@@ -133,8 +133,8 @@ class CompliancesController < ApplicationController
       @compliances = @compliances_vendor | @compliances_pc
       @vendor_id = params[:vendor_id]
     elsif params[:vendor_id].nil? && !params[:sku].nil?
-      @compliances_vendor = Compliance.by_asin(params[:sku]).by_status("vendor")
-      @compliances_pc = Compliance.by_asin(params[:sku]).by_status("pc")
+      @compliances_vendor = Compliance.by_sku(params[:sku]).by_status("vendor")
+      @compliances_pc = Compliance.by_sku(params[:sku]).by_status("pc")
       @compliances = @compliances_vendor | @compliances_pc
       @sku = params[:sku]
     else

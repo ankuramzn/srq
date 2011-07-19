@@ -20,7 +20,7 @@ class AsinsController < ApplicationController
       @purchaseorders = Vendor.find(session[:id]).sku_purchaseorders(params[:sku])
 
       # Compliance Sets submitted by the Vendor for the ASIN
-      @compliances = Compliance.by_asin(params[:sku]).by_vendor(session[:id])
+      @compliances = Compliance.by_sku(params[:sku]).by_vendor(session[:id])
     end
 
     if session[:type] == "user"
@@ -29,7 +29,7 @@ class AsinsController < ApplicationController
 
 
       # All Compliance Sets for the ASIN submitted by any Vendor
-      @compliances = Compliance.by_asin(params[:sku])
+      @compliances = Compliance.by_sku(params[:sku])
     end
   end
 
