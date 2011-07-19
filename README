@@ -49,3 +49,5 @@ Merge changes back to master
 Application Details :
 
 1. Branch 'vendor_complianceset_wflow' to support general creation of a Compliance Set for an ASIN
+2. Branch 'compliance_set_workflow' to verify the workflow to be followed when creating and editing compliance sets
+

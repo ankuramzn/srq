@@ -4,11 +4,7 @@ module ApplicationHelper
   end
 
   def pending_vendor_input(asin)
-   if asin.status == "pending_vendor_input"
-     true
-   else
-     false
-   end
+    asin.status.eql?("pending_vendor_input")
   end
 
   # The set of statuses that can be assigned to a Compliance Set
