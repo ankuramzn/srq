@@ -1,1 +1,4 @@
 Home Page for the User post login, showing the various compliance sets that need review
+<div class="compliance">
+    <%= render :partial => 'compliances/compliance_summary_list', :locals => { :compliances => @compliances_pc, :type => "PC Owned" } unless  @compliances_pc.empty? %>
+</div>

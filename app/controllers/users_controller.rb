@@ -20,6 +20,7 @@ class UsersController < ApplicationController
   end
 
   def home
+     @compliances_pc = Compliance.by_status("pc")
   end
 
 
