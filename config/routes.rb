@@ -41,7 +41,7 @@ Srq::Application.routes.draw do
 
 
   # Compliance Related routes
-  match 'compliances/vendor_asin_compliance_management/:vendor_id/:sku' => 'compliances#vendor_asin_compliance_management'
+  get 'vendor_asin_compliance_home' => "compliances#vendor_asin_compliance_home", :as => 'vendor_asin_compliance_home'
   match 'compliances/associate_purchase_orders' => 'compliances#associate_purchase_orders'
   match 'compliances/:vendor_id/:asin' => 'compliances#index'
   resources :compliances

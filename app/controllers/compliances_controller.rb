@@ -36,7 +36,7 @@ class CompliancesController < ApplicationController
     else
       redirect_to sign_up_path
     end
-
+    # A new compliance set always starts as being in the "vendor" status
     @compliance.status = "vendor"
     respond_to do |format|
       format.html # new.html.erb
@@ -66,8 +66,7 @@ class CompliancesController < ApplicationController
     respond_to do |format|
       if @compliance.save
         format.html {
-#          redirect_to(@compliance, :notice => 'Compliance was successfully created.')
-          redirect_to :controller =>  "compliances", :action => "vendor_asin_compliance_management", :sku => @compliance.sku, :vendor_id => @compliance.vendor_id
+          redirect_to vendor_asin_compliance_home_path(:sku => @compliance.sku, :vendor_id => @compliance.vendor_id)
         }
         format.xml  { render :xml => @compliance, :status => :created, :location => @compliance }
       else
@@ -96,8 +95,7 @@ class CompliancesController < ApplicationController
     respond_to do |format|
       if @compliance.update_attributes(params[:compliance])
         format.html {
-#          redirect_to(@compliance, :notice => 'Compliance was successfully updated.')
-          redirect_to :controller =>  "compliances", :action => "vendor_asin_compliance_management", :sku => @compliance.sku, :vendor_id => @compliance.vendor_id
+          redirect_to vendor_asin_compliance_home_path(:sku => @compliance.sku, :vendor_id => @compliance.vendor_id)
         }
 
         format.xml  { head :ok }
@@ -120,7 +118,7 @@ class CompliancesController < ApplicationController
     end
   end
 
-  def vendor_asin_compliance_management
+  def vendor_asin_compliance_home
     puts params.inspect
     if !params[:vendor_id].nil? && !params[:sku].nil?
       @compliances_vendor = Compliance.by_vendor(Vendor.find(params[:vendor_id])).by_asin(params[:sku]).by_status("vendor")
@@ -165,15 +163,7 @@ class CompliancesController < ApplicationController
       asin.status = "vendor_input_complete"
       asin.save
     end
-
-#    TODO : Why is this not working
-#    render vendor_url(:id => compliance.vendor_id)
-#    render :template => "vendors/show"
-#     render( "vendors/show", :locals => { :id => compliance.vendor_id})
-#   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
-# This route can be invoked with purchase_url(:id => product.id)
-
-    redirect_to :controller => "vendors", :action => "show", :id => compliance.vendor_id
+    redirect_to vendor_home_path
 
   end
 end
