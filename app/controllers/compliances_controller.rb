@@ -153,8 +153,6 @@ class CompliancesController < ApplicationController
   end
 
   def associate_purchase_orders
-    puts params.inspect
-
     compliance = Compliance.find(params[:compliance_id])
     @vendor = compliance.vendor
     params[:asins].each do |asin|
