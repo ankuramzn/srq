@@ -28,9 +28,9 @@
 </div>
 
 <div class="compliance">
-  <h3> <%= "Listing User Owned Compliance Sets" unless @compliances_pc.empty? %> </h3>
+  <h3> <%= "Listing User Owned Compliance Sets" unless @compliances_user.empty? %> </h3>
   <table class="compliance_sets">
-    <%= render :partial => 'compliance_summary', :collection => @compliances_pc, :as => :compliance   unless @compliances_pc.empty? %>
+    <%= render :partial => 'compliance_summary', :collection => @compliances_user, :as => :compliance   unless @compliances_user.empty? %>
   </table>
 </div>
 
