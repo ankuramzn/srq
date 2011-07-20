@@ -173,6 +173,7 @@ class CompliancesController < ApplicationController
     compliance_existing.documents.each do |existing_document|
       @compliance.documents << existing_document.clone
     end
+    @compliance.status = "vendor_input"
     @compliance.save
     flash[:notice] = 'I can haz the Copies and copies ...mmmmm !!!'
     render "edit"

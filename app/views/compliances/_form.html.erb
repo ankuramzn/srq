@@ -39,11 +39,11 @@
             <%= f.label :sku %>
         </th>
         <td>
-        <% if @compliance.sku then %>
+        <% if !@compliance.sku and session[:type].eql?("vendor") and @compliance.is_vendor_editable then %>
+            <%= f.text_field :sku %>
+        <% else %>
             <%= @compliance.sku  %>
             <%=  hidden_field( :compliance, :sku, :value => @compliance.sku) %>
-        <% else %>
-            <%= f.text_field :sku %>
         <% end %>
         </td>
       </tr>
@@ -53,7 +53,7 @@
             <%= f.label :vendor_product_number %>
         </th>
         <td>
-            <%= f.text_field :vendor_product_number %>
+            <%= f.text_field :vendor_product_number, :readonly => (!session[:type].eql?("vendor") || !@compliance.is_vendor_editable) %>
         </td>
       </tr>
 
@@ -62,7 +62,7 @@
             <%= f.label :brand %>
         </th>
         <td>
-            <%= f.text_field :brand %>
+            <%= f.text_field :brand, :readonly => (!session[:type].eql?("vendor") || !@compliance.is_vendor_editable) %>
         </td>
       </tr>
 
@@ -85,18 +85,26 @@
   <div class="compliance_tests">
     <%= f.fields_for :labs %>
   </div>
-  <div class="add_test">
-    <%= f.link_to_add "Add a lab", :labs %>
-  </div>
+
+  <% if session[:type].eql?("vendor") and @compliance.is_vendor_editable then %>
+      <div class="add_test">
+        <%= f.link_to_add "Add a lab", :labs %>
+      </div>
+  <% end %>
+
 
 
   <!-- Insert Form for Document-->
   <div class="compliance_docs">
     <%= f.fields_for :documents %>
   </div>
-  <div>
-    <%= f.link_to_add "Add a Document", :documents %>
-  </div>
+
+  <% if session[:type].eql?("vendor") and @compliance.is_vendor_editable then %>
+      <div>
+        <%= f.link_to_add "Add a Document", :documents %>
+      </div>
+  <% end %>
+
 
 
   <div class="record_data">
@@ -108,7 +116,7 @@
             <%= f.label :importer_of_record %>
         </th>
         <td>
-            <%= f.text_area :importer_of_record, :rows => 4, :cols => 36 %>
+            <%= f.text_area :importer_of_record, :rows => 4, :cols => 36, :readonly => (!session[:type].eql?("vendor") || !@compliance.is_vendor_editable) %>
         </td>
       </tr>
 
@@ -117,7 +125,7 @@
             <%= f.label :keeper_of_record %>
         </th>
         <td>
-            <%= f.text_area :keeper_of_record, :rows => 4, :cols => 36 %>
+            <%= f.text_area :keeper_of_record, :rows => 4, :cols => 36, :readonly => (!session[:type].eql?("vendor") || !@compliance.is_vendor_editable) %>
         </td>
       </tr>
 
@@ -126,7 +134,7 @@
             <%= f.label :manufacture_date %>
         </th>
         <td>
-            <%= f.date_select :manufacture_date %>
+            <%= f.date_select :manufacture_date, :readonly => (!session[:type].eql?("vendor") || !@compliance.is_vendor_editable) %>
         </td>
       </tr>
 
@@ -135,7 +143,7 @@
             <%= f.label :manufacture_place %>
         </th>
         <td>
-            <%= f.text_field :manufacture_place %>
+            <%= f.text_field :manufacture_place, :readonly => (!session[:type].eql?("vendor") || !@compliance.is_vendor_editable) %>
         </td>
       </tr>
 
@@ -144,7 +152,7 @@
             <%= f.label :esignature %>
         </th>
         <td>
-            <%= f.text_field :esignature %>
+            <%= f.text_field :esignature, :readonly => (!session[:type].eql?("vendor") || !@compliance.is_vendor_editable) %>
         </td>
       </tr>
 
@@ -153,25 +161,28 @@
             <%= f.label :position %>
         </th>
         <td>
-            <%= f.text_field :position %>
+            <%= f.text_field :position, :readonly => (!session[:type].eql?("vendor") || !@compliance.is_vendor_editable) %>
         </td>
       </tr>
 
-      <tr>
-        <th>
-            <%= f.label :comments_internal %>
-        </th>
-        <td>
-            <%= f.text_area :comments_internal, :rows => 4, :cols => 36 %>
-        </td>
-      </tr>
+      <% if !session[:type].eql?("vendor") then %>
+          <tr>
+            <th>
+                <%= f.label :comments_internal %>
+            </th>
+            <td>
+                <%= f.text_area :comments_internal, :rows => 4, :cols => 36, :readonly => !@compliance.is_user_editable %>
+            </td>
+          </tr>
+      <% end %>
+
 
       <tr>
         <th>
             <%= f.label :comments_external %>
         </th>
         <td>
-            <%= f.text_area :comments_external, :rows => 4, :cols => 36 %>
+            <%= f.text_area :comments_external, :rows => 4, :cols => 36, :readonly => (session[:type].eql?("vendor") || !@compliance.is_user_editable) %>
         </td>
       </tr>
 
@@ -180,7 +191,7 @@
             <%= f.label :vendor_notes %>
         </th>
         <td>
-            <%= f.text_area :vendor_notes, :rows => 4, :cols => 36 %>
+            <%= f.text_area :vendor_notes, :rows => 4, :cols => 36, :readonly => (!session[:type].eql?("vendor") || !@compliance.is_vendor_editable) %>
         </td>
       </tr>
 

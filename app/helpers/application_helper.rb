@@ -9,7 +9,11 @@ module ApplicationHelper
 
   # The set of statuses that can be assigned to a Compliance Set
   def compliance_set_status
-    %w[vendor_input user_review approved rejected]
+    if session[:type] == "vendor"
+      %w[vendor_input user_review]
+    else
+      %w[vendor_input user_review approved rejected]
+    end
   end
 
 end

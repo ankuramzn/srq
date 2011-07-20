@@ -31,6 +31,30 @@ class Compliance < ActiveRecord::Base
     }
   }
 
+
+  def is_vendor_editable
+    status.eql?("vendor_input")
+  end
+
+  def is_user_editable
+    status.eql?("user_review")
+  end
+
+  def approve
+    status = "approved"
+    self.save
+  end
+
+  def rejected
+    status = "rejected"
+    self.save
+  end
+
+  # TODO : Define the method to decide when the compliance set is expired, maybe add a expiry date on the compliance table
+  def expired
+  end
+
 #  TODO: FIgure out how to define association to pull up all PO ASINs linked to Compliance Set
+# %w[vendor_input user_review approved rejected]
 
 end

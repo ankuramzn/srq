@@ -66,15 +66,21 @@
           <td><%= link_to 'Show', compliance %></td>
         </tr>
 
-        <tr>
-          <th>Edit Details</th>
-          <td><%= link_to 'Edit', edit_compliance_path(compliance) %></td>
-        </tr>
+        <% if (session[:type].eql?("vendor") and compliance.is_vendor_editable) or !session[:type].eql?("vendor") then %>
+            <tr>
+              <th>Edit Details</th>
+              <td><%= link_to 'Edit', edit_compliance_path(compliance) %></td>
+            </tr>
+        <% end %>
 
-        <tr>
-          <th>Clone Compliance Set</th>
-          <td><%= link_to 'Clone', copy_compliance_path(:id => compliance.id)  %></td>
-        </tr>
+
+        <% if session[:type].eql?("vendor") then %>
+            <tr>
+              <th>Clone Compliance Set</th>
+              <td><%= link_to 'Clone', copy_compliance_path(compliance)  %></td>
+            </tr>
+        <% end %>
+
 
 
       </table>
