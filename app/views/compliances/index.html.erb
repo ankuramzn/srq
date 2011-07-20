@@ -1,6 +1,9 @@
-
 <div class="compliance">
-    <%= render :partial => 'compliance_summary_list', :locals => { :compliances => @compliances, :type => "General" } %>
+  <table class="compliance_sets">
+    <%= render :partial => 'compliance_summary', :collection => @compliances, :as => :compliance   unless @compliances.empty? %>
+  </table>
 </div>
 
-<%= link_to 'Create a New Compliance Set', :controller => "compliances", :action => "new", :sku => @sku, :vendor_id => @vendor_id %>
+<div class="compliance">
+  <%= link_to "New Compliance Set", new_compliance_path(:sku => @sku, :vendor_id => @vendor_id) %>
+</div>

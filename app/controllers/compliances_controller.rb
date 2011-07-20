@@ -127,6 +127,7 @@ class CompliancesController < ApplicationController
 #      TODO: VERIFY IS THIS A GOOD WAY TO PASS THROUGH VALUES
       @sku = params[:sku]
       @vendor_id = params[:vendor_id]
+      @compliances = @compliances_vendor | @compliances_pc
     elsif !params[:vendor_id].nil? && params[:sku].nil?
       @compliances_vendor = Compliance.by_vendor(Vendor.find(params[:vendor_id])).by_status("vendor")
       @compliances_pc = Compliance.by_vendor(Vendor.find(params[:vendor_id])).by_status("pc")

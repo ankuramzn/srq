@@ -11,11 +11,17 @@
 </div>
 
 <div class="compliance">
-    <%= render :partial => 'compliance_summary_list', :locals => { :compliances => @compliances_vendor, :type => "Vendor Owned" } unless @compliances_vendor.empty? %>
+  <h3>Listing Vendor Owned Compliance Sets</h3>
+  <table class="compliance_sets">
+    <%= render :partial => 'compliance_summary', :collection => @compliances_vendor, :as => :compliance   unless @compliances_vendor.empty? %>
+  </table>
 </div>
 
 <div class="compliance">
-    <%= render :partial => 'compliance_summary_list', :locals => { :compliances => @compliances_pc, :type => "PC Owned" } unless  @compliances_pc.empty? %>
+  <h3>Listing User Owned Compliance Sets</h3>
+  <table class="compliance_sets">
+    <%= render :partial => 'compliance_summary', :collection => @compliances_pc, :as => :compliance   unless @compliances_pc.empty? %>
+  </table>
 </div>
 
 <div class="compliance">

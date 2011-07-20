@@ -1,4 +1,6 @@
-Home Page for the User post login, showing the various compliance sets that need review
 <div class="compliance">
-    <%= render :partial => 'compliances/compliance_summary_list', :locals => { :compliances => @compliances_pc, :type => "PC Owned" } unless  @compliances_pc.empty? %>
+  <h3>Compliance Sets needing Review</h3>
+  <table class="compliance_sets">
+    <%= render :partial => 'compliances/compliance_summary', :collection => @compliances_pc, :as => :compliance   unless @compliances_pc.empty? %>
+  </table>
 </div>
