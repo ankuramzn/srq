@@ -162,6 +162,20 @@ class CompliancesController < ApplicationController
       asin.save
     end
     redirect_to vendor_home_path
+  end
 
+  def copy
+     #Override Clone
+    compliance_existing = Compliance.find(params[:id])
+    @compliance = compliance_existing.clone
+    compliance_existing.labs.each do |existing_lab|
+      @compliance.labs << existing_lab.clone
+    end
+    compliance_existing.documents.each do |existing_document|
+      @compliance.documents << existing_document.clone
+    end
+    @compliance.save
+    puts @compliance.inspect
+    render "show"
   end
 end

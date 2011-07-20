@@ -32,7 +32,7 @@
 
 
 
-          <% if session[:type] == "vendor" then %>
+          <% if session[:type] == "vendor" and !@asins.nil? then %>
               <tr id="associate_pos_form_<%= compliance.id %>" class="associate_poid_form">
                 <td colspan="2">
                 <h3>Associate Purchase Orders:</h3>
@@ -65,6 +65,17 @@
           <th>View Details</th>
           <td><%= link_to 'Show', compliance %></td>
         </tr>
+
+        <tr>
+          <th>Edit Details</th>
+          <td><%= link_to 'Edit', edit_compliance_path(compliance) %></td>
+        </tr>
+
+        <tr>
+          <th>Copy this Compliance Set</th>
+          <td><%= link_to 'Copy', copy_compliance_path(:id => compliance.id)  %></td>
+        </tr>
+
 
       </table>
     </div>

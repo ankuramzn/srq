@@ -11,7 +11,7 @@
 <div class="compliance_set_list">
   <table class="compliance_sets">
     <% @compliances.each do |compliance| %>
-        <%= render :partial => 'compliance_summary', :locals => { :compliance => compliance} %>
+        <%= render :partial => 'compliances/compliance_summary', :locals => { :compliance => compliance} %>
     <% end %>
   </table>
 </div>
