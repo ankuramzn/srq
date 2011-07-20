@@ -37,7 +37,7 @@ class CompliancesController < ApplicationController
       redirect_to sign_up_path
     end
     # A new compliance set always starts as being in the "vendor" status
-    @compliance.status = "vendor"
+    @compliance.status = "vendor_input"
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @compliance }
@@ -121,30 +121,29 @@ class CompliancesController < ApplicationController
   def vendor_asin_compliance_home
     puts params.inspect
     if !params[:vendor_id].nil? && !params[:sku].nil?
-      @compliances_vendor = Compliance.by_vendor(Vendor.find(params[:vendor_id])).by_sku(params[:sku]).by_status("vendor")
-      @compliances_user = Compliance.by_vendor(Vendor.find(params[:vendor_id])).by_sku(params[:sku]).by_status("pc")
+      @compliances_vendor = Compliance.by_vendor(Vendor.find(params[:vendor_id])).by_sku(params[:sku]).by_status("vendor_input")
+      @compliances_user = Compliance.by_vendor(Vendor.find(params[:vendor_id])).by_sku(params[:sku]).by_status("user_review")
 
 #      TODO: VERIFY IS THIS A GOOD WAY TO PASS THROUGH VALUES
       @sku = params[:sku]
       @vendor_id = params[:vendor_id]
       @compliances = @compliances_vendor | @compliances_user
     elsif !params[:vendor_id].nil? && params[:sku].nil?
-      @compliances_vendor = Compliance.by_vendor(Vendor.find(params[:vendor_id])).by_status("vendor")
-      @compliances_user = Compliance.by_vendor(Vendor.find(params[:vendor_id])).by_status("pc")
+      @compliances_vendor = Compliance.by_vendor(Vendor.find(params[:vendor_id])).by_status("vendor_input")
+      @compliances_user = Compliance.by_vendor(Vendor.find(params[:vendor_id])).by_status("user_review")
       @compliances = @compliances_vendor | @compliances_user
       @vendor_id = params[:vendor_id]
     elsif params[:vendor_id].nil? && !params[:sku].nil?
-      @compliances_vendor = Compliance.by_sku(params[:sku]).by_status("vendor")
-      @compliances_user = Compliance.by_sku(params[:sku]).by_status("pc")
+      @compliances_vendor = Compliance.by_sku(params[:sku]).by_status("vendor_input")
+      @compliances_user = Compliance.by_sku(params[:sku]).by_status("user_review")
       @compliances = @compliances_vendor | @compliances_user
       @sku = params[:sku]
     else
-      @compliances_vendor = Compliance.by_status("vendor")
-      @compliances_user = Compliance.by_status("pc")
+      @compliances_vendor = Compliance.by_status("vendor_input")
+      @compliances_user = Compliance.by_status("user_review")
       @compliances = @compliances_vendor | @compliances_user
     end
 
-    puts "Vendor " + @compliances_vendor.length.to_s + " PC " + @compliances_user.length.to_s
     @asins = Vendor.find(params[:vendor_id]).asins.by_sku(params[:sku])
     respond_to do |format|
       format.html # index.html.erb
