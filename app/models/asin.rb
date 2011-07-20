@@ -1,5 +1,6 @@
 class Asin < ActiveRecord::Base
  belongs_to :purchaseorder
+ belongs_to :compliance
 
   scope :by_sku, lambda { |sku|
     {
@@ -7,6 +8,9 @@ class Asin < ActiveRecord::Base
     }
   }
 
-  belongs_to :compliance
+  scope :by_vendor, lambda { |vendor|
+        joins(:purchaseorder).where("purchaseorders.vendor_id = ?", vendor.id)
+  }
 
 end
+

@@ -144,7 +144,6 @@ class CompliancesController < ApplicationController
       @compliances = @compliances_vendor | @compliances_user
     end
 
-    @asins = Vendor.find(params[:vendor_id]).asins.by_sku(params[:sku])
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @compliances }

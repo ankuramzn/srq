@@ -32,13 +32,13 @@
 
 
 
-          <% if session[:type] == "vendor" and !@asins.nil? then %>
+          <% if session[:type] == "vendor" then %>
               <tr id="associate_pos_form_<%= compliance.id %>" class="associate_poid_form">
                 <td colspan="2">
                 <h3>Associate Purchase Orders:</h3>
                   <table>
                   <%= form_tag( { :controller => "compliances", :action => "associate_purchase_orders" }, :method => :put) do %>
-                      <% @asins.each do |asin| %>
+                      <% Asin.by_vendor(Vendor.find(session[:id])).by_sku(compliance.sku).each do |asin| %>
                         <tr>
                           <th> <%=  asin.purchaseorder.code %></th>
                             <td>
@@ -72,8 +72,8 @@
         </tr>
 
         <tr>
-          <th>Copy this Compliance Set</th>
-          <td><%= link_to 'Copy', copy_compliance_path(:id => compliance.id)  %></td>
+          <th>Clone Compliance Set</th>
+          <td><%= link_to 'Clone', copy_compliance_path(:id => compliance.id)  %></td>
         </tr>
 
 

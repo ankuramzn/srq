@@ -17,6 +17,16 @@
         <%= @sku unless @sku.nil? %>
       </td>
     </tr>
+    <% if !(@vendor_id.nil? || @sku.nil?) then %>
+        <tr>
+          <td>
+            Create a new Compliance Set
+          </td>
+          <td>
+            <%= link_to "New Compliance Set", new_compliance_path(:sku => @sku, :vendor_id => @vendor_id) %>
+          </td>
+        </tr>
+    <% end %>
   </table>
 </div>
 
@@ -32,10 +42,6 @@
   <table class="compliance_sets">
     <%= render :partial => 'compliance_summary', :collection => @compliances_user, :as => :compliance   unless @compliances_user.empty? %>
   </table>
-</div>
-
-<div class="compliance">
-  <%= link_to "New Compliance Set", new_compliance_path(:sku => @sku, :vendor_id => @vendor_id) %>
 </div>
 
 

@@ -8,11 +8,8 @@
 
 <h2>Compliance Sets submitted by Vendor for ASIN</h2>
 
-<div class="compliance_set_list">
+<div class="compliance">
   <table class="compliance_sets">
-    <% @compliances.each do |compliance| %>
-        <%= render :partial => 'compliances/compliance_summary', :locals => { :compliance => compliance} %>
-    <% end %>
+    <%= render :partial => 'compliances/compliance_summary', :collection => @compliances, :as => :compliance   unless @compliances.empty? %>
   </table>
 </div>
-
