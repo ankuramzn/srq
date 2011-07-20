@@ -1,5 +1,37 @@
 <p id="notice"><%= notice %></p>
-<!--TODO: ADD EDIT BUTTON-->
+<!--TODo : Extract as a header for compliance set pages-->
+<div class="compliance">
+  <table class="compliance_sets">
+    <tr>
+      <td>
+        Vendor
+      </td>
+      <td>
+        <%= Vendor.find(@compliance.vendor_id).code  %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Sku
+      </td>
+      <td>
+        <%= @compliance.sku %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Edit this  Compliance Set
+      </td>
+      <td>
+        <%= link_to 'Edit', edit_compliance_path(@compliance) %>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+
+
 <div class="compliance_form">
     <div class="asin_data">
         <table>
@@ -36,7 +68,7 @@
                     Vendor
                 </th>
                 <td>
-                    <%= @compliance.vendor_id %>
+                    <%= Vendor.find(@compliance.vendor_id).code  %>
                 </td>
             </tr>
 

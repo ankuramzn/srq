@@ -174,7 +174,7 @@ class CompliancesController < ApplicationController
       @compliance.documents << existing_document.clone
     end
     @compliance.save
-    puts @compliance.inspect
-    render "show"
+    flash[:notice] = 'I can haz the Copies and copies ...mmmmm !!!'
+    render "edit"
   end
 end
