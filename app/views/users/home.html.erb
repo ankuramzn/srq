@@ -1,5 +1,5 @@
 <div class="compliance">
-  <h3>Compliance Sets needing Review</h3>
+  <h3><%= "Compliance Sets needing Review" unless @compliances_pc.empty? %></h3>
   <table class="compliance_sets">
     <%= render :partial => 'compliances/compliance_summary', :collection => @compliances_pc, :as => :compliance   unless @compliances_pc.empty? %>
   </table>

@@ -20,7 +20,10 @@ class UsersController < ApplicationController
   end
 
   def home
-     @compliances_pc = Compliance.by_status("pc")
+    @compliances_pc = Compliance.by_status("pc")
+    if @compliances_pc.empty?
+      render :text => "No Compliance Sets to review", :layout => true
+    end
   end
 
 

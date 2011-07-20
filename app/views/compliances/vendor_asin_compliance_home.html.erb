@@ -1,24 +1,34 @@
-<h2> Management Page for Compliance Set</h2>
+<h2> Management Page for Compliance Set</h2><br/><br/>
 <div class="compliance">
-  <ul>
-      <li>
+  <table class="compliance_sets">
+    <tr>
+      <td>
+        Vendor
+      </td>
+      <td>
         <%= Vendor.find(@vendor_id).code unless @vendor_id.nil? %>
-      </li>
-      <li>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Sku
+      </td>
+      <td>
         <%= @sku unless @sku.nil? %>
-      </li>
-  </ul>
+      </td>
+    </tr>
+  </table>
 </div>
 
 <div class="compliance">
-  <h3>Listing Vendor Owned Compliance Sets</h3>
+  <h3> <%= "Listing Vendor Owned Compliance Sets" unless @compliances_vendor.empty? %> </h3>
   <table class="compliance_sets">
     <%= render :partial => 'compliance_summary', :collection => @compliances_vendor, :as => :compliance   unless @compliances_vendor.empty? %>
   </table>
 </div>
 
 <div class="compliance">
-  <h3>Listing User Owned Compliance Sets</h3>
+  <h3> <%= "Listing User Owned Compliance Sets" unless @compliances_pc.empty? %> </h3>
   <table class="compliance_sets">
     <%= render :partial => 'compliance_summary', :collection => @compliances_pc, :as => :compliance   unless @compliances_pc.empty? %>
   </table>
