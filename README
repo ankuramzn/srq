@@ -51,3 +51,81 @@ Application Details :
 1. Branch 'vendor_complianceset_wflow' to support general creation of a Compliance Set for an ASIN
 2. Branch 'compliance_set_workflow' to verify the workflow to be followed when creating and editing compliance sets
 
+Use Cases
+
+1. Admin does not have Compliance Set jurisdiction available till Vendor assign it for user review
+* Vendor 'EMEBI' creates a compliance Set, leaves it as 'vendor_input'
+* 'admin' account should have anything for review
+* they can research the ASIN 'B002K6EEIQ' and find the compliance set and Purchase Order but cannot take any actions
+
+2. Vendor can edit compliance set till it is not assigned for 'user_review'
+* Vendor 'EMEBI' creates a compliance Set, leaves it as 'vendor_input'
+* 'admin' account should have anything for review
+* they can research the ASIN 'B002K6EEIQ' and find the compliance set and Purchase Order but cannot take any actions
+* Vendor 'EMEBI' edits the 'vendor notes' in compliance Set, leaves it as 'vendor_input'
+* 'admin' account should have anything for review
+* they can research the ASIN 'B002K6EEIQ' and find the compliance set and Purchase Order but cannot take any actions
+* Vendor 'EMEBI' edits the 'vendor notes' in compliance Set, assigns it for 'user_review'
+* 'admin' account now should have the Compliance Set for review
+* Vendor 'EMEBI' can view the compliance set but they should not be able to edit anything
+
+3. User can edit only when the compliance set is assigned for 'user_review' and then too only status, Comments internal and external can be changed
+* Vendor 'EMEBI' creates a compliance Set, assigns it to user_review'
+* 'admin' account should have the compliance set for review and should be able to edit only status, Comments internal and external
+* 'admin' account adds some comments internal and comments external to the Compliance Set but leaves it as status 'user_review'
+* Vendor 'EMEBI' should be able to see the compliance and the External Comments set but not edit anything, including the 'Vendor Notes'
+
+4. User can reassign the compliance set back to the Vendor for input
+* Vendor 'EMEBI' creates a compliance Set, assigns it to user_review'
+* 'admin' account adds some comments internal and comments external to the Compliance Set and assigns it to status 'vendor_input'
+* Vendor 'EMEBI' should now be able to see the External Comments set and can change the details in the compliance set and save, leave it as 'vendor_input'
+* 'admin' account should not be able to edit anything on the compliance set including the comments (internal/external) fields
+
+5. Vendor can reassign the compliance set back to the User for review
+* Vendor 'EMEBI' creates a compliance Set, assigns it to user_review'
+* 'admin' account adds some comments internal and comments external to the Compliance Set and assigns it to status 'vendor_input'
+* Vendor 'EMEBI' should now be able to see the External Comments set and can change the details in the compliance set and assign it back for 'user_review'
+* 'admin' account should now be able to see the vendor's updated input and add comments (internal and external) and approve the compliance set and save
+* Vendor 'EMEBI' should be able to see the latest comments from the User and see the compliance set is onw approved
+
+6. Vendor can associate Purchase Orders with a new Compliance Set
+* Vendor 'EMEBI' creates a compliance Set, leaves it as 'vendor_input'
+* After saving the compiance set on the management page Vendor can select Purchase Orders to associate with the Compliance Set
+* From home when the Vendor now navigates, he can see the status of Purchase Order Asin should be pending_vendor_input -> vendor_input_complete
+
+7. Vendor can associate Purchase Orders with a new Compliance Set and still edit the Compliance Set
+* Vendor 'EMEBI' creates a compliance Set, leaves it as 'vendor_input'
+* After saving the compiance set on the management page Vendor can select Purchase Orders to associate with the Compliance Set
+* From home when the Vendor now navigates, he can see the status of Purchase Order Asin should be pending_vendor_input -> vendor_input_complete
+* Vendor can still manage the Compliance Set and edit some details in the Compliance Set and save it leaving the status as 'vendor_input'
+* 'admin' account should have access to the compliance set for review after log in
+
+8. Vendor can associate Purchase Orders with a new Compliance Set and can then assign it to the User for review
+* Vendor 'EMEBI' creates a compliance Set, leaves it as 'vendor_input'
+* After saving the compliance set on the management page Vendor can select Purchase Orders to associate with the Compliance Set
+* From home when the Vendor now navigates, he can see the status of Purchase Order Asin should be pending_vendor_input -> vendor_input_complete
+* Vendor can edit details in the Compliance Set and assign it to the user for review 'user_review'
+* 'admin' account should now have the Compliance set available for review and edit
+
+9. User can reject the compliance set which impacts the associated Purchase Order Asins
+* Vendor 'EMEBI' creates a compliance Set, leaves it as 'vendor_input'
+* After saving the compliance set on the management page Vendor can select Purchase Orders to associate with the Compliance Set
+* From home when the Vendor now navigates, he can see the status of Purchase Order Asin should be pending_vendor_input -> vendor_input_complete
+* Vendor can edit details in the Compliance Set and assign it to the user for review 'user_review'
+* 'admin' account should now have the Compliance set available for review
+* 'admin' account can reject the compliance set after adding some comments (internal/external)
+* Upon reject the status of the Purchase Order Asin that was associated with the Compliance set changes to 'pending_vendor_input'
+* Status of the Compliance Set should be set to 'rejected'
+
+10. User can approve the compliance set which impacts the associated Purchase Order Asins and Purchase Orders (if applicable)
+* Vendor 'EMEBI' creates a compliance Set, leaves it as 'vendor_input'
+* After saving the compliance set on the management page Vendor can select Purchase Orders to associate with the Compliance Set
+* From home when the Vendor now navigates, he can see the status of Purchase Order Asin should be pending_vendor_input -> vendor_input_complete
+* Vendor can edit details in the Compliance Set and assign it to the user for review 'user_review'
+* 'admin' account should now have the Compliance set available for review
+* 'admin' account can approve the compliance set after adding some comments (internal/external)
+* Upon approval the status of the Purchase Order Asin that was associated with the Compliance set changes to 'compliance_approved'
+* Since this Asin is the only Asin in the Purchase Order for the Vendor the status of the Purchase Order also changes incomplete -> compliance_approved
+* Status of the Compliance Set should be set to 'approved'
+
+

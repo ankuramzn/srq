@@ -78,32 +78,103 @@ class CompliancesController < ApplicationController
 
   # PUT /compliances/1
   # PUT /compliances/1.xml
+
+
+  #if !session[:type].eql?("vendor")
+  #  #   If user did not change status -> Do nothing
+  #  #  If user rejected compliance set, free any asins associated with the compliance set
+  #  #  Add Rejection information in the Comments
+  ##  If user approved compliance set mark the
+  #
+  #elsif !params[:compliance][:documents_attributes].nil? then
+  #  params[:compliance][:documents_attributes].each { |key, value|
+  #    if value.has_key?("file") then
+  #      value["url"] = value["file"].original_filename
+  #      value.delete("file")
+  #    end
+  #  }
+
   def update
+
     @compliance = Compliance.find(params[:id])
 
-    if !params[:compliance][:documents_attributes].nil? then
-      params[:compliance][:documents_attributes].each { |key, value|
-        if value.has_key?("file") then
-          value["url"] = value["file"].original_filename
-          value.delete("file")
-        end
-      }
-    end
-
-    @compliance.last_activity_at = Time.now
-
-    respond_to do |format|
-      if @compliance.update_attributes(params[:compliance])
-        format.html {
-          redirect_to vendor_asin_compliance_home_path(:sku => @compliance.sku, :vendor_id => @compliance.vendor_id)
+    # Vendor Session
+    if session[:type].eql?("vendor")
+      if !params[:compliance][:documents_attributes].nil? then
+        params[:compliance][:documents_attributes].each { |key, value|
+          if value.has_key?("file") then
+            value["url"] = value["file"].original_filename
+            value.delete("file")
+          end
         }
-
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @compliance.errors, :status => :unprocessable_entity }
       end
+
+      @compliance.last_activity_at = Time.now
+
+      respond_to do |format|
+        if @compliance.update_attributes(params[:compliance])
+          format.html {
+            redirect_to vendor_asin_compliance_home_path(:sku => @compliance.sku, :vendor_id => @compliance.vendor_id)
+          }
+
+          format.xml  { head :ok }
+        else
+          format.html { render :action => "edit" }
+          format.xml  { render :xml => @compliance.errors, :status => :unprocessable_entity }
+        end
+      end
+    else
+      # User Session
+
+      if !params[:compliance][:comments_internal].nil? and !@compliance.comments_internal.eql?(params[:compliance][:comments_internal]) then
+        @compliance.comments_internal = params[:compliance][:comments_internal]
+      end
+
+      if !params[:compliance][:comments_external].nil? and !@compliance.comments_external.eql?(params[:compliance][:comments_external]) then
+        @compliance.comments_external = params[:compliance][:comments_external]
+      end
+
+      # User approves Compliance Set
+      if !params[:compliance][:status].nil? and params[:compliance][:status].eql?("approved") and !"approved".eql?(@compliance.status)
+        @compliance.status = "approved"
+        # Approve all Purchase Order Asins associated with the Compliance Set
+        Asin.by_compliance(@compliance).each do |asin|
+          asin.compliance_approved
+        end
+      end
+
+      # User Rejects Compliance Set
+      if !params[:compliance][:status].nil? and params[:compliance][:status].eql?("rejected") and !"rejected".eql?(@compliance.status)
+        @compliance.status = "rejected"
+        # Clear any associations that Purchase Order Asins have with this Compliance Set
+        Asin.by_compliance(@compliance).each do |asin|
+          asin.compliance_rejected
+        end
+      end
+
+      # User Moves Compliance Set back to Vendor
+      if !params[:compliance][:status].nil? and params[:compliance][:status].eql?("vendor_input") and !"vendor_input".eql?(@compliance.status)
+        @compliance.status = "vendor_input"
+        # Passing the Compliance Set back to the Vendor should not have any impact
+      end
+
+      @compliance.last_activity_at = Time.now
+
+      respond_to do |format|
+        if @compliance.save
+          format.html {
+            redirect_to user_home_path
+          }
+          format.xml  { head :ok }
+        else
+          # TODO Fix this
+          format.html { render :action => "edit" }
+          format.xml  { render :xml => @compliance.errors, :status => :unprocessable_entity }
+        end
+      end
+
     end
+
   end
 
   # DELETE /compliances/1
