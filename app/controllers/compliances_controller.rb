@@ -110,16 +110,25 @@ class CompliancesController < ApplicationController
   # DELETE /compliances/1.xml
   def destroy
     @compliance = Compliance.find(params[:id])
+
+    # Any purchase order asins that are linked with the compliance set to be deleted need to be freed
+    Asin.by_compliance(@compliance).each do |asin|
+      asin.compliance_id = nil
+    end
+    vendor_id = @compliance.vendor_id
+    sku = @compliance.sku
     @compliance.destroy
 
     respond_to do |format|
-      format.html { redirect_to(compliances_url) }
+      format.html {
+        redirect_to vendor_asin_compliance_home_path(:vendor_id => vendor_id, :sku => sku) if session[:type].eql?("vendor")
+        redirect_to user_home_path if !session[:type].eql?("vendor")
+      }
       format.xml  { head :ok }
     end
   end
 
   def vendor_asin_compliance_home
-    puts params.inspect
     if !params[:vendor_id].nil? && !params[:sku].nil?
       @compliances_vendor = Compliance.by_vendor(Vendor.find(params[:vendor_id])).by_sku(params[:sku]).by_status("vendor_input")
       @compliances_user = Compliance.by_vendor(Vendor.find(params[:vendor_id])).by_sku(params[:sku]).by_status("user_review")

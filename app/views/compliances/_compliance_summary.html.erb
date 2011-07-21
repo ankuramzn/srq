@@ -81,6 +81,13 @@
             </tr>
         <% end %>
 
+        <% if is_compliance_deletable(compliance) then %>
+            <tr>
+              <th>Delete Compliance Set</th>
+              <td><%= link_to 'Destroy', compliance, :confirm => 'Are you sure?', :method => :delete %></td>
+            </tr>
+        <% end %>
+
 
 
       </table>

@@ -18,14 +18,23 @@
         <%= @compliance.sku %>
       </td>
     </tr>
-    <tr>
-      <td>
-        Edit this  Compliance Set
-      </td>
-      <td>
-        <%= link_to 'Edit', edit_compliance_path(@compliance) %>
-      </td>
-    </tr>
+
+    <% if (session[:type].eql?("vendor") and @compliance.is_vendor_editable) or !session[:type].eql?("vendor") then %>
+        <tr>
+          <td>Edit this Compliance Set</td>
+          <td><%= link_to 'Edit', edit_compliance_path(@compliance) %></td>
+        </tr>
+    <% end %>
+
+    <% if is_compliance_deletable(@compliance) then %>
+        <tr>
+          <td>Delete this Compliance Set</td>
+          <td><%= link_to 'Destroy', @compliance, :confirm => 'Are you sure?', :method => :delete %></td>
+        </tr>
+    <% end %>
+
+
+
   </table>
 </div>
 

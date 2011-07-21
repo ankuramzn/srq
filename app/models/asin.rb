@@ -12,5 +12,11 @@ class Asin < ActiveRecord::Base
         joins(:purchaseorder).where("purchaseorders.vendor_id = ?", vendor.id)
   }
 
+ scope :by_compliance, lambda { |compliance|
+   {
+     :conditions => { :compliance_id => compliance.id }
+   }
+ }
+
 end
 

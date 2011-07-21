@@ -16,4 +16,8 @@ module ApplicationHelper
     end
   end
 
+  def is_compliance_deletable(compliance)
+    (session[:type].eql?("vendor") and compliance.is_vendor_deletable) || (!session[:type].eql?("vendor") and compliance.is_user_deletable)
+  end
+
 end
