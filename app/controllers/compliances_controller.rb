@@ -203,25 +203,30 @@ class CompliancesController < ApplicationController
     if !params[:vendor_id].nil? && !params[:sku].nil?
       @compliances_vendor = Compliance.by_vendor(Vendor.find(params[:vendor_id])).by_sku(params[:sku]).by_status("vendor_input")
       @compliances_user = Compliance.by_vendor(Vendor.find(params[:vendor_id])).by_sku(params[:sku]).by_status("user_review")
+      @compliances_approved = Compliance.by_vendor(Vendor.find(params[:vendor_id])).by_sku(params[:sku]).by_status("approved")
 
+      puts @compliances_approved.inspect
 #      TODO: VERIFY IS THIS A GOOD WAY TO PASS THROUGH VALUES
       @sku = params[:sku]
       @vendor_id = params[:vendor_id]
-      @compliances = @compliances_vendor | @compliances_user
+      @compliances = @compliances_vendor | @compliances_user | @compliances_approved
     elsif !params[:vendor_id].nil? && params[:sku].nil?
       @compliances_vendor = Compliance.by_vendor(Vendor.find(params[:vendor_id])).by_status("vendor_input")
       @compliances_user = Compliance.by_vendor(Vendor.find(params[:vendor_id])).by_status("user_review")
-      @compliances = @compliances_vendor | @compliances_user
+      @compliances_approved = Compliance.by_vendor(Vendor.find(params[:vendor_id])).by_status("approved")
+      @compliances = @compliances_vendor | @compliances_user | @compliances_approved
       @vendor_id = params[:vendor_id]
     elsif params[:vendor_id].nil? && !params[:sku].nil?
       @compliances_vendor = Compliance.by_sku(params[:sku]).by_status("vendor_input")
       @compliances_user = Compliance.by_sku(params[:sku]).by_status("user_review")
-      @compliances = @compliances_vendor | @compliances_user
+      @compliances_approved = Compliance.by_sku(params[:sku]).by_status("approved")
+      @compliances = @compliances_vendor | @compliances_user | @compliances_approved
       @sku = params[:sku]
     else
       @compliances_vendor = Compliance.by_status("vendor_input")
       @compliances_user = Compliance.by_status("user_review")
-      @compliances = @compliances_vendor | @compliances_user
+      @compliances_user = Compliance.by_status("approved")
+      @compliances = @compliances_vendor | @compliances_user | @compliances_approved
     end
 
     respond_to do |format|
@@ -237,8 +242,12 @@ class CompliancesController < ApplicationController
     params[:asins].each do |asin|
       asin = Asin.find(asin)
       asin.compliance = compliance
-      asin.status = "vendor_input_complete"
-      asin.save
+      if compliance.status.eql?("approved")
+        asin.compliance_approved
+      else
+        asin.status = "vendor_input_complete"
+        asin.save
+      end
     end
     redirect_to vendor_home_path
   end

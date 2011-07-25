@@ -44,4 +44,10 @@
   </table>
 </div>
 
+<div class="compliance">
+  <h3> <%= "Listing User Approved Compliance Sets" unless @compliances_approved.empty? %> </h3>
+  <table class="compliance_sets">
+    <%= render :partial => 'compliance_summary', :collection => @compliances_approved, :as => :compliance   unless @compliances_approved.empty? %>
+  </table>
+</div>
 
