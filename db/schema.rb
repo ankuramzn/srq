@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110715202422) do
+ActiveRecord::Schema.define(:version => 20110725203606) do
 
   create_table "asins", :force => true do |t|
     t.string   "sku"
@@ -43,6 +43,17 @@ ActiveRecord::Schema.define(:version => 20110715202422) do
     t.datetime "last_activity_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "paper_cardboard_wt"
+    t.string   "plastic_wt"
+    t.string   "metal_wt"
+    t.string   "other_wt"
+    t.boolean  "wee_compliance"
+    t.string   "wee_category"
+    t.string   "net_wt"
+    t.boolean  "contains_battery"
+    t.string   "battery_description"
+    t.string   "battery_brand"
+    t.string   "battery_wt"
   end
 
   create_table "documents", :force => true do |t|

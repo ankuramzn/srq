@@ -81,6 +81,113 @@
   </div>
 
 
+    <!--add_column :compliances, :paper_cardboard_wt, :string-->
+    <!--add_column :compliances, :plastic_wt, :string-->
+    <!--add_column :compliances, :metal_wt, :string-->
+    <!--add_column :compliances, :other_wt, :string-->
+    <!--add_column :compliances, :net_wt, :string-->
+
+    <div class="asin_data">
+      <table>
+        <tbody>
+
+        <tr>
+          <th>
+              <%= f.label :paper_cardboard_wt %>
+          </th>
+          <td>
+              <%= f.text_field :paper_cardboard_wt, :readonly => (!session[:type].eql?("vendor") || !@compliance.is_vendor_editable) %>
+          </td>
+          <th>
+              <%= f.label :plastic_wt %>
+          </th>
+          <td>
+              <%= f.text_field :plastic_wt, :readonly => (!session[:type].eql?("vendor") || !@compliance.is_vendor_editable) %>
+          </td>
+        </tr>
+
+        <tr>
+          <th>
+              <%= f.label :metal_wt %>
+          </th>
+          <td>
+              <%= f.text_field :metal_wt, :readonly => (!session[:type].eql?("vendor") || !@compliance.is_vendor_editable) %>
+          </td>
+          <th>
+              <%= f.label :other_wt %>
+          </th>
+          <td>
+              <%= f.text_field :other_wt, :readonly => (!session[:type].eql?("vendor") || !@compliance.is_vendor_editable) %>
+          </td>
+        </tr>
+
+        <tr>
+          <th colspan="2">
+              <%= f.label :net_wt %>
+          </th>
+          <td colspan="2">
+              <%= f.text_field :net_wt, :readonly => (!session[:type].eql?("vendor") || !@compliance.is_vendor_editable) %>
+          </td>
+        </tr>
+
+        <!--add_column :compliances, :wee_compliance, :boolean-->
+        <!--add_column :compliances, :wee_category, :string-->
+
+        <tr>
+          <th>
+            <%= f.label :wee_compliance %>
+          </th>
+          <td>
+            <%= f.check_box(:wee_compliance,  :readonly => (!session[:type].eql?("vendor") || !@compliance.is_vendor_editable)) %>
+          </td>
+          <th>
+            <%= f.label :wee_category %>
+          </th>
+          <td>
+            <%= f.select(:wee_category, wee_standards, :readonly => (!session[:type].eql?("vendor") || !@compliance.is_vendor_editable)) %>
+          </td>
+        </tr>
+
+        <!--add_column :compliances, :contains_battery, :boolean-->
+        <!--add_column :compliances, :battery_description, :string-->
+        <!--add_column :compliances, :battery_brand, :string-->
+        <!--add_column :compliances, :battery_wt, :string-->
+
+        <tr>
+          <th>
+            <%= f.label :contains_battery %>
+          </th>
+          <td>
+            <%= f.check_box :contains_battery,  :readonly => (!session[:type].eql?("vendor") || !@compliance.is_vendor_editable) %>
+          </td>
+          <th>
+            <%= f.label :battery_description %>
+          </th>
+          <td>
+            <%= f.text_field :battery_description, :readonly => (!session[:type].eql?("vendor") || !@compliance.is_vendor_editable) %>
+          </td>
+        </tr>
+
+        <tr>
+          <th>
+            <%= f.label :battery_brand %>
+          </th>
+          <td>
+            <%= f.text_field :battery_brand, :readonly => (!session[:type].eql?("vendor") || !@compliance.is_vendor_editable) %>
+          </td>
+          <th>
+            <%= f.label :battery_wt %>
+          </th>
+          <td>
+            <%= f.text_field :battery_wt, :readonly => (!session[:type].eql?("vendor") || !@compliance.is_vendor_editable) %>
+          </td>
+        </tr>
+
+        </tbody>
+      </table>
+    </div>
+
+
   <!-- Insert Form for Lab -->
   <div class="compliance_tests">
     <%= f.fields_for :labs %>
@@ -104,6 +211,8 @@
         <%= f.link_to_add "Add a Document", :documents %>
       </div>
   <% end %>
+
+
 
 
 

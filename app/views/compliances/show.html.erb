@@ -96,6 +96,114 @@
 
 
 
+    <!--add_column :compliances, :paper_cardboard_wt, :string-->
+    <!--add_column :compliances, :plastic_wt, :string-->
+    <!--add_column :compliances, :metal_wt, :string-->
+    <!--add_column :compliances, :other_wt, :string-->
+    <!--add_column :compliances, :net_wt, :string-->
+
+    <div class="asin_data">
+      <table>
+        <tbody>
+
+        <tr>
+          <th>
+              Paper Cardboard Weight
+          </th>
+          <td>
+              <%= @compliance.paper_cardboard_wt %>
+          </td>
+          <th>
+              Plastic Weight
+          </th>
+          <td>
+              <%= @compliance.plastic_wt %>
+          </td>
+        </tr>
+
+        <tr>
+          <th>
+              Metal Weight
+          </th>
+          <td>
+              <%= @compliance.metal_wt %>
+          </td>
+          <th>
+              Other Weight
+          </th>
+          <td>
+              <%= @compliance.other_wt %>
+          </td>
+        </tr>
+
+        <tr>
+          <th colspan="2">
+              Net Weight
+          </th>
+          <td colspan="2">
+              <%= @compliance.net_wt %>
+          </td>
+        </tr>
+
+        <!--add_column :compliances, :wee_compliance, :boolean-->
+        <!--add_column :compliances, :wee_category, :string-->
+
+        <tr>
+          <th>
+            Weee Compliance
+          </th>
+          <td>
+            <%= check_box_tag 'wee_complaince', :checked => @compliance.wee_compliance, :readonly => true, :disabled => true   %>
+          </td>
+          <th>
+            Wee Category
+          </th>
+          <td>
+            <%= @compliance.wee_category %>
+          </td>
+        </tr>
+
+        <!--add_column :compliances, :contains_battery, :boolean-->
+        <!--add_column :compliances, :battery_description, :string-->
+        <!--add_column :compliances, :battery_brand, :string-->
+        <!--add_column :compliances, :battery_wt, :string-->
+
+        <tr>
+          <th>
+            Contains Battery
+          </th>
+          <td>
+            <%= check_box_tag 'contains_battery', :checked => @compliance.contains_battery, :readonly => true, :disabled => true   %>
+          </td>
+          <th>
+            Battery Description
+          </th>
+          <td>
+            <%= @compliance.battery_description %>
+          </td>
+        </tr>
+
+        <tr>
+          <th>
+            Battery Brand
+          </th>
+          <td>
+            <%= @compliance.battery_brand %>
+          </td>
+          <th>
+            Battery Weight
+          </th>
+          <td>
+            <%= @compliance.battery_wt %>
+          </td>
+        </tr>
+
+        </tbody>
+      </table>
+    </div>
+
+
+
     <!-- Associated Lab Details -->
     <div class="compliance_tests">
 
