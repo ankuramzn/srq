@@ -38,11 +38,14 @@
                 <h3>Associate Purchase Orders:</h3>
                   <table>
                   <%= form_tag( { :controller => "compliances", :action => "associate_purchase_orders" }, :method => :put) do %>
-                      <% Asin.by_vendor(Vendor.find(session[:id])).by_sku(compliance.sku).each do |asin| %>
+                        <!-- Make sure already approved / associated asins are treated differently -->
+                        <!-- remove compliance_approved asins from display  by checking status as they are already associated with a compliance_approved compliance set from the vendor -->
+                        <!-- set the checked status if asin is already associated with the current compliance set -->
+                      <% Asin.by_vendor(Vendor.find(session[:id])).by_sku(compliance.sku).unapproved.each do |asin|  %>
                         <tr>
                           <th> <%=  asin.purchaseorder.code %></th>
                             <td>
-                              <%= check_box_tag( "asins[]", value = asin.id, checked = false ) %>
+                              <%= check_box_tag( "asins[]", value = asin.id, checked = (asin.compliance == compliance) ) %>
                               <%= hidden_field_tag 'compliance_id', compliance.id %>
                             </td>
                         </tr>

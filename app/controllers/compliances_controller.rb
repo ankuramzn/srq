@@ -182,9 +182,9 @@ class CompliancesController < ApplicationController
   def destroy
     @compliance = Compliance.find(params[:id])
 
-    # Any purchase order asins that are linked with the compliance set to be deleted need to be freed
+    # Any asins that are linked with the compliance set being deleted need to be freed
     Asin.by_compliance(@compliance).each do |asin|
-      asin.compliance_id = nil
+      asin.compliance_rejected
     end
     vendor_id = @compliance.vendor_id
     sku = @compliance.sku
@@ -205,7 +205,6 @@ class CompliancesController < ApplicationController
       @compliances_user = Compliance.by_vendor(Vendor.find(params[:vendor_id])).by_sku(params[:sku]).by_status("user_review")
       @compliances_approved = Compliance.by_vendor(Vendor.find(params[:vendor_id])).by_sku(params[:sku]).by_status("approved")
 
-      puts @compliances_approved.inspect
 #      TODO: VERIFY IS THIS A GOOD WAY TO PASS THROUGH VALUES
       @sku = params[:sku]
       @vendor_id = params[:vendor_id]
@@ -245,8 +244,7 @@ class CompliancesController < ApplicationController
       if compliance.status.eql?("approved")
         asin.compliance_approved
       else
-        asin.status = "vendor_input_complete"
-        asin.save
+        asin.compliance_associated
       end
     end
     redirect_to vendor_home_path
