@@ -264,17 +264,15 @@ tr.zebra1 tr.zebra1 tr.zebra1 tr.zebra2 {
    border:1px solid black;
 }
 
+/* CSS for Compliance Form - WEEEE fields  START */
 .compliance_form .wee_data {
     text-align:center;
-}
-
-
-.compliance_form .wee_data {
-    margin-top:1em;
+    margin-top:2em;
 }
 
 .compliance_form .wee_data table {
-    padding:5px;
+    margin-top:.5em;
+    padding:2px;
 }
 
 .compliance_form .wee_data th {
@@ -282,13 +280,13 @@ tr.zebra1 tr.zebra1 tr.zebra1 tr.zebra2 {
 }
 
 .compliance_form .wee_data td {
-    width:30px;
+    width:auto;
 }
 
 .compliance_form .wee_data input.wt_data {
     width:20px;
 }
-
+/* CSS for Compliance Form - WEEEE fields  END */
 
 .compliance_form .asin_data {
     margin-top:1em;
