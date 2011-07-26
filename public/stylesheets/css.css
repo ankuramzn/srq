@@ -264,6 +264,31 @@ tr.zebra1 tr.zebra1 tr.zebra1 tr.zebra2 {
    border:1px solid black;
 }
 
+.compliance_form .wee_data {
+    text-align:center;
+}
+
+
+.compliance_form .wee_data {
+    margin-top:1em;
+}
+
+.compliance_form .wee_data table {
+    padding:5px;
+}
+
+.compliance_form .wee_data th {
+    width:auto;
+}
+
+.compliance_form .wee_data td {
+    width:30px;
+}
+
+.compliance_form .wee_data input.wt_data {
+    width:20px;
+}
+
 
 .compliance_form .asin_data {
     margin-top:1em;
@@ -279,6 +304,11 @@ tr.zebra1 tr.zebra1 tr.zebra1 tr.zebra2 {
 
 .compliance_form .asin_data td {
     width:auto;
+}
+/* CSS for links on form which allow modification of form sections */
+.compliance_form div.modify_form_section {
+    font-size: smaller;
+
 }
 
 .compliance_tests {

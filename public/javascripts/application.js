@@ -10,6 +10,7 @@
 
 $(document).ready(function() {
 
+    // TODO Delete Me
     $('#test_rpc').click(function(){
         alert('Calling JSON reponse function');
     });
@@ -29,4 +30,30 @@ $(document).ready(function() {
 
     });
 
+    // Jquery UI manipulation functions to control the display of WEEEE data form elements
+    $('#wee_fields').hide();
+    $('#show_wee_fields').click(function(){
+        $('#wee_fields').show();
+    });
+    $("#hide_wee_fields").click(function() {
+       $('#wee_fields').hide();
+    });
+
+    // Hide the wee category details till the sku is wee compliant
+    $('#wee_category_selector').hide();
+    if($('#compliance_wee_compliance').is(':checked')) {
+        $('#wee_category_selector').show();
+    }
+    $('#compliance_wee_compliance').change(function(){
+       $('#wee_category_selector').show();
+    });
+
+    // Hide the wee battery details till the sku contains a battery
+    $('#wee_battery_details').hide();
+    if($('#compliance_contains_battery').is(':checked')) {
+        $('#wee_battery_details').show();
+    }
+    $('#compliance_contains_battery').change(function() {
+       $('#wee_battery_details').show();
+    });
 });
