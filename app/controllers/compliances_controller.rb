@@ -92,12 +92,14 @@ class CompliancesController < ApplicationController
         end
       end
     rescue AWS::S3::ResponseError => error
-      puts "AWS Error Occured"
+      puts "AWS S3 Response Error Occured"
+      raise
     rescue
       if !params[:compliance][:documents_attributes].nil? then
         params[:compliance][:documents_attributes] = {}
       end
       @compliance = Compliance.new(params[:compliance])
+      flash.now[:alert] = "An Error occurred during the creation of Compliance Set, Please resubmit with lesser upload files."
       render "new"
     end
   end
@@ -141,6 +143,7 @@ class CompliancesController < ApplicationController
                 params[:compliance][:documents_attributes] = {}
               end
               @compliance = Compliance.find(params[:id])
+              flash.now[:alert] = "An Error occurred during the update of Compliance Set, Please resubmit with lesser upload files."
               render "edit"
               return
             end

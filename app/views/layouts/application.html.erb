@@ -55,11 +55,15 @@
 
 <div class="core">
 
-    <% flash.each do |name, msg| %>
-      <%= content_tag :div, msg, :id => "flash_#{name}" %>
-    <% end %>
+  <% if !flash.nil? and !flash.empty? then %>
+      <div class="flash error">
+        <% flash.each do |name, msg| %>
+          <%= content_tag :div, msg, :id => "flash_#{name}" %>
+        <% end %>
+      </div>
+  <% end %>
 
-    <%= yield %>
+  <%= yield %>
 
 </div>
 
