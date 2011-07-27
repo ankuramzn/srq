@@ -52,6 +52,7 @@ Application Details :
 2. Branch 'compliance_set_workflow' to verify the workflow to be followed when creating and editing compliance sets
 3. Branch 'po_status_correction' to match the PO statues with the ASINs in the PO. Just rolling it up
 4. Branch 'weee_fields' to add the WEEE fields based on EU business requirements
+5. Branch 's3_integration' to support upload of files to s3
 
 Use Cases
 
