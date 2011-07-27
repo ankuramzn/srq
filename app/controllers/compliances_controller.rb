@@ -58,9 +58,6 @@ class CompliancesController < ApplicationController
     if !params[:compliance][:documents_attributes].nil? then
       params[:compliance][:documents_attributes].each { |key, value|
 
-
-
-
         AWS::S3::Base.establish_connection!(
             :access_key_id => '0067B8RD4S8WQ21A6BG2',
             :secret_access_key =>  'rdjCeJKjVpwFgHGQdfBFyXRxOGRS/7L+Q61UK1jU'
@@ -108,22 +105,6 @@ class CompliancesController < ApplicationController
 
   # PUT /compliances/1
   # PUT /compliances/1.xml
-
-
-  #if !session[:type].eql?("vendor")
-  #  #   If user did not change status -> Do nothing
-  #  #  If user rejected compliance set, free any asins associated with the compliance set
-  #  #  Add Rejection information in the Comments
-  ##  If user approved compliance set mark the
-  #
-  #elsif !params[:compliance][:documents_attributes].nil? then
-  #  params[:compliance][:documents_attributes].each { |key, value|
-  #    if value.has_key?("file") then
-  #      value["url"] = value["file"].original_filename
-  #      value.delete("file")
-  #    end
-  #  }
-
   def update
 
     @compliance = Compliance.find(params[:id])
@@ -133,7 +114,32 @@ class CompliancesController < ApplicationController
       if !params[:compliance][:documents_attributes].nil? then
         params[:compliance][:documents_attributes].each { |key, value|
           if value.has_key?("file") then
-            value["url"] = value["file"].original_filename
+
+            AWS::S3::Base.establish_connection!(
+                :access_key_id => '0067B8RD4S8WQ21A6BG2',
+                :secret_access_key =>  'rdjCeJKjVpwFgHGQdfBFyXRxOGRS/7L+Q61UK1jU'
+            )
+            t = Time.now
+
+            upload_name = String.new
+            upload_name = (t.to_i).to_s << "_" << value["file"].original_filename
+
+            bucket_name = String.new
+            bucket_name = "Vendors/" + Vendor.find(session[:id]).code
+
+            puts "Bucket " + bucket_name
+            puts "File " + upload_name
+
+            AWS::S3::S3Object.store(
+              upload_name,
+              value["file"],
+              bucket_name,
+              :access => :public_read
+            )
+            upload_url = "http://s3.amazonaws.com/" + bucket_name + "/" + upload_name
+
+            value["url"] = upload_url
+
             value.delete("file")
           end
         }

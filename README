@@ -131,4 +131,9 @@ Use Cases
 * Since this Asin is the only Asin in the Purchase Order for the Vendor the status of the Purchase Order also changes incomplete -> compliance_approved
 * Status of the Compliance Set should be set to 'approved'
 
+Upload related tests
 
+11. Vendor creates a new Compliance Set and uploads 2 documents
+12. Vendor creates a new Compliance Set and uploads 2 documents and then edits to add a new Document to the Compliance Set
+13. Vendor creates a new Compliance Set and uploads 2 documents and then edits to remove an existing Document from the Compliance Set
+14. Vendor creates a new Compliance Set and uploads 2 documents and then edits to remove an existing Document from the Compliance Set and add a new document to the Compliance Set
