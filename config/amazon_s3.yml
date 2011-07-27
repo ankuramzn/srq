@@ -1,0 +1,12 @@
+development:
+  access_key_id: '0067B8RD4S8WQ21A6BG2'
+  secret_access_key: 'rdjCeJKjVpwFgHGQdfBFyXRxOGRS/7L+Q61UK1jU'
+#  secret_access_key: 'rdjCeJKjVpwFgHGQdfBFyXRxOGRS/7L+'
+
+test:
+  access_key_id: '0067B8RD4S8WQ21A6BG2'
+  secret_access_key: 'rdjCeJKjVpwFgHGQdfBFyXRxOGRS/7L+Q61UK1jU'
+
+production:
+  access_key_id: '0067B8RD4S8WQ21A6BG2'
+  secret_access_key: 'rdjCeJKjVpwFgHGQdfBFyXRxOGRS/7L+Q61UK1jU'

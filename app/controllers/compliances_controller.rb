@@ -58,27 +58,14 @@ class CompliancesController < ApplicationController
       if !params[:compliance][:documents_attributes].nil? then
         params[:compliance][:documents_attributes].each { |key, value|
 
-          AWS::S3::Base.establish_connection!(
-            :access_key_id => '0067B8RD4S8WQ21A6BG2',
-            :secret_access_key =>  'rdjCeJKjVpwFgHGQdfBFyXRxOGRS/7L+Q61UK1jU'
-            #:secret_access_key =>  'rdjCeJKjVpwFgHGQdfBFyX'
-          )
-          t = Time.now
+          bucket_name = "Vendors/" + Vendor.find(session[:id]).code + "/" + params[:compliance][:sku] + "/" + (Time.now.to_i).to_s
 
-          bucket_name = String.new
-          bucket_name = "Vendors/" + Vendor.find(session[:id]).code + "/" + params[:compliance][:sku] + "/" + (t.to_i).to_s
+          upload_to_s3(value["file"].original_filename, value["file"], bucket_name)
 
-          AWS::S3::S3Object.store(
-            value["file"].original_filename,
-            value["file"],
-            bucket_name,
-            :access => :public_read
-          )
-          upload_url = "http://s3.amazonaws.com/" + bucket_name + "/" + value["file"].original_filename
-
-          value["url"] = upload_url
+          value["url"] = "http://s3.amazonaws.com/" + bucket_name + "/" + value["file"].original_filename
 
           value.delete("file")
+
         }
       end
       @compliance = Compliance.new(params[:compliance])
@@ -117,27 +104,15 @@ class CompliancesController < ApplicationController
           if value.has_key?("file") then
 
             begin
-              AWS::S3::Base.establish_connection!(
-                  :access_key_id => '0067B8RD4S8WQ21A6BG2',
-                  :secret_access_key =>  'rdjCeJKjVpwFgHGQdfBFyXRxOGRS/7L+Q61UK1jU'
-                  #:secret_access_key =>  'rdjCeJKjVpwFgHGQdfBFyX'
-              )
-              t = Time.now
 
-              bucket_name = String.new
-              bucket_name = "Vendors/" + Vendor.find(session[:id]).code + "/" + params[:compliance][:sku] + "/" + (t.to_i).to_s
+              bucket_name = "Vendors/" + Vendor.find(session[:id]).code + "/" + params[:compliance][:sku] + "/" + (Time.now.to_i).to_s
 
-              AWS::S3::S3Object.store(
-                  value["file"].original_filename,
-                  value["file"],
-                  bucket_name,
-                  :access => :public_read
-              )
-              upload_url = "http://s3.amazonaws.com/" + bucket_name + "/" + value["file"].original_filename
+              upload_to_s3(value["file"].original_filename, value["file"], bucket_name)
 
-              value["url"] = upload_url
+              value["url"] = "http://s3.amazonaws.com/" + bucket_name + "/" + value["file"].original_filename
 
               value.delete("file")
+
             rescue
               if !params[:compliance][:documents_attributes].nil? then
                 params[:compliance][:documents_attributes] = {}
