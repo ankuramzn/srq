@@ -64,22 +64,16 @@ class CompliancesController < ApplicationController
         )
         t = Time.now
 
-        upload_name = String.new
-        upload_name = (t.to_i).to_s << "_" << value["file"].original_filename
-
         bucket_name = String.new
-        bucket_name = "Vendors/" + Vendor.find(session[:id]).code
-
-        puts "Bucket " + bucket_name
-        puts "File " + upload_name
+        bucket_name = "Vendors/" + Vendor.find(session[:id]).code + "/" + params[:compliance][:sku] + "/" + (t.to_i).to_s
 
         AWS::S3::S3Object.store(
-          upload_name,
+          value["file"].original_filename,
           value["file"],
           bucket_name,
           :access => :public_read
         )
-        upload_url = "http://s3.amazonaws.com/" + bucket_name + "/" + upload_name
+        upload_url = "http://s3.amazonaws.com/" + bucket_name + "/" + value["file"].original_filename
 
         value["url"] = upload_url
 
@@ -121,22 +115,16 @@ class CompliancesController < ApplicationController
             )
             t = Time.now
 
-            upload_name = String.new
-            upload_name = (t.to_i).to_s << "_" << value["file"].original_filename
-
             bucket_name = String.new
-            bucket_name = "Vendors/" + Vendor.find(session[:id]).code
-
-            puts "Bucket " + bucket_name
-            puts "File " + upload_name
+            bucket_name = "Vendors/" + Vendor.find(session[:id]).code + "/" + params[:compliance][:sku] + "/" + (t.to_i).to_s
 
             AWS::S3::S3Object.store(
-              upload_name,
+              value["file"].original_filename,
               value["file"],
               bucket_name,
               :access => :public_read
             )
-            upload_url = "http://s3.amazonaws.com/" + bucket_name + "/" + upload_name
+            upload_url = "http://s3.amazonaws.com/" + bucket_name + "/" + value["file"].original_filename
 
             value["url"] = upload_url
 
