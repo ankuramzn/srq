@@ -13,6 +13,9 @@ gem 'nested_form'
 # Gem file for encryption of password
 gem 'bcrypt-ruby', :require => "bcrypt"
 
+# Gem for integration with s3
+gem 'aws-s3'
+
 # Use unicorn as the web server
 # gem 'unicorn'
 
