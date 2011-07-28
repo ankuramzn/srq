@@ -520,35 +520,35 @@ table.compliance_docs {
 }
 
 /* CSS for Flash Messages */
-.flash {
-    text-align: center;
-    padding:    .3em .4em;
-    margin: 0 auto .5em;
+/*.flash {*/
+    /*text-align: center;*/
+    /*padding:    .3em .4em;*/
+    /*margin: 0 auto .5em;*/
     /*clear:  both;*/
-    max-width:  46.923em; /* 610/13 */
-}
+    /*max-width:  46.923em; *//* 610/13 */
+/*}*/
 
-.flash.error {
-    border: thin solid #8b0000;
-    background: #ffc0cb;
-}
+/*.flash.error {*/
+    /*border: thin solid #8b0000;*/
+    /*background: #ffc0cb;*/
+/*}*/
 
-.flash.notice, .flash.info {
-    border: thin solid #ff0;
-    background: #ffe;
-}
+/*.flash.notice, .flash.info {*/
+    /*border: thin solid #ff0;*/
+    /*background: #ffe;*/
+/*}*/
 
-.flash.warning {
-    border: thin solid #b8860b;
-    background: #ff0;
-}
+/*.flash.warning {*/
+    /*border: thin solid #b8860b;*/
+    /*background: #ff0;*/
+/*}*/
 
-.flash .close {
-    float: right;
-}
+/*.flash .close {*/
+    /*float: right;*/
+/*}*/
 
-.flash .close a {
-    color: #f00;
-    text-decoration: none;
-}
+/*.flash .close a {*/
+    /*color: #f00;*/
+    /*text-decoration: none;*/
+/*}*/
 /* CSS for Flash Messages */

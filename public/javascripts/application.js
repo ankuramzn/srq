@@ -56,4 +56,15 @@ $(document).ready(function() {
     $('#compliance_contains_battery').change(function() {
        $('#wee_battery_details').show();
     });
+
+    $("#flash_alert").hide();
+    if($("#flash_alert").html() != null){
+        // grab flash message from our div
+        var flash_message = $("#flash_alert").html().trim();
+        // call our flash display function
+        if(flash_message != "") {
+            $.jGrowl(flash_message, {life: 10000 });
+        }
+    }
+
 });
