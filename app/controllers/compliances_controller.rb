@@ -56,16 +56,12 @@ class CompliancesController < ApplicationController
   def create
     begin
       if !params[:compliance][:documents_attributes].nil? then
+        bucket_name = "Vendors/" + Vendor.find(session[:id]).code + "/" + params[:compliance][:sku] + "/" + (Time.now.to_i).to_s
+
         params[:compliance][:documents_attributes].each { |key, value|
-
-          bucket_name = "Vendors/" + Vendor.find(session[:id]).code + "/" + params[:compliance][:sku] + "/" + (Time.now.to_i).to_s
-
           upload_to_s3(value["file"].original_filename, value["file"], bucket_name)
-
           value["url"] = "http://s3.amazonaws.com/" + bucket_name + "/" + value["file"].original_filename
-
           value.delete("file")
-
         }
       end
       @compliance = Compliance.new(params[:compliance])
@@ -100,23 +96,20 @@ class CompliancesController < ApplicationController
     # Vendor Session
     if session[:type].eql?("vendor")
       if !params[:compliance][:documents_attributes].nil? then
+        if @compliance.documents.nil? || @compliance.documents.empty?
+          bucket_name = "Vendors/" + Vendor.find(session[:id]).code + "/" + params[:compliance][:sku] + "/" + (Time.now.to_i).to_s
+        else
+          bucket_name = "Vendors/" + Vendor.find(session[:id]).code + "/" + params[:compliance][:sku] + "/" + @compliance.documents.first.url.rpartition("/")[0].rpartition("/")[2]
+        end
+
         params[:compliance][:documents_attributes].each { |key, value|
           if value.has_key?("file") then
-
             begin
-
-              bucket_name = "Vendors/" + Vendor.find(session[:id]).code + "/" + params[:compliance][:sku] + "/" + (Time.now.to_i).to_s
-
               upload_to_s3(value["file"].original_filename, value["file"], bucket_name)
-
               value["url"] = "http://s3.amazonaws.com/" + bucket_name + "/" + value["file"].original_filename
-
               value.delete("file")
-
             rescue
-              if !params[:compliance][:documents_attributes].nil? then
-                params[:compliance][:documents_attributes] = {}
-              end
+              params[:compliance][:documents_attributes] = {} unless params[:compliance][:documents_attributes].nil?
               @compliance = Compliance.find(params[:id])
               flash.now[:alert] = "An Error occurred during the update of Compliance Set, Please resubmit with lesser upload files."
               render "edit"
