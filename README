@@ -53,6 +53,7 @@ Application Details :
 3. Branch 'po_status_correction' to match the PO statues with the ASINs in the PO. Just rolling it up
 4. Branch 'weee_fields' to add the WEEE fields based on EU business requirements
 5. Branch 's3_integration' to support upload of files to s3
+6. Branch 'nested_form_bug_fix' created to fix the bug of nested form fields not showing up on edit compliance page
 
 Use Cases
 
