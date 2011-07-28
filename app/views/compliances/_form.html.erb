@@ -197,7 +197,54 @@
 
   <!-- Insert Form for Lab -->
   <div class="compliance_tests">
-    <%= f.fields_for :labs %>
+    <%= f.fields_for :labs do |lab_form| %>
+        <table class="compliance_tests">
+          <tbody>
+            <tr>
+              <th>
+                Lab Information
+              </th>
+              <td>
+                <%= lab_form.text_area :info, :rows => 4, :cols => 36 %>
+              </td>
+            </tr>
+
+            <tr>
+              <th>
+                Testing Date
+              </th>
+              <td>
+                <%= lab_form.date_select :testing_date %>
+              </td>
+            </tr>
+
+            <tr>
+              <th>
+                Report Number
+              </th>
+              <td>
+                <%= lab_form.text_field :report_number %>
+              </td>
+            </tr>
+
+            <tr>
+              <th>
+                Standards
+              </th>
+              <td>
+                <%= lab_form.text_area :standards, :rows => 4, :cols => 36 %>
+              </td>
+            </tr>
+            <% if session[:type].eql?("vendor") and @compliance.is_vendor_editable then %>
+                <tr>
+                  <td colspan="2" class="modify_form_section">
+                    <%= lab_form.link_to_remove "Remove this lab" %>
+                  </td>
+                </tr>
+            <% end %>
+          </tbody>
+        </table>
+    <% end %>
   </div>
 
   <% if session[:type].eql?("vendor") and @compliance.is_vendor_editable then %>
@@ -210,7 +257,38 @@
 
   <!-- Insert Form for Document-->
   <div class="compliance_docs">
-    <%= f.fields_for :documents %>
+    <%= f.fields_for :documents do |document_form| %>
+        <table class="compliance_docs">
+          <tbody>
+            <% if !document_form.object.id.nil? then %>
+                <tr>
+                  <th>
+                    Document URL
+                  </th>
+                  <td>
+                    <%= document_form.text_field :url, :readonly => true %>
+                  </td>
+                </tr>
+            <% else %>
+              <tr>
+                <th>
+                  Select File to Upload
+                </th>
+                <td>
+                  <%= document_form.file_field :file %>
+                </td>
+              </tr>
+            <% end %>
+            <% if session[:type].eql?("vendor") and @compliance.is_vendor_editable then %>
+                <tr>
+                  <td colspan="2" class="modify_form_section">
+                    <%= document_form.link_to_remove "Remove this document" %>
+                  </td>
+                </tr>
+            <% end %>
+          </tbody>
+        </table>
+    <% end  %>
   </div>
 
   <% if session[:type].eql?("vendor") and @compliance.is_vendor_editable then %>

@@ -306,8 +306,11 @@ tr.zebra1 tr.zebra1 tr.zebra1 tr.zebra2 {
 /* CSS for links on form which allow modification of form sections */
 .compliance_form div.modify_form_section {
     font-size: smaller;
-
 }
+.compliance_form td.modify_form_section {
+    font-size: smaller;
+}
+/* CSS for links on form which allow modification of form sections */
 
 .compliance_tests {
     margin-top:1em;
