@@ -14,8 +14,8 @@ class VendorsController < ApplicationController
       @vendor = Vendor.find(session[:id]) if session[:type].eql?("vendor")
       @vendor = Vendor.find_by_code(params["code"]) if session[:type].eql?("user")
       if @vendor.nil?
-        flash.now[:error] = "No Vendor found in the system."
-        redirect_to research_vendor_path
+        flash.now[:alert] = "No Matching Vendor found in the system."
+        render "research"
       end
     end
 
