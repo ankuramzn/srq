@@ -2,7 +2,7 @@ class VendorsController < ApplicationController
   layout :choose_layout
 
   before_filter :validated_all,     :only => [:vendors_purchaseorders]
-  before_filter :validated_vendor,  :only => [:show]
+  #before_filter :validated_vendor,  :only => [:show]
   before_filter :validated_user,    :only => [:index]
 
   public
@@ -11,7 +11,12 @@ class VendorsController < ApplicationController
     end
 
     def show
-      @vendor = Vendor.find(session[:id])
+      @vendor = Vendor.find(session[:id]) if session[:type].eql?("vendor")
+      @vendor = Vendor.find_by_code(params["code"]) if session[:type].eql?("user")
+      if @vendor.nil?
+        flash.now[:error] = "No Vendor found in the system."
+        redirect_to research_vendor_path
+      end
     end
 
 
@@ -38,6 +43,10 @@ class VendorsController < ApplicationController
       else
         render "new"
       end
+    end
+
+    # Method used by the User to research a specific Vendor
+    def research
     end
 
 end

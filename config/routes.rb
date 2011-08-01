@@ -37,6 +37,7 @@ Srq::Application.routes.draw do
   get "vendor_registration" => "vendors#new", :as => "vendor_registration"
   get "vendors_list" => "vendors#index", :as => "vendors_list"
   get "vendor_home" => "vendors#show", :as => "vendor_home"
+  get "research_vendor" => "vendors#research", :as => "research_vendor"
   resources :vendors
 
 

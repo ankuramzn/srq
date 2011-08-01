@@ -1,0 +1,22 @@
+
+<%= form_tag(vendor_home_path,:method => 'get' ) do %>
+
+    <table class = "vendortable">
+      <tr>
+        <td>
+            Vendor Code
+        </td>
+        <td>
+            <%= text_field_tag :code, params[:code] %>
+        </td>
+      </tr>
+
+      <tr>
+        <td colspan="2">
+            <%= submit_tag 'Research' %>
+        </td>
+      </tr>
+
+    </table>
+<% end %>
+
