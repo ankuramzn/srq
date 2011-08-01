@@ -34,7 +34,7 @@ Creating a new branch
 
 Push to Git hub
 
-* git push origin -u <branch_name>
+* git push origin -u <branch_name> / "blah blah blah"
 
 Switch local copy to branch
 
@@ -54,6 +54,7 @@ Application Details :
 4. Branch 'weee_fields' to add the WEEE fields based on EU business requirements
 5. Branch 's3_integration' to support upload of files to s3
 6. Branch 'nested_form_bug_fix' created to fix the bug of nested form fields not showing up on edit compliance page
+7. Branch 'user_research_vendor' created to add the option for user to research a particular vendor
 
 Use Cases
 
