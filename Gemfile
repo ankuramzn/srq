@@ -16,6 +16,9 @@ gem 'bcrypt-ruby', :require => "bcrypt"
 # Gem for integration with s3
 gem 'aws-s3'
 
+# Gem for autocomplete using jquery
+gem 'rails3-jquery-autocomplete'
+
 # Use unicorn as the web server
 # gem 'unicorn'
 
