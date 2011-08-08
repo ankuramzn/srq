@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110725203606) do
+ActiveRecord::Schema.define(:version => 20110801233006) do
 
   create_table "asins", :force => true do |t|
     t.string   "sku"
@@ -20,6 +20,12 @@ ActiveRecord::Schema.define(:version => 20110725203606) do
     t.string   "title"
     t.string   "srq_impact_source"
     t.string   "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "battery_types", :force => true do |t|
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -54,6 +60,7 @@ ActiveRecord::Schema.define(:version => 20110725203606) do
     t.string   "battery_description"
     t.string   "battery_brand"
     t.string   "battery_wt"
+    t.string   "battery_type"
   end
 
   create_table "documents", :force => true do |t|

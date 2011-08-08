@@ -41,12 +41,13 @@ Srq::Application.routes.draw do
   resources :vendors
 
 
+  # Auto Complete route
+  get 'compliances/autocomplete_battery_type_name'
+
   # Compliance Related routes
   get 'vendor_asin_compliance_home' => "compliances#vendor_asin_compliance_home", :as => 'vendor_asin_compliance_home'
   get 'copy_compliance' => "compliances#copy", :as => "copy_compliance"
   match 'compliances/associate_purchase_orders' => 'compliances#associate_purchase_orders'
   resources :compliances
-
-
 
 end

@@ -189,7 +189,18 @@
             <%= f.text_field :battery_wt, :readonly => (!session[:type].eql?("vendor") || !@compliance.is_vendor_editable) %>
           </td>
         </tr>
+        <!-- Auto Complete field -->
+        <tr>
+          <th>
+            <%= f.label :battery_type %>
+          </th>
+          <td>
+            <%= f.autocomplete_field :battery_type, compliances_autocomplete_battery_type_name_path %>
+          </td>
+        </tr>
 
+
+        <!-- Auto Complete field -->
         </tbody>
       </table>
     </div>

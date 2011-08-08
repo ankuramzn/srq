@@ -259,3 +259,21 @@
             :srq_impact_source => 'default',
             :status=>'pending_vendor_input'
         )
+
+# Adding Battery Type as domain values
+
+BatteryType.create!(
+    :name=>'Lithium Alkaline'
+)
+BatteryType.create!(
+    :name=>'Lithium Metal'
+)
+BatteryType.create!(
+    :name=>'Lithium Alkaline Ion'
+)
+BatteryType.create!(
+    :name=>'Non Spillable'
+)
+BatteryType.create!(
+    :name=>'Non Liquid Based'
+)

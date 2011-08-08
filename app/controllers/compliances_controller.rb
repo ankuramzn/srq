@@ -1,6 +1,9 @@
 require 'aws/s3'
 
 class CompliancesController < ApplicationController
+
+  autocomplete :battery_type, :name
+
   # GET /compliances
   # GET /compliances.xml
   def index
