@@ -55,6 +55,7 @@ Application Details :
 5. Branch 's3_integration' to support upload of files to s3
 6. Branch 'nested_form_bug_fix' created to fix the bug of nested form fields not showing up on edit compliance page
 7. Branch 'user_research_vendor' created to add the option for user to research a particular vendor
+8. Branch 'weee_changes_v2' created to incorporate EU business feedback on modification of Compliance Set fields, Vendor view, User view, etc.
 
 Use Cases
 
