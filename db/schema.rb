@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110809183336) do
+ActiveRecord::Schema.define(:version => 20110809210300) do
 
   create_table "asins", :force => true do |t|
     t.string   "sku"
@@ -63,6 +63,9 @@ ActiveRecord::Schema.define(:version => 20110809183336) do
     t.datetime "updated_at"
     t.boolean  "wee_compliance"
     t.boolean  "contains_battery"
+    t.string   "efn_availability"
+    t.text     "efn_restrictions"
+    t.text     "efn_restriction_reason"
   end
 
   create_table "documents", :force => true do |t|

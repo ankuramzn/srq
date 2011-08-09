@@ -132,10 +132,36 @@
 
     </div>
 
-
     <div class="record_data">
         <table>
         <tbody>
+            <tr>
+                <th>
+                    Availability in European Countries
+                </th>
+                <td>
+                    <%= @compliance.efn_availability %>
+                </td>
+            </tr>
+
+            <tr>
+                <th>
+                    Restriction for the following Countries
+                </th>
+                <td>
+                    <%= @compliance.efn_restrictions %>
+                </td>
+            </tr>
+
+            <tr>
+                <th>
+                    Reason of Country Restriction
+                </th>
+                <td>
+                    <%= @compliance.efn_restriction_reason %>
+                </td>
+            </tr>
+
             <tr>
                 <th>
                     Importer of Record

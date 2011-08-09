@@ -370,6 +370,33 @@
 
       <tr>
         <th>
+            Availability in European Countries
+        </th>
+        <td>
+            <%= f.text_field  :efn_availability, :readonly => (!session[:type].eql?("vendor") || !@compliance.is_vendor_editable) %>
+        </td>
+      </tr>
+
+      <tr>
+        <th>
+            Restriction for the following Countries
+        </th>
+        <td>
+            <%= f.text_area :efn_restrictions, :rows => 4, :cols => 36, :readonly => (!session[:type].eql?("vendor") || !@compliance.is_vendor_editable) %>
+        </td>
+      </tr>
+
+      <tr>
+        <th>
+            Reason of Country Restriction
+        </th>
+        <td>
+            <%= f.text_area :efn_restriction_reason, :rows => 4, :cols => 36, :readonly => (!session[:type].eql?("vendor") || !@compliance.is_vendor_editable) %>
+        </td>
+      </tr>
+
+      <tr>
+        <th>
             <%= f.label :importer_of_record %>
         </th>
         <td>
