@@ -183,6 +183,81 @@
 
 
 
+    <div id="wee_fields" class="wee_data" >
+        <%= f.fields_for :battery_details do |battery_detail_form| %>
+
+          <table class="wee_data">
+            <tbody>
+            <tr>
+              <th colspan="2">
+                  Battery Type
+              </th>
+              <td colspan="4">
+                  <%= battery_detail_form.text_field :battery_type, :readonly => (!session[:type].eql?("vendor") || !@compliance.is_vendor_editable) %>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                  Battery Size
+              </th>
+              <td>
+                  <%= battery_detail_form.text_field :size, :readonly => (!session[:type].eql?("vendor") || !@compliance.is_vendor_editable), :class => 'wt_data' %>
+              </td>
+
+              <th>
+                  Battery Units
+              </th>
+              <td>
+                  <%= battery_detail_form.text_field :units, :readonly => (!session[:type].eql?("vendor") || !@compliance.is_vendor_editable), :class => 'wt_data' %>
+              </td>
+
+              <th>
+                  "Battery weight (GR)
+              </th>
+              <td>
+                  <%= battery_detail_form.text_field :battery_wt, :readonly => (!session[:type].eql?("vendor") || !@compliance.is_vendor_editable), :class => 'wt_data' %>
+              </td>
+            </tr>
+            <tr>
+              <th colspan="2">
+                  Battery Packaging Type
+              </th>
+              <td colspan="4">
+                  <%= battery_detail_form.text_field :packaging, :readonly => (!session[:type].eql?("vendor") || !@compliance.is_vendor_editable) %>
+              </td>
+            </tr>
+            <tr>
+              <th colspan="2">
+                  Battery Brand Name
+              </th>
+              <td colspan="4">
+                  <%= battery_detail_form.text_field :brand, :readonly => (!session[:type].eql?("vendor") || !@compliance.is_vendor_editable) %>
+              </td>
+            </tr>
+
+
+            <% if session[:type].eql?("vendor") and @compliance.is_vendor_editable then %>
+                <tr>
+                  <td colspan="6" class="modify_form_section">
+                    <%= battery_detail_form.link_to_remove "Remove this Battery Detail" %>
+                  </td>
+                </tr>
+            <% end %>
+
+           </tbody>
+          </table>
+
+        <% end  %>
+    </div>
+
+    <% if session[:type].eql?("vendor") and @compliance.is_vendor_editable then %>
+        <div class="modify_form_section">
+          <%= f.link_to_add "Add Battery Details", :battery_details %>
+        </div>
+    <% end %>
+
+
+
   <!-- Insert Form for Lab -->
   <div class="compliance_tests">
     <%= f.fields_for :labs do |lab_form| %>

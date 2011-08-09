@@ -17,6 +17,8 @@ class Compliance < ActiveRecord::Base
   has_many :weee_product_datas, :dependent => :delete_all
   accepts_nested_attributes_for :weee_product_datas, :allow_destroy => true
 
+  has_many :battery_details, :dependent => :delete_all
+  accepts_nested_attributes_for :battery_details, :allow_destroy => true
 
   belongs_to :vendor
 
