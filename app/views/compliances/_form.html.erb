@@ -36,7 +36,7 @@
 
       <tr>
         <th>
-            <%= f.label :sku %>
+            ASIN
         </th>
         <td>
         <% if !@compliance.sku and session[:type].eql?("vendor") and @compliance.is_vendor_editable then %>
@@ -50,10 +50,23 @@
 
       <tr>
         <th>
-            <%= f.label :vendor_product_number %>
+            Item Number
         </th>
         <td>
             <%= f.text_field :vendor_product_number, :readonly => (!session[:type].eql?("vendor") || !@compliance.is_vendor_editable) %>
+        </td>
+      </tr>
+
+      <tr>
+        <th>
+            Title
+        </th>
+        <td>
+          <% if !@compliance.sku then %>
+              No ASIN available
+          <% else %>
+              <%= Asin.find_by_sku(@compliance.sku).title  %>
+          <% end %>
         </td>
       </tr>
 
@@ -101,34 +114,22 @@
 
         <tr>
           <th>
-              <%= f.label :paper_cardboard_wt %>
+              Paper/Cardboard (GR)
           </th>
           <td>
               <%= f.text_field :paper_cardboard_wt, :readonly => (!session[:type].eql?("vendor") || !@compliance.is_vendor_editable), :class => 'wt_data' %>
           </td>
           <th>
-              <%= f.label :plastic_wt %>
+              Plastic (GR) all types
           </th>
           <td>
               <%= f.text_field :plastic_wt, :readonly => (!session[:type].eql?("vendor") || !@compliance.is_vendor_editable), :class => 'wt_data' %>
           </td>
           <th>
-              <%= f.label :metal_wt %>
-          </th>
-          <td>
-              <%= f.text_field :metal_wt, :readonly => (!session[:type].eql?("vendor") || !@compliance.is_vendor_editable), :class => 'wt_data' %>
-          </td>
-          <th>
-              <%= f.label :other_wt %>
+              Others (GR) like metal or composite
           </th>
           <td>
               <%= f.text_field :other_wt, :readonly => (!session[:type].eql?("vendor") || !@compliance.is_vendor_editable), :class => 'wt_data' %>
-          </td>
-          <th colspan="2">
-              <%= f.label :net_wt %>
-          </th>
-          <td colspan="2">
-              <%= f.text_field :net_wt, :readonly => (!session[:type].eql?("vendor") || !@compliance.is_vendor_editable), :class => 'wt_data' %>
           </td>
         </tr>
 
@@ -136,7 +137,7 @@
       </table>
 
       <!--add_column :compliances, :wee_compliance, :boolean-->
-      <%= f.label :wee_compliance %>
+      Is Electrical (relevant under WEEE)
       <%= f.check_box(:wee_compliance,  :readonly => (!session[:type].eql?("vendor") || !@compliance.is_vendor_editable)) %>
 
       <table id='wee_category_selector'>
@@ -144,18 +145,30 @@
         <!--add_column :compliances, :wee_category, :string-->
         <tr>
           <th>
-            <%= f.label :wee_category %>
+            WEEE Category
           </th>
           <td>
             <%= f.select(:wee_category, wee_standards, :readonly => (!session[:type].eql?("vendor") || !@compliance.is_vendor_editable)) %>
           </td>
         </tr>
+
+        <tr>
+          <th>
+              Net Product Weight (GR)
+          </th>
+          <td colspan="2">
+              <%= f.text_field :net_wt, :readonly => (!session[:type].eql?("vendor") || !@compliance.is_vendor_editable), :class => 'wt_data' %>
+          </td>
+
+        </tr>
+
+
        </tbody>
       </table>
 
 
       <!--add_column :compliances, :contains_battery, :boolean-->
-      <%= f.label :contains_battery %>
+      With Battery?
       <%= f.check_box :contains_battery,  :readonly => (!session[:type].eql?("vendor") || !@compliance.is_vendor_editable) %>
 
       <table id='wee_battery_details'>
@@ -164,6 +177,7 @@
         <!--add_column :compliances, :battery_description, :string-->
         <!--add_column :compliances, :battery_brand, :string-->
         <!--add_column :compliances, :battery_wt, :string-->
+
         <tr>
           <th>
             <%= f.label :battery_description %>
@@ -175,7 +189,7 @@
 
         <tr>
           <th>
-            <%= f.label :battery_brand %>
+            Battery Brand name
           </th>
           <td>
             <%= f.text_field :battery_brand, :readonly => (!session[:type].eql?("vendor") || !@compliance.is_vendor_editable) %>
@@ -183,7 +197,7 @@
         </tr>
         <tr>
           <th>
-            <%= f.label :battery_wt %>
+            Battery weight (GR)
           </th>
           <td>
             <%= f.text_field :battery_wt, :readonly => (!session[:type].eql?("vendor") || !@compliance.is_vendor_editable) %>
@@ -325,7 +339,7 @@
 
       <tr>
         <th>
-            <%= f.label :manufacture_date %>
+            Production date
         </th>
         <td>
             <%= f.date_select :manufacture_date, :readonly => (!session[:type].eql?("vendor") || !@compliance.is_vendor_editable) %>
@@ -334,7 +348,7 @@
 
       <tr>
         <th>
-            <%= f.label :manufacture_place %>
+            Country of origin
         </th>
         <td>
             <%= f.text_field :manufacture_place, :readonly => (!session[:type].eql?("vendor") || !@compliance.is_vendor_editable) %>
@@ -343,7 +357,7 @@
 
       <tr>
         <th>
-            <%= f.label :esignature %>
+            Esignature - responsible person<sup>*</sup>
         </th>
         <td>
             <%= f.text_field :esignature, :readonly => (!session[:type].eql?("vendor") || !@compliance.is_vendor_editable) %>

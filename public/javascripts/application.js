@@ -31,7 +31,7 @@ $(document).ready(function() {
     });
 
     // Jquery UI manipulation functions to control the display of WEEEE data form elements
-    $('#wee_fields').hide();
+    //$('#wee_fields').hide(); Change requested by EU business to display the WEEE fields by default
     $('#show_wee_fields').click(function(){
         $('#wee_fields').show();
     });
