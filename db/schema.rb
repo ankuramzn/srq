@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110809093001) do
+ActiveRecord::Schema.define(:version => 20110809175829) do
 
   create_table "asins", :force => true do |t|
     t.string   "sku"
@@ -110,6 +110,14 @@ ActiveRecord::Schema.define(:version => 20110809093001) do
     t.datetime "updated_at"
     t.string   "password_salt"
     t.string   "password_hash"
+  end
+
+  create_table "weee_product_data", :force => true do |t|
+    t.integer  "compliance_id"
+    t.string   "weee_category"
+    t.integer  "net_product_wt"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

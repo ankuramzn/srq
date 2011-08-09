@@ -140,6 +140,49 @@
         </div>
     <% end %>
 
+
+    <div id="wee_fields" class="wee_data" >
+        <%= f.fields_for :weee_product_datas do |weee_product_data_form| %>
+
+          <table class="wee_data">
+            <tbody>
+            <tr>
+              <th>
+                  WEEE Category
+              </th>
+              <td>
+                  <%= weee_product_data_form.select(:weee_category, wee_standards, :readonly => (!session[:type].eql?("vendor") || !@compliance.is_vendor_editable)) %>
+              </td>
+              <th>
+                  Net Product Weight (GR)
+              </th>
+              <td>
+                  <%= weee_product_data_form.text_field :net_product_wt, :readonly => (!session[:type].eql?("vendor") || !@compliance.is_vendor_editable), :class => 'wt_data' %>
+              </td>
+            </tr>
+
+            <% if session[:type].eql?("vendor") and @compliance.is_vendor_editable then %>
+                <tr>
+                  <td colspan="6" class="modify_form_section">
+                    <%= weee_product_data_form.link_to_remove "Remove this WEEE Product Data" %>
+                  </td>
+                </tr>
+            <% end %>
+
+           </tbody>
+          </table>
+
+        <% end  %>
+    </div>
+
+    <% if session[:type].eql?("vendor") and @compliance.is_vendor_editable then %>
+        <div class="modify_form_section">
+          <%= f.link_to_add "Add WEEE Product Data", :weee_product_datas %>
+        </div>
+    <% end %>
+
+
+
   <!-- Insert Form for Lab -->
   <div class="compliance_tests">
     <%= f.fields_for :labs do |lab_form| %>
