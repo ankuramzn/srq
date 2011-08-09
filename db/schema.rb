@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110725203606) do
+ActiveRecord::Schema.define(:version => 20110809093001) do
 
   create_table "asins", :force => true do |t|
     t.string   "sku"
@@ -20,6 +20,12 @@ ActiveRecord::Schema.define(:version => 20110725203606) do
     t.string   "title"
     t.string   "srq_impact_source"
     t.string   "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "battery_types", :force => true do |t|
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -43,17 +49,8 @@ ActiveRecord::Schema.define(:version => 20110725203606) do
     t.datetime "last_activity_at"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "paper_cardboard_wt"
-    t.string   "plastic_wt"
-    t.string   "metal_wt"
-    t.string   "other_wt"
     t.boolean  "wee_compliance"
-    t.string   "wee_category"
-    t.string   "net_wt"
     t.boolean  "contains_battery"
-    t.string   "battery_description"
-    t.string   "battery_brand"
-    t.string   "battery_wt"
   end
 
   create_table "documents", :force => true do |t|
@@ -70,6 +67,15 @@ ActiveRecord::Schema.define(:version => 20110725203606) do
     t.date     "testing_date"
     t.string   "report_number"
     t.text     "standards"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "packaging_data", :force => true do |t|
+    t.integer  "compliance_id"
+    t.integer  "paper_cardboard_wt"
+    t.integer  "plastic_wt"
+    t.integer  "other_wt"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

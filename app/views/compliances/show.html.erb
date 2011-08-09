@@ -95,99 +95,10 @@
     </div>
 
 
+    <!-- Associated Packaging Data Details -->
+    <div class="wee_data">
 
-
-    <div class="wee_data" >
-      <table>
-        <tbody>
-
-        <tr>
-          <th>
-              Paper Cardboard Weight
-          </th>
-          <td>
-              <%= @compliance.paper_cardboard_wt %>
-          </td>
-          <th>
-              Plastic Weight
-          </th>
-          <td>
-              <%= @compliance.plastic_wt %>
-          </td>
-          <th>
-              Metal Weight
-          </th>
-          <td>
-              <%= @compliance.metal_wt %>
-          </td>
-          <th>
-              Other Weight
-          </th>
-          <td>
-              <%= @compliance.other_wt %>
-          </td>
-          <th colspan="2">
-              Net Weight
-          </th>
-          <td colspan="2">
-              <%= @compliance.net_wt %>
-          </td>
-        </tr>
-
-       </tbody>
-      </table>
-
-
-      <table>
-       <tbody>
-       <tr>
-         <th>
-           Weee Compliance
-         </th>
-         <td>
-           <%= @compliance.wee_compliance   %>
-         </td>
-         <th>
-           Wee Category
-         </th>
-         <td>
-           <%= @compliance.wee_category %>
-         </td>
-       </tr>
-       </tbody>
-      </table>
-
-      <table>
-        <tr>
-        <th>
-          Contains Battery
-        </th>
-        <td>
-          <%= @compliance.contains_battery %>
-        </td>
-        <th>
-          Battery Description
-        </th>
-        <td>
-          <%= @compliance.battery_description %>
-        </td>
-      </tr>
-
-      <tr>
-        <th>
-          Battery Brand
-        </th>
-        <td>
-          <%= @compliance.battery_brand %>
-        </td>
-        <th>
-          Battery Weight
-        </th>
-        <td>
-          <%= @compliance.battery_wt %>
-        </td>
-      </tr>
-      </table>
+    <%= render :partial => 'packaging_data', :collection => @compliance.packaging_datas %>
 
     </div>
 

@@ -11,6 +11,10 @@ class Compliance < ActiveRecord::Base
   has_many :labs, :dependent => :delete_all
   accepts_nested_attributes_for :labs, :allow_destroy => true
 
+  has_many :packaging_datas, :dependent => :delete_all
+  accepts_nested_attributes_for :packaging_datas, :allow_destroy => true
+
+
   belongs_to :vendor
 
   scope :by_vendor, lambda { |vendor|
