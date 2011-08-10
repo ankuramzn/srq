@@ -56,6 +56,7 @@ Application Details :
 6. Branch 'nested_form_bug_fix' created to fix the bug of nested form fields not showing up on edit compliance page
 7. Branch 'user_research_vendor' created to add the option for user to research a particular vendor
 8. Branch 'weee_changes_v2' created to incorporate EU business feedback on modification of Compliance Set fields, Vendor view, User view, etc.
+9. Branch 'fix_weee_tables' added to fix the singular table names that were generated for packaging_Data and weee_product_data
 
 Use Cases
 
