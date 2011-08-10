@@ -60,6 +60,7 @@ Application Details :
 7. Branch 'user_research_vendor' created to add the option for user to research a particular vendor
 8. Branch 'weee_changes_v2' created to incorporate EU business feedback on modification of Compliance Set fields, Vendor view, User view, etc.
 9. Branch 'fix_weee_tables' added to fix the singular table names that were generated for packaging_Data and weee_product_data
+10. Branch 'battery_field_mods' created to convert battery type to select and Battery size to auto complete
 
 Use Cases
 
