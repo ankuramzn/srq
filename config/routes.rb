@@ -40,6 +40,8 @@ Srq::Application.routes.draw do
   get "research_vendor" => "vendors#research", :as => "research_vendor"
   resources :vendors
 
+  # Auto Complete route
+  get 'compliances/autocomplete_battery_size_size'
 
   # Compliance Related routes
   get 'vendor_asin_compliance_home' => "compliances#vendor_asin_compliance_home", :as => 'vendor_asin_compliance_home'

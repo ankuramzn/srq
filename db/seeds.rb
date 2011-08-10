@@ -259,3 +259,8 @@
             :srq_impact_source => 'default',
             :status=>'pending_vendor_input'
         )
+
+BatterySize.create!(:size => 'AAA')
+BatterySize.create!(:size => 'BBB')
+BatterySize.create!(:size => 'CCC')
+BatterySize.create!(:size => 'DDD')

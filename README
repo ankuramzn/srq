@@ -14,6 +14,8 @@ document compliance_id:integer url:string type:string
 packaging_detail compliance_id:integer paper_cardboard_wt:float plastic_wt:float other_wt:float -t nil
 product_detail compliance_id:integer weee_category:string net_product_wt:float -t nil
 
+battery_size size:string -t nil
+
 Gem status :
 
 gem 'mysql2'

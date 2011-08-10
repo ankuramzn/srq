@@ -201,7 +201,7 @@
                   Battery Size
               </th>
               <td>
-                  <%= battery_detail_form.text_field :size, :readonly => (!session[:type].eql?("vendor") || !@compliance.is_vendor_editable), :class => 'wt_data' %>
+                <%= battery_detail_form.autocomplete_field :size, compliances_autocomplete_battery_size_size_path, :readonly => (!session[:type].eql?("vendor") || !@compliance.is_vendor_editable), :class => 'wt_data' %>
               </td>
 
               <th>

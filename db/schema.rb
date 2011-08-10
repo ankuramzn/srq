@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110810064523) do
+ActiveRecord::Schema.define(:version => 20110810090544) do
 
   create_table "asins", :force => true do |t|
     t.string   "sku"
@@ -32,6 +32,12 @@ ActiveRecord::Schema.define(:version => 20110810064523) do
     t.string   "packaging"
     t.integer  "battery_wt"
     t.string   "brand"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "battery_sizes", :force => true do |t|
+    t.string   "size"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
