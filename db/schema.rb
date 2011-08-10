@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110809210300) do
+ActiveRecord::Schema.define(:version => 20110810064523) do
 
   create_table "asins", :force => true do |t|
     t.string   "sku"
@@ -86,11 +86,28 @@ ActiveRecord::Schema.define(:version => 20110809210300) do
     t.datetime "updated_at"
   end
 
-  create_table "packaging_data", :force => true do |t|
+  create_table "packaging_datas", :force => true do |t|
     t.integer  "compliance_id"
     t.integer  "paper_cardboard_wt"
     t.integer  "plastic_wt"
     t.integer  "other_wt"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "packaging_details", :force => true do |t|
+    t.integer  "compliance_id"
+    t.float    "paper_cardboard_wt"
+    t.float    "plastic_wt"
+    t.float    "other_wt"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "product_details", :force => true do |t|
+    t.integer  "compliance_id"
+    t.string   "weee_category"
+    t.float    "net_product_wt"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -127,7 +144,7 @@ ActiveRecord::Schema.define(:version => 20110809210300) do
     t.string   "password_hash"
   end
 
-  create_table "weee_product_data", :force => true do |t|
+  create_table "weee_product_datas", :force => true do |t|
     t.integer  "compliance_id"
     t.string   "weee_category"
     t.integer  "net_product_wt"

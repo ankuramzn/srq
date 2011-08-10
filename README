@@ -11,6 +11,9 @@ compliance sku:string vendor_product_number:string brand:string vendor_id:intege
 lab compliance_id:integer info:text testing_date:date report_number:string standards:text
 document compliance_id:integer url:string type:string
 
+packaging_detail compliance_id:integer paper_cardboard_wt:float plastic_wt:float other_wt:float -t nil
+product_detail compliance_id:integer weee_category:string net_product_wt:float -t nil
+
 Gem status :
 
 gem 'mysql2'

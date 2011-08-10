@@ -95,7 +95,7 @@
 
 
     <div id="wee_fields" class="wee_data" >
-        <%= f.fields_for :packaging_datas do |packaging_data_form| %>
+        <%= f.fields_for :packaging_details do |packaging_detail_form| %>
 
           <table class="wee_data">
             <tbody>
@@ -104,26 +104,26 @@
                   Paper/Cardboard (GR)
               </th>
               <td>
-                  <%= packaging_data_form.text_field :paper_cardboard_wt, :readonly => (!session[:type].eql?("vendor") || !@compliance.is_vendor_editable), :class => 'wt_data' %>
+                  <%= packaging_detail_form.text_field :paper_cardboard_wt, :readonly => (!session[:type].eql?("vendor") || !@compliance.is_vendor_editable), :class => 'wt_data' %>
               </td>
               <th>
                   Plastic (GR) all types
               </th>
               <td>
-                  <%= packaging_data_form.text_field :plastic_wt, :readonly => (!session[:type].eql?("vendor") || !@compliance.is_vendor_editable), :class => 'wt_data' %>
+                  <%= packaging_detail_form.text_field :plastic_wt, :readonly => (!session[:type].eql?("vendor") || !@compliance.is_vendor_editable), :class => 'wt_data' %>
               </td>
               <th>
                   Others (GR) like metal or composite
               </th>
               <td>
-                  <%= packaging_data_form.text_field :other_wt, :readonly => (!session[:type].eql?("vendor") || !@compliance.is_vendor_editable), :class => 'wt_data' %>
+                  <%= packaging_detail_form.text_field :other_wt, :readonly => (!session[:type].eql?("vendor") || !@compliance.is_vendor_editable), :class => 'wt_data' %>
               </td>
             </tr>
 
             <% if session[:type].eql?("vendor") and @compliance.is_vendor_editable then %>
                 <tr>
                   <td colspan="6" class="modify_form_section">
-                    <%= packaging_data_form.link_to_remove "Remove this Packaging Data" %>
+                    <%= packaging_detail_form.link_to_remove "Remove this Packaging Data" %>
                   </td>
                 </tr>
             <% end %>
@@ -136,13 +136,13 @@
 
     <% if session[:type].eql?("vendor") and @compliance.is_vendor_editable then %>
         <div class="modify_form_section">
-          <%= f.link_to_add "Add Packaging Data", :packaging_datas %>
+          <%= f.link_to_add "Add Packaging Data", :packaging_details %>
         </div>
     <% end %>
 
 
     <div id="wee_fields" class="wee_data" >
-        <%= f.fields_for :weee_product_datas do |weee_product_data_form| %>
+        <%= f.fields_for :product_details do |product_detail_form| %>
 
           <table class="wee_data">
             <tbody>
@@ -151,20 +151,20 @@
                   WEEE Category
               </th>
               <td>
-                  <%= weee_product_data_form.select(:weee_category, wee_standards, :readonly => (!session[:type].eql?("vendor") || !@compliance.is_vendor_editable)) %>
+                  <%= product_detail_form.select(:weee_category, wee_standards, :readonly => (!session[:type].eql?("vendor") || !@compliance.is_vendor_editable)) %>
               </td>
               <th>
                   Net Product Weight (GR)
               </th>
               <td>
-                  <%= weee_product_data_form.text_field :net_product_wt, :readonly => (!session[:type].eql?("vendor") || !@compliance.is_vendor_editable), :class => 'wt_data' %>
+                  <%= product_detail_form.text_field :net_product_wt, :readonly => (!session[:type].eql?("vendor") || !@compliance.is_vendor_editable), :class => 'wt_data' %>
               </td>
             </tr>
 
             <% if session[:type].eql?("vendor") and @compliance.is_vendor_editable then %>
                 <tr>
                   <td colspan="6" class="modify_form_section">
-                    <%= weee_product_data_form.link_to_remove "Remove this WEEE Product Data" %>
+                    <%= product_detail_form.link_to_remove "Remove this WEEE Product Data" %>
                   </td>
                 </tr>
             <% end %>
@@ -177,7 +177,7 @@
 
     <% if session[:type].eql?("vendor") and @compliance.is_vendor_editable then %>
         <div class="modify_form_section">
-          <%= f.link_to_add "Add WEEE Product Data", :weee_product_datas %>
+          <%= f.link_to_add "Add WEEE Product Data", :product_details %>
         </div>
     <% end %>
 
@@ -212,7 +212,7 @@
               </td>
 
               <th>
-                  "Battery weight (GR)
+                  Battery weight (GR)
               </th>
               <td>
                   <%= battery_detail_form.text_field :battery_wt, :readonly => (!session[:type].eql?("vendor") || !@compliance.is_vendor_editable), :class => 'wt_data' %>

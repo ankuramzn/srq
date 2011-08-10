@@ -98,14 +98,14 @@
     <!-- Associated Packaging Data Details -->
     <div class="wee_data">
 
-    <%= render :partial => 'packaging_data', :collection => @compliance.packaging_datas %>
+    <%= render :partial => 'packaging_detail', :collection => @compliance.packaging_details %>
 
     </div>
 
   <!-- Associated WEEEE Product Data Details -->
   <div class="wee_data">
 
-  <%= render :partial => 'weee_product_data', :collection => @compliance.weee_product_datas %>
+  <%= render :partial => 'product_detail', :collection => @compliance.product_details %>
 
   </div>
 
