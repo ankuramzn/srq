@@ -24,4 +24,8 @@ module ApplicationHelper
     ['Large household appliances', 'Small household appliances', 'IT and telecommunications equipment', 'Consumer equipment', 'Lighting equipment (Gas discharge lamps >> fluorescent and high-intensity discharge lamps)', 'Electrical and electronic tools (with the exception of large-scale stationary industrial tools)', 'Toys, leisure and sports equipment', 'Medical devices (with the exception of all implanted and infected products)', 'Monitoring and control instruments', 'Automatic dispensers']
   end
 
+  def battery_types
+    ['Primary Cell', 'Secondary Cell', 'Chemical system']
+  end
+
 end

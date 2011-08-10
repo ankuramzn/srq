@@ -193,7 +193,7 @@
                   Battery Type
               </th>
               <td colspan="4">
-                  <%= battery_detail_form.text_field :battery_type, :readonly => (!session[:type].eql?("vendor") || !@compliance.is_vendor_editable) %>
+                  <%= battery_detail_form.select( :battery_type, battery_types, :readonly => (!session[:type].eql?("vendor") || !@compliance.is_vendor_editable)) %>
               </td>
             </tr>
             <tr>
