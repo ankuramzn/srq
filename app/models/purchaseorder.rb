@@ -49,4 +49,12 @@ class Purchaseorder < ActiveRecord::Base
     return nil
   end
 
+  def self.search(code, vendor_id)
+    if code and vendor_id
+      find(:first, :conditions => ['code LIKE ? AND vendor_id LIKE ?', code, vendor_id])
+    else
+      find(:all)
+    end
+  end
+
 end

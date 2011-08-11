@@ -24,6 +24,13 @@ class Asin < ActiveRecord::Base
     where("asins.status != 'compliance_approved'")
   }
 
+  def self.search(sku, purchaseorder_id)
+    if sku and purchaseorder_id
+      find(:first, :conditions => ['sku LIKE ? AND purchaseorder_id LIKE ?', sku, purchaseorder_id])
+    else
+      find(:all)
+    end
+  end
 
   # If a Compliance Set is associated, then the vendor's 'activity for this asin is complete
   # Status is now 'vendor_input_complete' and same might apply to rolled up purchase order's status

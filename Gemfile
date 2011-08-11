@@ -19,6 +19,7 @@ gem 'aws-s3'
 # Gem for autocomplete using jquery
 gem 'rails3-jquery-autocomplete'
 
+gem 'fastercsv'
 # Use unicorn as the web server
 # gem 'unicorn'
 
