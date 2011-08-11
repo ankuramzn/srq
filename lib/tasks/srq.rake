@@ -54,14 +54,15 @@ namespace :srq do
         :status=>'pending_vendor_input'
     ) unless !purchaseorder.nil?
 
-    asin = Asin.search(row_hash["asin"], purchaseorder.code)
+    asin = Asin.search(row_hash["asin"], purchaseorder.id)
 
     asin = purchaseorder.asins.create!(
         :sku => row_hash["asin"],
         :title => 'Missing Title',
         :srq_impact_source => 'default',
         :status=>'pending_vendor_input'
-    )
+    ) unless !asin.nil? #TODO: Check if same ASIN can occur on same Purchase Order as a valid case
+
   end
 
 end
