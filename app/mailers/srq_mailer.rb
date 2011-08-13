@@ -11,4 +11,8 @@ class SrqMailer < ActionMailer::Base
     mail(:to => "aptapt402@gmail.com", :subject => "Daily Status for Admin")
   end
 
+  def compliance_update_notification(vendor, sku, from_status, to_status)
+    @vendor, @sku, @from_status, @to_status = vendor, sku, from_status, to_status
+    mail(:to => "aptapt402@gmail.com", :subject => "Compliance Set Status Updated")
+  end
 end

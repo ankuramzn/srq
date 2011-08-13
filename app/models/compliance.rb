@@ -40,6 +40,8 @@ class Compliance < ActiveRecord::Base
     }
   }
 
+  before_update :send_update_notification
+
 
   def is_vendor_editable
     status.eql?("vendor_input")
@@ -71,7 +73,14 @@ class Compliance < ActiveRecord::Base
     is_user_editable || Asin.by_compliance(self).empty?
   end
 
-#  TODO: FIgure out how to define association to pull up all PO ASINs linked to Compliance Set
+  private
+  # Method to generate a notification only when the status of a Compliance Set changes
+  def send_update_notification
+    puts "Self Status " + self.status + " Currently persisted Status from DB " + Compliance.find(self.id).status
+    SrqMailer.compliance_update_notification(self.vendor.name, self.sku, Compliance.find(self.id).status, self.status).deliver unless (self.status).eql?(Compliance.find(self.id).status)
+  end
+
+#  TODO: Figure out how to define association to pull up all PO ASINs linked to Compliance Set
 # %w[vendor_input user_review approved rejected]
 
 end
