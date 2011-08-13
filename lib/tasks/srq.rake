@@ -65,4 +65,18 @@ namespace :srq do
 
   end
 
+  desc "Task to send status notifications about open purchase orders to each vendor and user"
+  task :status_notification => :environment do
+    all_pending_purchaseorders = Array.new
+
+    # Iterate over each Vendor and generate notification for them if any pending purchaseorders are found
+    Vendor.all.each do |vendor|
+      vendor_pending_purchaseorders = vendor.pending_purchaseorders
+      SrqMailer.vendor_status_notification(vendor_pending_purchaseorders, vendor.name).deliver unless vendor_pending_purchaseorders.empty?
+      all_pending_purchaseorders =  all_pending_purchaseorders + vendor_pending_purchaseorders
+    end
+
+    SrqMailer.user_status_notification(all_pending_purchaseorders).deliver
+  end
+
 end

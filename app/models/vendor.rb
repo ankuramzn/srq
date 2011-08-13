@@ -38,4 +38,12 @@ class Vendor < ActiveRecord::Base
     sku_purchaseorders_return
   end
 
+  # Function to get list of pending purchase order codes for the vendor
+  def pending_purchaseorders
+    pending_purchaseorders = Array.new
+    purchaseorders.each do |purchaseorder|
+      pending_purchaseorders << purchaseorder.code unless purchaseorder.status.eql?('compliance_approved')
+    end
+    pending_purchaseorders
+  end
 end
