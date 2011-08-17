@@ -28,6 +28,10 @@ class User < ActiveRecord::Base
     end
   end
 
+  def self.reviewer_contact
+    "srq-notify-internal@amazon.com"
+  end
+
 end
 
 

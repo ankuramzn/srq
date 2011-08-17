@@ -77,7 +77,7 @@ class Compliance < ActiveRecord::Base
   # Method to generate a notification only when the status of a Compliance Set changes
   def send_update_notification
     puts "Self Status " + self.status + " Currently persisted Status from DB " + Compliance.find(self.id).status + " => Changed " + (self.status_changed?).to_s
-    SrqMailer.compliance_update_notification(self.vendor.name, self.sku, self.status_was, self.status).deliver unless !self.status_changed?
+    SrqMailer.compliance_update_notification(self.vendor, self.sku, self.status_was, self.status).deliver unless !self.status_changed?
   end
 
 #  TODO: Figure out how to define association to pull up all PO ASINs linked to Compliance Set

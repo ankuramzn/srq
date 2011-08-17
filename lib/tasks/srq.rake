@@ -72,7 +72,7 @@ namespace :srq do
     # Iterate over each Vendor and generate notification for them if any pending purchaseorders are found
     Vendor.all.each do |vendor|
       vendor_pending_purchaseorders = vendor.pending_purchaseorders
-      SrqMailer.vendor_status_notification(vendor_pending_purchaseorders, vendor.name).deliver unless vendor_pending_purchaseorders.empty?
+      SrqMailer.vendor_status_notification(vendor_pending_purchaseorders, vendor).deliver unless vendor_pending_purchaseorders.empty?
       all_pending_purchaseorders =  all_pending_purchaseorders + vendor_pending_purchaseorders
     end
 

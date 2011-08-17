@@ -6,7 +6,7 @@ class Vendor < ActiveRecord::Base
 
   validates_presence_of :code, :name, :contact, :password
   validates_confirmation_of :password
-  validates_uniqueness_of :code, :contact
+  validates_uniqueness_of :code
 
   # Associated Model relations
   has_many :purchaseorders

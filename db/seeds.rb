@@ -8,21 +8,21 @@
 
 @user = User.create!(
     :username=>'reviewer',
-    :contact=>'saksena@amazon.com',
+    :contact=>'srq-notify-internal@amazon.com',
     :user_type=>'default',
     :password=>'123'
 )
 
 @user = User.create!(
     :username=>'admin',
-    :contact=>'saksena@amazon.com',
+    :contact=>'srq-notify-internal@amazon.com',
     :user_type=>'default',
     :password=>'123'
 )
 
 @vendor = Vendor.create!(
     :code=>'BEFR7',
-    :contact=>'TimChen@lifungsz.com.cn',
+    :contact=>'srq-notify-internal@amazon.com',
     :is_import=>true,
     :name=>'Boni & Hanson (Li & Fung)',
     :password=>'123'
@@ -103,7 +103,7 @@
 
 @vendor = Vendor.create!(
     :code=>'KIJT9',
-    :contact=>'TimChen@lifungsz.com.cn1',
+    :contact=>'srq-notify-internal@amazon.com',
     :is_import=>true,
     :name=>'Friends - Tom Douglas Only (Li & Fung)',
     :password=>'123'
@@ -126,7 +126,7 @@
 
 @vendor = Vendor.create!(
     :code => 'EMEBI',
-    :contact => 'TimChen@lifungsz.com.cn2',
+    :contact => 'srq-notify-internal@amazon.com',
     :is_import => false,
     :name => 'Friends Enterprises (HK) Ltd (Li & Fung)',
     :password=>'123'
@@ -149,7 +149,7 @@
 
 @vendor = Vendor.create!(
     :code => 'CBIK8',
-    :contact => 'TimChen@lifungsz.com.cn3',
+    :contact => 'srq-notify-internal@amazon.com',
     :is_import => true,
     :name => 'Good Things - Tom Douglas Only (Li & Fung)',
     :password=>'123'
@@ -217,7 +217,7 @@
 
 @vendor = Vendor.create!(
     :code => 'LECU7',
-    :contact => 'TimChen@lifungsz.com.cn4',
+    :contact => 'srq-notify-internal@amazon.com',
     :is_import => false,
     :name => 'Good Things - Tom Douglas Only (Li & Fung)',
     :password=>'123'
