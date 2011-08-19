@@ -6,7 +6,7 @@
         Vendor
       </td>
       <td>
-        <%= Vendor.find(@vendor_id).code unless @vendor_id.nil? %>
+        <%= Vendor.find(params[:vendor_id]).code unless params[:vendor_id].nil? %>
       </td>
     </tr>
     <tr>
@@ -14,16 +14,16 @@
         Sku
       </td>
       <td>
-        <%= @sku unless @sku.nil? %>
+        <%= params[:sku] unless params[:sku].nil? %>
       </td>
     </tr>
-    <% if !(@vendor_id.nil? || @sku.nil?) then %>
+    <% if params[:vendor_id] && params[:sku] then %>
         <tr>
           <td>
             Create a new Compliance Set
           </td>
           <td>
-            <%= link_to "New Compliance Set", new_compliance_path(:sku => @sku, :vendor_id => @vendor_id) %>
+            <%= link_to "New Compliance Set", new_compliance_path(:sku => params[:sku], :vendor_id => params[:vendor_id]) %>
           </td>
         </tr>
     <% end %>

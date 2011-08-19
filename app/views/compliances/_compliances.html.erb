@@ -1,5 +1,5 @@
 
-<% if !compliances.nil? && !compliances.empty? then %>
+<% if !compliances.blank? then %>
     <h1>Compliance Sets for ASIN <%= compliances.first.sku %> from Vendor <%= compliances.first.vendor.code %></h1>
     <table>
       <tr>

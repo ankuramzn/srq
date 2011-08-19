@@ -41,8 +41,6 @@ class CompliancesController < ApplicationController
     else
       redirect_to sign_up_path
     end
-    # A new compliance set always starts as being in the "vendor" status
-    @compliance.status = "vendor_input"
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @compliance }
@@ -62,7 +60,10 @@ class CompliancesController < ApplicationController
         bucket_name = "Vendors/" + Vendor.find(session[:id]).code + "/" + params[:compliance][:sku] + "/" + (Time.now.to_i).to_s
 
         params[:compliance][:documents_attributes].each { |key, value|
-          upload_to_s3(value["file"].original_filename, value["file"], bucket_name)
+          # key, binary_object, bucket_name --> can be replaced by store_object(bucket, key, object)
+          aws_connection_instance = AmazonS3Asset.new
+          aws_connection_instance.store_object(bucket_name, value["file"].original_filename, value["file"])
+
           value["url"] = "http://s3.amazonaws.com/" + bucket_name + "/" + value["file"].original_filename
           value.delete("file")
         }
@@ -97,7 +98,7 @@ class CompliancesController < ApplicationController
     @compliance = Compliance.find(params[:id])
 
     # Vendor Session
-    if session[:type].eql?("vendor")
+    if vendor_session?
       if !params[:compliance][:documents_attributes].nil? then
         if @compliance.documents.nil? || @compliance.documents.empty?
           bucket_name = "Vendors/" + Vendor.find(session[:id]).code + "/" + params[:compliance][:sku] + "/" + (Time.now.to_i).to_s
@@ -108,7 +109,11 @@ class CompliancesController < ApplicationController
         params[:compliance][:documents_attributes].each { |key, value|
           if value.has_key?("file") then
             begin
-              upload_to_s3(value["file"].original_filename, value["file"], bucket_name)
+
+              # key, binary_object, bucket_name --> can be replaced by store_object(bucket, key, object)
+              aws_connection_instance = AmazonS3Asset.new
+              aws_connection_instance.store_object(bucket_name, value["file"].original_filename, value["file"])
+
               value["url"] = "http://s3.amazonaws.com/" + bucket_name + "/" + value["file"].original_filename
               value.delete("file")
             rescue
@@ -205,41 +210,30 @@ class CompliancesController < ApplicationController
 
     respond_to do |format|
       format.html {
-        redirect_to vendor_asin_compliance_home_path(:vendor_id => vendor_id, :sku => sku) if session[:type].eql?("vendor")
-        redirect_to user_home_path if !session[:type].eql?("vendor")
+        redirect_to vendor_asin_compliance_home_path(:vendor_id => vendor_id, :sku => sku) if vendor_session?
+        redirect_to user_home_path if !vendor_session?
       }
       format.xml  { head :ok }
     end
   end
 
   def vendor_asin_compliance_home
-    if !params[:vendor_id].nil? && !params[:sku].nil?
-      @compliances_vendor = Compliance.by_vendor(Vendor.find(params[:vendor_id])).by_sku(params[:sku]).by_status("vendor_input")
-      @compliances_user = Compliance.by_vendor(Vendor.find(params[:vendor_id])).by_sku(params[:sku]).by_status("user_review")
-      @compliances_approved = Compliance.by_vendor(Vendor.find(params[:vendor_id])).by_sku(params[:sku]).by_status("approved")
 
-#      TODO: VERIFY IS THIS A GOOD WAY TO PASS THROUGH VALUES
-      @sku = params[:sku]
-      @vendor_id = params[:vendor_id]
-      @compliances = @compliances_vendor | @compliances_user | @compliances_approved
-    elsif !params[:vendor_id].nil? && params[:sku].nil?
-      @compliances_vendor = Compliance.by_vendor(Vendor.find(params[:vendor_id])).by_status("vendor_input")
-      @compliances_user = Compliance.by_vendor(Vendor.find(params[:vendor_id])).by_status("user_review")
-      @compliances_approved = Compliance.by_vendor(Vendor.find(params[:vendor_id])).by_status("approved")
-      @compliances = @compliances_vendor | @compliances_user | @compliances_approved
-      @vendor_id = params[:vendor_id]
-    elsif params[:vendor_id].nil? && !params[:sku].nil?
-      @compliances_vendor = Compliance.by_sku(params[:sku]).by_status("vendor_input")
-      @compliances_user = Compliance.by_sku(params[:sku]).by_status("user_review")
-      @compliances_approved = Compliance.by_sku(params[:sku]).by_status("approved")
-      @compliances = @compliances_vendor | @compliances_user | @compliances_approved
-      @sku = params[:sku]
-    else
-      @compliances_vendor = Compliance.by_status("vendor_input")
-      @compliances_user = Compliance.by_status("user_review")
-      @compliances_user = Compliance.by_status("approved")
-      @compliances = @compliances_vendor | @compliances_user | @compliances_approved
-    end
+
+    @compliances_user = Compliance.by_status("user_review")
+    @compliances_user = @compliances_user.by_vendor(Vendor.find(params[:vendor_id])) if params[:vendor_id]
+    @compliances_user = @compliances_user.by_sku(params[:sku]) if params[:sku]
+
+    @compliances_approved = Compliance.by_status("approved")
+    @compliances_approved = @compliances_approved.by_vendor(Vendor.find(params[:vendor_id])) if params[:vendor_id]
+    @compliances_approved = @compliances_approved.by_sku(params[:sku]) if params[:sku]
+
+    @compliances_vendor = Compliance.by_status("vendor_input")
+    @compliances_vendor = @compliances_vendor.by_vendor(Vendor.find(params[:vendor_id])) if params[:vendor_id]
+    @compliances_vendor = @compliances_vendor.by_sku(params[:sku]) if params[:sku]
+
+
+    @compliances = @compliances_vendor | @compliances_user | @compliances_approved
 
     respond_to do |format|
       format.html # index.html.erb
@@ -254,7 +248,7 @@ class CompliancesController < ApplicationController
     params[:asins].each do |asin|
       asin = Asin.find(asin)
       asin.compliance = compliance
-      if compliance.status.eql?("approved")
+      if compliance.approved?
         asin.compliance_approved
       else
         asin.compliance_associated
