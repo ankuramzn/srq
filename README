@@ -65,6 +65,8 @@ Application Details :
 10. Branch 'battery_field_mods' created to convert battery type to select and Battery size to auto complete
 11. Branch 'scripting' created to generate the script for parsing PO Asin dumps and load them in the application
 12. Branch 'app_mailer' created to allow generation of business email from the application
+13. Branch 'podata_upload_remotipart' created to integrate remotipart gem and upload po data file, with results displayed
+
 
 
 Use Cases
