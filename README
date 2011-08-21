@@ -66,6 +66,7 @@ Application Details :
 11. Branch 'scripting' created to generate the script for parsing PO Asin dumps and load them in the application
 12. Branch 'app_mailer' created to allow generation of business email from the application
 13. Branch 'podata_upload_remotipart' created to integrate remotipart gem and upload po data file, with results displayed
+14. Branch 'vendor_summary_view' created to implement the changes requested by the EU business for the Vendor's landing page view
 
 
 
