@@ -49,6 +49,8 @@ Srq::Application.routes.draw do
   match 'compliances/associate_purchase_orders' => 'compliances#associate_purchase_orders'
   resources :compliances
 
-
+  # Procurement related routes
+  get "procurement_bulk_upload" => "procurements#bulk_upload", :as => "procurement_bulk_upload"
+  match "procurements/bulk_process" => "procurements#bulk_process"
 
 end

@@ -67,4 +67,33 @@ $(document).ready(function() {
         }
     }
 
+
+    // Procurement Ajaxy upload related js
+
+    // Hide the spinner on initial load
+    $("#loading").hide();
+
+    function toggleLoading(){
+        $("#loading").toggle();
+        return true;
+    }
+
+    $("#new-procurement-upload-form").ajaxForm({
+        beforeSubmit: toggleLoading
+    });
+
+//    $('#new-procurement-upload-link')
+//        .bind('ajax:beforeSend', function(e, data, status, xhr){
+//            toggleLoading(); // Display the spinner while ajax call is progress
+//        })
+//        .bind('ajax:success', function(e, data, status, xhr){
+//            var $this = $(this),
+//                $container = $('#container'),
+//                $responseText = $(xhr.responseText);
+//                toggleLoading(); // Hide the spinner upon completion of the ajax call
+//                $container.html($responseText);
+////                $container.replaceWith($responseText);
+//        });
+
+
 });

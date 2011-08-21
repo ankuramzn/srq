@@ -20,6 +20,11 @@ gem 'aws-s3'
 gem 'rails3-jquery-autocomplete'
 
 gem 'fastercsv'
+
+# The Remotipart gem enables AJAX file-upload capability to remote forms in Rails 3 apps by extending the native jquery-ujs functionality.
+gem "remotipart"
+
+
 # Use unicorn as the web server
 # gem 'unicorn'
 
