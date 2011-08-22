@@ -1,1 +1,1 @@
-$("#purchaseorders_<%= @id %>").html("<%= escape_javascript(render(:template => 'purchaseorders/index'))%>");
+$("#purchaseorders_<%= params[:id] %>").html("<%= escape_javascript(render(:template => 'purchaseorders/index'))%>");

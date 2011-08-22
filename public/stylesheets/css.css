@@ -146,6 +146,10 @@ table.vendors {
    background:#F8F8F8;
 }
 
+table.asin_list {
+   width:90%;
+   border:1px black solid;
+}
 .asin_list tr:first-child td {
    margin-top:.4em;
 }

@@ -2,13 +2,13 @@
 %tr{ :class => css(counter)}
     %td
         %strong
-            = vendor.code
+            = vendor.name
         %table{ :class => "vendor_data" }
             %tbody
                 %tr
-                    %th Vendor Name
+                    %th Vendor Code
                     %td
-                        = vendor.name
+                        = vendor.code
                 %tr
                     %th Vendor Contact
                     %td
@@ -16,6 +16,6 @@
 
         %small.expand_button
             = link_to "Vendors POs", { :controller => 'vendors', :action => 'vendors_purchaseorders', :format => :js, :id => vendor.id }, :remote => true
+        %small.expand_button
+            = link_to "Vendors Summary POs", { :controller => 'vendors', :action => 'vendors_purchaseorders', :format => :js, :id => vendor.id, :summary => true }, { :remote => true }
         %div{ :id=>"purchaseorders_#{vendor.id}" }
-
-

@@ -1,6 +1,10 @@
 <table class="purchaseorder_list">
   <tbody>
-    <%= render @purchaseorders %>
+    <% if params[:summary] %>
+        <%= render :partial => "purchaseorders/purchaseorder_summary", :collection =>  @purchaseorders %>
+    <% else %>
+        <%= render @purchaseorders %>
+    <% end %>
   </tbody>
 </table>
 

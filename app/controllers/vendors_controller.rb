@@ -21,13 +21,10 @@ class VendorsController < ApplicationController
 
 
     def vendors_purchaseorders
-
       @purchaseorders = Vendor.find( params[:id] ).purchaseorders
-      @id = params[:id]
       respond_to do | format |
           format.js {  }
       end
-
     end
 
     def new

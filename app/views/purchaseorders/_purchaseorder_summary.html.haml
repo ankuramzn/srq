@@ -1,0 +1,15 @@
+- counter = defined?(purchaseorder_summary_counter) ? purchaseorder_summary_counter : 0
+%tr{ :class => css(counter)}
+    %td
+        %strong
+            = purchaseorder_summary.code
+    %td
+        = purchaseorder_summary.delivery_date
+    %td
+        %strong{ :class =>  purchaseorder_summary.status }
+            = purchaseorder_summary.status
+
+
+    %small{ :class => "expand_button" }
+        = link_to 'PO Asins', {   :controller => 'purchaseorders', :action => 'purchaseorder_asins', :format => :js, :id => purchaseorder_summary.id, :summary => true }, :remote => true
+
