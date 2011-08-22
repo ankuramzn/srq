@@ -526,6 +526,16 @@ table.compliance_docs {
    border:0;
 }
 
+#loading {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin: -100px 0 0 -100px;
+	height: 200px;
+	width: 200px;
+}
+
+
 /* CSS for Flash Messages */
 /*.flash {*/
     /*text-align: center;*/

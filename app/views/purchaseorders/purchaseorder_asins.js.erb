@@ -1,3 +1,5 @@
+$("#loading").hide();
+
 if( <%= params[:summary].nil? %> ){
     $("#asins_<%= @id %>").html("<%= escape_javascript(render(:template => 'asins/index'))%>");
 }

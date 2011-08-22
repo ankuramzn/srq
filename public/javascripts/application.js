@@ -82,6 +82,13 @@ $(document).ready(function() {
         beforeSubmit: toggleLoading
     });
 
+
+    $(".expand_button").children()
+        .bind('ajax:beforeSend', function(e, data, status, xhr){
+            $("#loading").show();
+        });
+
+
 //    $('#new-procurement-upload-link')
 //        .bind('ajax:beforeSend', function(e, data, status, xhr){
 //            toggleLoading(); // Display the spinner while ajax call is progress
