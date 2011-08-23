@@ -3,7 +3,7 @@
     $("#loading").hide();
 
     $('#container').replaceWith( '<%= escape_javascript(
-      render :partial => "bulk_process", :locals => { :procurements => @procurements }
+      render :partial => "bulk_process", :locals => { :procurements => @procurements, :url => @s3_url }
     ) %>' );
 
 <% end %>
