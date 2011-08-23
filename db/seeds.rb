@@ -31,7 +31,7 @@
     @po = @vendor.purchaseorders.create!(
         :code => 'L7429042',
         :condition=>'incomplete',
-        :delivery_date=>Time.now,
+        :delivery_date=>Date.today,
         :marketplace=>'US',
         :status=>'pending_vendor_input'
     )
@@ -53,7 +53,7 @@
     @po = @vendor.purchaseorders.create!(
         :code => 'U7650632',
         :condition=>'incomplete',
-        :delivery_date=>Time.now,
+        :delivery_date=>Date.yesterday,
         :marketplace=>'US',
         :status=>'pending_vendor_input'
     )

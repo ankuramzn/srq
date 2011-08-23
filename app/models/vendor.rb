@@ -9,7 +9,7 @@ class Vendor < ActiveRecord::Base
   validates_uniqueness_of :code
 
   # Associated Model relations
-  has_many :purchaseorders
+  has_many :purchaseorders, :order => 'delivery_date ASC'
   has_many :compliances
   has_many :asins, :through => :purchaseorders
 
