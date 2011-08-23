@@ -21,6 +21,7 @@ class PurchaseordersController < ApplicationController
   def purchaseorder_asins
     @asins = Purchaseorder.find(params[:id]).asins
     @id = params[:id]
+    @vendor_id = Purchaseorder.find(params[:id]).vendor.id
     respond_to do | format |
         format.js {  }
     end

@@ -4,5 +4,5 @@ if( <%= params[:summary].nil? %> ){
     $("#asins_<%= @id %>").html("<%= escape_javascript(render(:template => 'asins/index'))%>");
 }
 else{
-    $("#purchaseorder_summary_view_asins").html("<%= escape_javascript(render(:template => 'asins/index'))%>");
+    $("#purchaseorder_summary_view_asins_<%= @vendor_id %>").html("<%= escape_javascript(render(:template => 'asins/index'))%>");
 }
