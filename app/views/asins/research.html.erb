@@ -1,22 +1,20 @@
+<div id='container' >
 
-<%= form_tag(asin_status_path,:method => 'get' ) do %>
+    <%= form_tag(asin_status_path,:method => 'get' ) do %>
+        <div class="box">
+            <label>
+                <span><%= label_tag :sku %></span>
+                <%= text_field_tag :sku, params[:sku] %>
+            </label>
+        </div>
+        <div class="box">
+            <label>
+            <%= submit_tag 'Research', :class => 'box_button ui-button ui-widget ui-state-default ui-corner-all' %>
+            </label>
+        </div>
 
-    <table class = "vendortable">
-      <tr>
-        <td>
-            <%= label_tag :sku %>
-        </td>
-        <td>
-            <%= text_field_tag :sku, params[:sku] %>
-        </td>
-      </tr>
+    <% end %>
 
-      <tr>
-        <td colspan="2">
-            <%= submit_tag 'Research' %>
-        </td>
-      </tr>
+</div>
 
-    </table>
-<% end %>
 

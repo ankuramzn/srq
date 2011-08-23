@@ -1,22 +1,18 @@
+<div id='container' >
 
-<%= form_tag(purchaseorder_home_path,:method => 'get' ) do %>
+    <%= form_tag(purchaseorder_home_path,:method => 'get' ) do %>
+        <div class="box">
+            <label>
+                <span><%= label_tag :purchaseorder_id %></span>
+                <%= text_field_tag :purchaseorder_id, params[:purchaseorder_id] %>
+            </label>
+        </div>
+        <div class="box">
+            <label>
+            <%= submit_tag 'Research', :class => 'box_button ui-button ui-widget ui-state-default ui-corner-all' %>
+            </label>
+        </div>
 
-    <table class = "vendortable">
-      <tr>
-        <td>
-            <%= label_tag :purchaseorder_id %>
-        </td>
-        <td>
-            <%= text_field_tag :purchaseorder_id, params[:purchaseorder_id] %>
-        </td>
-      </tr>
+    <% end %>
 
-      <tr>
-        <td colspan="2">
-            <%= submit_tag 'Research' %>
-        </td>
-      </tr>
-
-    </table>
-<% end %>
-
+</div>

@@ -1,4 +1,4 @@
-<div id='container' class="vendortable">
+<div id='container' >
     <%=  form_tag( { :controller => :procurements, :action => :bulk_process, :method => :post }, { :remote => true, :id => 'new-procurement-upload-form'} ) do %>
         <div class="box">
             <label>
@@ -8,7 +8,7 @@
         </div>
         <div class="box">
             <label>
-            <%= submit_tag 'Upload', :class => 'box_button ui-button ui-widget ui-state-default ui-corner-all', :id => 'single_asin_attributes_load' %>
+            <%= submit_tag 'Upload', :class => 'box_button ui-button ui-widget ui-state-default ui-corner-all' %>
             </label>
         </div>
 
