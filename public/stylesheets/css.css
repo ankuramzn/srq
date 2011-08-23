@@ -535,6 +535,8 @@ table.compliance_docs {
 	width: 200px;
 }
 
+.hilite { background:yellow; }
+
 
 /* CSS for Flash Messages */
 /*.flash {*/

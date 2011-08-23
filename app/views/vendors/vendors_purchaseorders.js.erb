@@ -6,3 +6,13 @@ $(".expand_button").children()
     .bind('ajax:beforeSend', function(e, data, status, xhr){
         $("#loading").show();
     });
+
+$(".purchaseorder_asins_link").click(function() {
+    // Find all elements with the class .purchaseorder_asins_link and remove the parent().parent() class hilite
+    $(".purchaseorder_asins_link").parent().parent().removeClass('hilite');
+
+    var existingCss = $(this).parent().parent().attr("class");
+    $(this).parent().parent().removeClass().addClass(existingCss + ", hilite");
+//            $(this).parent().parent().addClass("hilite"); --> NOT WORKING
+});
+
