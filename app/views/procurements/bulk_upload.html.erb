@@ -1,23 +1,17 @@
 <div id='container' class="vendortable">
     <%=  form_tag( { :controller => :procurements, :action => :bulk_process, :method => :post }, { :remote => true, :id => 'new-procurement-upload-form'} ) do %>
-
-      <table class="vendors">
-          <tr>
-            <td>
-                Procurement Data File
-            </td>
-            <td>
+        <div class="box">
+            <label>
+                <span>File</span>
                 <%= file_field_tag :attachment %>
-            </td>
-          </tr>
-          <tr>
-            <td colspan="2">
-                <%= submit_tag 'Upload' %>
-            </td>
-          </tr>
-        </table>
+            </label>
+        </div>
+        <div class="box">
+            <label>
+            <%= submit_tag 'Upload', :class => 'box_button ui-button ui-widget ui-state-default ui-corner-all', :id => 'single_asin_attributes_load' %>
+            </label>
+        </div>
 
     <% end %>
 
 </div>
-

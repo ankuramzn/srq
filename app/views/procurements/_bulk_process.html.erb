@@ -1,8 +1,20 @@
-<p>
-  Uploaded File - <%= url %>
-</p>
-<table class="vendors">
+<div class="whiteBox" id="selector">
+			legend [ <b><font color="#FF005D">Unknown Vendor</font></b> | <b><font color= '#B4F263'>PO and ASIN Created</font></b> | <b><font color='#EDED8C'>PO exists ASIN created</font></b> | <b><font color='#B8EAF5'>Duplicate</font></b> ]
+</div>
 
+<div class="box">
+    <label>
+        <span>Uploaded File</span>
+        <%=  link_to 's3_link',  url, :target => "_blank" %>
+    </label>
+</div>
+
+<br>
+<br>
+
+<div class="box">
+
+  <table >
   <tr>
     <td>
       Vendor
@@ -18,5 +30,7 @@
     </td>
   </tr>
 
-    <%= render :partial => "procurement", :collection => procurements %>
+  <%= render :partial => "procurement", :collection => procurements %>
 </table>
+
+</div>

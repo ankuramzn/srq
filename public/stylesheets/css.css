@@ -537,6 +537,52 @@ table.compliance_docs {
 
 .hilite { background:yellow; }
 
+/* Search forms and upload forms */
+div.box {
+    background: none repeat scroll 0 0 #DDDDDD;
+    border: 1px solid #CCCCCC;
+    margin: 0 auto;
+    position: relative;
+    top: 50px;
+    width: 500px;
+}
+
+div.box label span {
+    color: #222222;
+    display: block;
+    float: left;
+    font-size: 12px;
+    padding: 5px 20px 0 0;
+    text-align: right;
+    width: 100px;
+}
+
+div .box_button {
+    position: relative;
+    right: -80%;
+
+}
+
+div.box table {
+    width: 90%;
+    position: relative;
+    left: 5%;
+}
+
+#selector {
+    float: right;
+    margin-top: -5px;
+    white-space: nowrap;
+}
+
+div.whiteBox {
+    background-color: #FFFFFF;
+    border: 1px solid #C1C1C1;
+    height: 100%;
+    margin-bottom: 8px;
+    padding: 10px;
+    position: relative;
+}
 
 /* CSS for Flash Messages */
 /*.flash {*/
