@@ -73,15 +73,11 @@ $(document).ready(function() {
     // Hide the spinner on initial load
     $("#loading").hide();
 
-    function toggleLoading(){
-        $("#loading").toggle();
-        return true;
-    }
-
-    $("#new-procurement-upload-form").ajaxForm({
-        beforeSubmit: toggleLoading
-    });
-
+    // http://www.alfajango.com/blog/rails-3-ajax-file-uploads-with-remotipart/
+    $('form[data-remote]')
+      .bind('ajax:beforeSend, ajax:remotipartSubmit', function(e, data, status, xhr){
+           $("#loading").show();
+      });
 
     $(".expand_button").children()
         .bind('ajax:beforeSend', function(e, data, status, xhr){

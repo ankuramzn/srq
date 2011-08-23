@@ -1,12 +1,10 @@
 <%= remotipart_response do %>
 
-    $("#loading").toggle();
+    $("#loading").hide();
 
     $('#container').replaceWith( '<%= escape_javascript(
       render :partial => "bulk_process", :locals => { :procurements => @procurements }
     ) %>' );
-
-
 
 <% end %>
 
