@@ -530,9 +530,9 @@ table.compliance_docs {
 	position: absolute;
 	top: 50%;
 	left: 50%;
-	margin: -100px 0 0 -100px;
-	height: 200px;
-	width: 200px;
+    bottom: 50%;
+    height: 300px;
+    width: 500px;"
 }
 
 .hilite { background:yellow; }
