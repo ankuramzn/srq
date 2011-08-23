@@ -1,41 +1,32 @@
-<h1>Application Login Page</h1>
+<div id='container' >
 
-<% form_tag :action => 'authenticate' do %>
+    <% form_tag :action => 'authenticate' do %>
+        <div class="box">
+            <label>
+                <span><%= label_tag :username %></span>
+                <%= text_field_tag :username, params[:username], :class => "box_textfield" %>
+            </label>
+        </div>
+        <div class="box">
+            <label>
+              <span><%= label_tag :password %></span>
+              <%= password_field_tag :password, nil,  :class => "box_textfield" %>
+            </label>
+        </div>
+        <div class="box">
+                <span class="box_button">
+                  Vendor        <%= radio_button_tag 'session_selector', "vendor", false %>
+                  User          <%= radio_button_tag 'session_selector', "user", false %>
+                    </span>
+        </div>
 
-    <table class = "vendortable">
-      <tr>
-        <td>
-            <%= label_tag :username %>
-        </td>
-        <td>
-            <%= text_field_tag :username, params[:username] %>
-        </td>
-      </tr>
 
-      <tr>
-        <td>
-            <%= label_tag :password %>
-        </td>
-        <td>
-            <%= password_field_tag :password %>
-        </td>
-      </tr>
+        <div class="box">
+            <label>
+            <%= submit_tag 'Login', :class => 'box_button ui-button ui-widget ui-state-default ui-corner-all' %>
+            </label>
+        </div>
 
-      <tr>
-        <td>
-            <%= label_tag :session_selector %>
-        </td>
-        <td>
-          Vendor        <%= radio_button_tag 'session_selector', "vendor", false %>
-          User          <%= radio_button_tag 'session_selector', "user", false %>
-        </td>
-      </tr>
+    <% end %>
 
-      <tr>
-        <td colspan="2">
-            <%= submit_tag('Login') %>
-        </td>
-      </tr>
-    </table>
-
-<% end %>
+</div>

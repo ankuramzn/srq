@@ -559,8 +559,13 @@ div.box label span {
 
 div .box_button {
     position: relative;
-    right: -80%;
+    right: -65%;
 
+}
+
+div .box_textfield {
+    width: 300px;
+    height: 15px;
 }
 
 div.box table {
