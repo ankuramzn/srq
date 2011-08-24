@@ -62,33 +62,30 @@ class VendorsController < ApplicationController
           :skip_blanks => true) do |row|
 
         row_hash = row.to_hash
-
         puts row_hash.inspect
 
-        @vendors << Vendor.create!(
-                          :code => row_hash['vendor_code'],
-                          :contact => row_hash['contact'],
-                          :is_import=>true,
-                          :name => row_hash['name'],
-                          :password=>'123'
-                          )
-        #{"name"=>"V1_name", "contact"=>"v1@v1.com", "vendor_code"=>"V1"}
+        # Use case where the data is missing for the Vendor
+        if row_hash['vendor_code'].nil? or  row_hash['contact'].nil? or row_hash['name'].nil?
+          puts "BAD ROW - Missing Data"
+          next
+        end
 
+        begin
+          @vendors << Vendor.create!(
+                            :code => row_hash['vendor_code'],
+                            :contact => row_hash['contact'],
+                            :is_import=>true,
+                            :name => row_hash['name'],
+                            :password=>'123'
+                            )
+        rescue
+          puts "BAD ROW - AR Error"
+          next
+        end
 
-
-#@vendor = Vendor.create!(
-#    :code=>'BEFR7',
-#    :contact=>'srq-notify-internal@amazon.com',
-#    :is_import=>true,
-#    :name=>'Boni & Hanson (Li & Fung)',
-#    :password=>'123'
-#)
 
 
       end
-
-      #@procurements = Procurement.procurement_process(@procurements)
-
     end
 
 
