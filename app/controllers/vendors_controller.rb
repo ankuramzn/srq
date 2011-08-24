@@ -53,6 +53,10 @@ class VendorsController < ApplicationController
       puts params[:attachment].original_filename
 
       @vendors = Array.new
+      @bad_rows = Array.new
+      @existing_vendor_rows = Array.new
+
+      row_count = 0
 
       # Parse and add to application
       FasterCSV.parse(
@@ -61,12 +65,15 @@ class VendorsController < ApplicationController
           :col_sep => " ",
           :skip_blanks => true) do |row|
 
+        row_count += 1
         row_hash = row.to_hash
+        puts row_count.to_s + " - " + row.inspect
         puts row_hash.inspect
 
         # Use case where the data is missing for the Vendor
         if row_hash['vendor_code'].nil? or  row_hash['contact'].nil? or row_hash['name'].nil?
           puts "BAD ROW - Missing Data"
+          @bad_rows << row_count
           next
         end
 
@@ -80,6 +87,7 @@ class VendorsController < ApplicationController
                             )
         rescue
           puts "BAD ROW - AR Error"
+          @existing_vendor_rows << row_count
           next
         end
 

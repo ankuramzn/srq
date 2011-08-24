@@ -541,10 +541,11 @@ table.compliance_docs {
 div.box {
     background: none repeat scroll 0 0 #DDDDDD;
     border: none;
-    margin: 0 auto;
+    margin: 0;
     position: relative;
     top: 50px;
     width: 800px;
+    padding: 10px;
 }
 
 div.box label span {
@@ -572,6 +573,7 @@ div.box table {
     width: 90%;
     position: relative;
     left: 5%;
+    text-align: center;
 }
 
 div.box button {
@@ -593,18 +595,21 @@ div.box ul {
 
 
 #selector {
-    float: right;
+    float: left;
     margin-top: -5px;
-    white-space: nowrap;
+    white-space: pre-wrap;
 }
 
 div.whiteBox {
     background-color: #FFFFFF;
-    border: 1px solid #C1C1C1;
-    height: 100%;
+    border: 0px solid #C1C1C1;
+    height: 1%;
+    width: 80%;
     margin-bottom: 8px;
     padding: 10px;
-    position: relative;
+    position: fixed;
+    z-index: 1;
+
 }
 
 /* CSS for Flash Messages */
