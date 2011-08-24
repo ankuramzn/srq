@@ -21,11 +21,14 @@ module ApplicationHelper
   end
 
   def wee_standards
-    ['Large household appliances', 'Small household appliances', 'IT and telecommunications equipment', 'Consumer equipment', 'Lighting equipment (Gas discharge lamps >> fluorescent and high-intensity discharge lamps)', 'Electrical and electronic tools (with the exception of large-scale stationary industrial tools)', 'Toys, leisure and sports equipment', 'Medical devices (with the exception of all implanted and infected products)', 'Monitoring and control instruments', 'Automatic dispensers']
+    ['', 'Large household appliances', 'Small household appliances', 'IT and telecommunications equipment', 'Consumer equipment', 'Lighting equipment (Gas discharge lamps >> fluorescent and high-intensity discharge lamps)', 'Electrical and electronic tools (with the exception of large-scale stationary industrial tools)', 'Toys, leisure and sports equipment', 'Medical devices (with the exception of all implanted and infected products)', 'Monitoring and control instruments', 'Automatic dispensers']
   end
 
   def battery_types
-    ['Primary Cell', 'Secondary Cell', 'Chemical system']
+    ['', 'Alkaline', 'Lithium', 'Lithium air', 'Nickel oxyhydroxide', 'Silver-oxide', 'Zinc-carbon', 'Zinc chloride', 'Lead-acid', 'Lithium air', 'Lithium-ion', 'Lithium iron phosphate', 'Lithium-sulfur', 'Lithium-titanate', 'Nickel metal hydride', 'Nickel-zinc', 'Potassium-ion', 'Rechargeable alkaline', 'Silicon air', 'Super iron', 'Zinc matrix']
   end
 
+  def battery_packaging_types
+    ['', 'Removable', 'Built-in']
+  end
 end

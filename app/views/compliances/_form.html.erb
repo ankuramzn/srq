@@ -223,7 +223,7 @@
                   Battery Packaging Type
               </th>
               <td colspan="4">
-                  <%= battery_detail_form.text_field :packaging, :readonly => (!session[:type].eql?("vendor") || !@compliance.is_vendor_editable) %>
+                  <%= battery_detail_form.select( :packaging, battery_packaging_types, :readonly => (!session[:type].eql?("vendor") || !@compliance.is_vendor_editable)) %>
               </td>
             </tr>
             <tr>
