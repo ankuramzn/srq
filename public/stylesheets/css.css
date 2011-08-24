@@ -540,7 +540,7 @@ table.compliance_docs {
 /* Search forms and upload forms */
 div.box {
     background: none repeat scroll 0 0 #DDDDDD;
-    border: 1px solid #CCCCCC;
+    border: none;
     margin: 0 auto;
     position: relative;
     top: 50px;
@@ -574,8 +574,10 @@ div.box table {
     left: 5%;
 }
 
-div.box h1 {
-    text-align: center;
+div.box button {
+    position: absolute;
+    top:10px;
+    right: 10px;
 }
 
 
