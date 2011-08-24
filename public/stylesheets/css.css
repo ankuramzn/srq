@@ -544,7 +544,7 @@ div.box {
     margin: 0 auto;
     position: relative;
     top: 50px;
-    width: 500px;
+    width: 800px;
 }
 
 div.box label span {
@@ -573,6 +573,22 @@ div.box table {
     position: relative;
     left: 5%;
 }
+
+div.box h1 {
+    text-align: center;
+}
+
+
+div.box li {
+   margin-top:.8em;
+   margin-left: 1.5em;
+}
+
+div.box ul {
+   list-style: none;
+   margin-top: .2em;
+}
+
 
 #selector {
     float: right;

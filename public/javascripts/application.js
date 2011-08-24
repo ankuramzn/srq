@@ -84,6 +84,10 @@ $(document).ready(function() {
             $("#loading").show();
         });
 
+    $('#instructions_toggle').click(function(){
+        $('#top_container').toggle('slow');
+    });
+
 
 //    $('#new-procurement-upload-link')
 //        .bind('ajax:beforeSend', function(e, data, status, xhr){

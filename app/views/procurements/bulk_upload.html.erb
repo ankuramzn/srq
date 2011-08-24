@@ -1,3 +1,50 @@
+<button id="instructions_toggle">Instructions</button>
+
+<div id='top_container'>
+  <div class="box">
+    <h1>Instructions</h1>
+
+        <ul>
+            <li>
+                1. Sample upload file can be found here <%=  link_to 'here',  'http://srq-templates.s3.amazonaws.com/test.csv', :target => "_blank" %>
+            </li>
+            <li>
+                2. File Format specifications
+                <ul>
+                    <li>
+                        2.1. Tab delimited csv files are acceptable
+                    </li>
+                    <li>
+                        2.2. Maximum size 5 mb
+                    </li>
+                </ul>
+            </li>
+            <li>
+                3. Expected Columns
+                <ul>
+                    <li>
+                        3.1. Vendor Code
+                    </li>
+                    <li>
+                        3.2. Purchase Order Id
+                    </li>
+                    <li>
+                        3.3. Asin
+                    </li>
+                    <li>
+                        3.4. Purchase Order Date
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+  </div>
+</div>
+
+<br>
+<br>
+<br>
+
 <div id='container' >
     <%=  form_tag( { :controller => :procurements, :action => :bulk_process, :method => :post }, { :remote => true, :id => 'new-procurement-upload-form'} ) do %>
         <div class="box">
