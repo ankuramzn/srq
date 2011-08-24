@@ -25,7 +25,7 @@ module ApplicationHelper
   end
 
   def battery_types
-    ['', 'Alkaline', 'Lithium', 'Lithium air', 'Nickel oxyhydroxide', 'Silver-oxide', 'Zinc-carbon', 'Zinc chloride', 'Lead-acid', 'Lithium air', 'Lithium-ion', 'Lithium iron phosphate', 'Lithium-sulfur', 'Lithium-titanate', 'Nickel metal hydride', 'Nickel-zinc', 'Potassium-ion', 'Rechargeable alkaline', 'Silicon air', 'Super iron', 'Zinc matrix']
+    ['', 'Primary cells - Alkaline', 'Primary cells - Lithium', 'Primary cells - Lithium air', 'Primary cells - Nickel oxyhydroxide', 'Primary cells - Silver-oxide', 'Primary cells - Zinc-carbon', 'Primary cells - Zinc chloride', 'Secondary cells - Lead-acid', 'Secondary cells - Lithium air', 'Secondary cells - Lithium-ion', 'Secondary cells - Lithium iron phosphate', 'Secondary cells - Lithium-sulfur', 'Secondary cells - Lithium-titanate', 'Secondary cells - Nickel metal hydride', 'Secondary cells - Nickel-zinc', 'Secondary cells - Potassium-ion', 'Secondary cells - Rechargeable alkaline', 'Secondary cells - Silicon air', 'Secondary cells - Super iron', 'Secondary cells - Zinc matrix']
   end
 
   def battery_packaging_types

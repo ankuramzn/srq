@@ -220,7 +220,7 @@
             </tr>
             <tr>
               <th colspan="2">
-                  Battery Packaging Type
+                  Battery Removable or Built-in
               </th>
               <td colspan="4">
                   <%= battery_detail_form.select( :packaging, battery_packaging_types, :readonly => (!session[:type].eql?("vendor") || !@compliance.is_vendor_editable)) %>
