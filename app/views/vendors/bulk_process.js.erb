@@ -1,0 +1,16 @@
+<%= remotipart_response do %>
+
+    $("#loading").hide();
+
+    $('#top_container').hide();
+
+    $('#container').replaceWith( '<%= escape_javascript(
+      #render :partial => "bulk_process"
+      #render 'vendors/index'
+      render :partial => "bulk_process", :locals => { :vendors => @vendors }
+    ) %>' );
+
+
+<% end %>
+
+

@@ -53,4 +53,8 @@ Srq::Application.routes.draw do
   get "procurement_bulk_upload" => "procurements#bulk_upload", :as => "procurement_bulk_upload"
   match "procurements/bulk_process" => "procurements#bulk_process"
 
+  # Bulk Vendor upload related routes
+  get "vendor_bulk_upload" => "vendors#bulk_upload", :as => "vendor_bulk_upload"
+  match "vendors/bulk_process" => "vendors#bulk_process"
+
 end

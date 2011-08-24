@@ -46,4 +46,50 @@ class VendorsController < ApplicationController
     def research
     end
 
+    def bulk_upload
+    end
+
+    def bulk_process
+      puts params[:attachment].original_filename
+
+      @vendors = Array.new
+
+      # Parse and add to application
+      FasterCSV.parse(
+          params[:attachment].open,
+          :headers => true,
+          :col_sep => " ",
+          :skip_blanks => true) do |row|
+
+        row_hash = row.to_hash
+
+        puts row_hash.inspect
+
+        @vendors << Vendor.create!(
+                          :code => row_hash['vendor_code'],
+                          :contact => row_hash['contact'],
+                          :is_import=>true,
+                          :name => row_hash['name'],
+                          :password=>'123'
+                          )
+        #{"name"=>"V1_name", "contact"=>"v1@v1.com", "vendor_code"=>"V1"}
+
+
+
+#@vendor = Vendor.create!(
+#    :code=>'BEFR7',
+#    :contact=>'srq-notify-internal@amazon.com',
+#    :is_import=>true,
+#    :name=>'Boni & Hanson (Li & Fung)',
+#    :password=>'123'
+#)
+
+
+      end
+
+      #@procurements = Procurement.procurement_process(@procurements)
+
+    end
+
+
 end
