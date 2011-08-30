@@ -27,6 +27,9 @@
                 <%= link_to "Home", vendor_home_path %>
             </li>
             <li>
+              <%= link_to "Detail View", vendor_home_path(:detail => true) %>
+            </li>
+            <li>
                 <%= link_to "New Compliance Set", new_compliance_path %>
             </li>
 
@@ -45,7 +48,9 @@
             <li>
               <%= link_to "New Vendors", vendor_bulk_upload_path %>
             </li>
-
+            <li>
+              <%= link_to "Procurement Data", procurement_bulk_upload_path %>
+            </li>
         <% end %>
 
         <li>
@@ -53,9 +58,6 @@
         </li>
         <li>
             <%= link_to "Research Asin", research_asin_path %>
-        </li>
-        <li>
-            <%= link_to "Procurement Data", procurement_bulk_upload_path %>
         </li>
 
         <li>
