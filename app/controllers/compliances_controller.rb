@@ -4,6 +4,8 @@ class CompliancesController < ApplicationController
 
   autocomplete :battery_size, :size
 
+  before_filter :set_compliance_set_status
+
   # GET /compliances
   # GET /compliances.xml
   def index
@@ -31,6 +33,7 @@ class CompliancesController < ApplicationController
   def new
 
     @compliance = Compliance.new
+    @compliance.status = "vendor_input"
     if params[:sku]
       @compliance.sku = params[:sku]
     end
@@ -272,4 +275,18 @@ class CompliancesController < ApplicationController
     flash[:notice] = 'I can haz the Copies and copies ...mmmmm !!!'
     render "edit"
   end
+
+
+  private
+  def set_compliance_set_status
+
+    if "Save Compliance Set details".eql?(params[:commit])
+      params[:compliance][:status] = "vendor_input"
+    end
+    if "Submit for Review".eql?(params[:commit])
+      params[:compliance][:status] = "user_review"
+    end
+        #%w[vendor_input user_review approved rejected]
+  end
+
 end

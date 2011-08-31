@@ -41,7 +41,6 @@ class Compliance < ActiveRecord::Base
   }
 
   before_update :send_update_notification
-  after_initialize :set_initial_compliance_status
 
 
   def is_vendor_editable
@@ -85,11 +84,6 @@ class Compliance < ActiveRecord::Base
   def send_update_notification
     puts "Self Status " + self.status + " Currently persisted Status from DB " + Compliance.find(self.id).status + " => Changed " + (self.status_changed?).to_s
     SrqMailer.compliance_update_notification(self.vendor, self.sku, self.status_was, self.status).deliver unless !self.status_changed?
-  end
-
-  def set_initial_compliance_status
-    # A new compliance set always starts as being in the "vendor" status
-    self.status = "vendor_input"
   end
 
 #  TODO: Figure out how to define association to pull up all PO ASINs linked to Compliance Set

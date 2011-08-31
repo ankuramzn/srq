@@ -14,20 +14,23 @@
   <% end %>
 
 
-    <div class="compliance_set_status">
-      <table>
-        <tbody>
-          <tr>
-            <th>
-              Status
-            </th>
-            <td>
-              <%= f.select(:status, compliance_set_status) %>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+    <% if !session[:type].eql?("vendor") then %>
+        <div class="compliance_set_status">
+            <table>
+              <tbody>
+                <tr>
+                  <th>
+                    Status
+                  </th>
+                  <td>
+                    <%= f.select(:status, compliance_set_status) %>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+    <% end %>
+
 
 
   <div class="asin_data">
@@ -483,9 +486,15 @@
     </table>
   </div>
 
-
   <div class="actions">
-    <%= f.submit %>
+      <% if session[:type].eql?("vendor") then %>
+        <%= submit_tag "Save Compliance Set details", :confirm => "Partial Save of Compliance Set"  %>
+        <%= submit_tag "Submit for Review", :confirm => "Submit Compliance Set for User Review"  %>
+      <% else %>
+        <%= f.submit %>
+      <% end %>
   </div>
+
+
 <% end %>
 </div>

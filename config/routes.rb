@@ -45,7 +45,7 @@ Srq::Application.routes.draw do
 
   # Compliance Related routes
   get 'vendor_asin_compliance_home' => "compliances#vendor_asin_compliance_home", :as => 'vendor_asin_compliance_home'
-  get 'copy_compliance' => "compliances#copy", :as => "copy_compliance"
+  match 'compliances/copy/:id', :to => 'compliances#copy', :as => "copy_compliance"
   match 'compliances/associate_purchase_orders' => 'compliances#associate_purchase_orders'
   resources :compliances
 
