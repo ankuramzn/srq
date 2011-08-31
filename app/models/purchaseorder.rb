@@ -4,6 +4,21 @@ class Purchaseorder < ActiveRecord::Base
   belongs_to :vendor
   has_many :asins
 
+  scope :from_date, lambda { |ago|
+    where("purchaseorders.delivery_date >= ?", ago)
+  }
+
+  scope :to_date, lambda { |ago|
+    where("purchaseorders.delivery_date <= ?", ago)
+  }
+
+  scope :by_vendor, lambda { |vendor_id|
+    {
+      :conditions => { :vendor_id => vendor_id }
+    }
+  }
+
+
   # Triggered as a result of a associating a compliance set with a asin on the purchase order
   # Verifying if all asins in the purchase order now have a compliance set associated (approved or not)
   def compliance_associated

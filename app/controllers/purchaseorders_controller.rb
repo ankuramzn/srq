@@ -31,8 +31,17 @@ class PurchaseordersController < ApplicationController
   end
 
   def search
-    @purchaseorders = Purchaseorder.all
+    if vendor_session?
+      @purchaseorders = Purchaseorder.by_vendor(session[:id])
+    else
+      @purchaseorders = Purchaseorder.all
+    end
+    @purchaseorders = @purchaseorders.from_date(params[:from_date]) if !params[:from_date].blank?
+    @purchaseorders = @purchaseorders.to_date(params[:to_date]) if !params[:to_date].blank?
+
   end
 
 
 end
+
+
