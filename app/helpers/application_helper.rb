@@ -31,4 +31,10 @@ module ApplicationHelper
   def battery_packaging_types
     ['', 'Removable', 'Built-in']
   end
+
+  # TODO : DRY this
+  def vendor_session?
+    session[:type].eql?("vendor")
+  end
+
 end

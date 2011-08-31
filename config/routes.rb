@@ -31,6 +31,7 @@ Srq::Application.routes.draw do
   get "purchaseorder_home" => "purchaseorders#show", :as => "purchaseorder_home"
   match 'vendors/vendors_purchaseorders' => 'vendors#vendors_purchaseorders'
   get "research_purchaseorder" => "purchaseorders#research", :as => "research_purchaseorder"
+  match 'purchaseorders/search' => 'purchaseorders#search'
 
 
   # Vendor related routes

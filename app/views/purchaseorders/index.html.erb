@@ -1,7 +1,10 @@
 <table class="purchaseorder_list">
   <tbody>
     <% if params[:summary] %>
-        <%= render :partial => "purchaseorders/purchaseorder_summary", :collection =>  @purchaseorders %>
+        <%= render :partial => "purchaseorders/purchaseorder_summary",
+                   :collection =>  @purchaseorders,
+                   :locals => { :searching => searching }
+        %>
     <% else %>
         <%= render @purchaseorders %>
     <% end %>
@@ -9,8 +12,8 @@
 </table>
 
 <% if params[:summary] %>
-    <!--Put a div for displaying ASINs when the summary view is being pulled up -->
+    <!--Put a div for displaying ASINs when the summary view is being pulled up
+    append a specific vendor Id when the Vendor is logged in -->
     <div id="purchaseorder_summary_view_asins_<%= params[:id] %>" class="vendortable" >
     </div>
-
 <% end %>

@@ -1,6 +1,11 @@
 $("#loading").hide();
-
-$("#purchaseorders_<%= params[:id] %>").html("<%= escape_javascript(render(:template => 'purchaseorders/index'))%>");
+$("#purchaseorders_<%= params[:id] %>")
+        .html("<%= escape_javascript(
+                            render(
+                                :template => 'purchaseorders/index',
+                                :locals => { :searching => false }
+                                ))
+               %>");
 
 $(".expand_button").children()
     .bind('ajax:beforeSend', function(e, data, status, xhr){

@@ -30,4 +30,9 @@ class PurchaseordersController < ApplicationController
   def research
   end
 
+  def search
+    @purchaseorders = Purchaseorder.all
+  end
+
+
 end

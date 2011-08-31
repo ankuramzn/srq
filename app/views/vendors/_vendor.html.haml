@@ -18,5 +18,5 @@
                 = link_to "Vendors POs", { :controller => 'vendors', :action => 'vendors_purchaseorders', :format => :js, :id => vendor.id }, :remote => true
         - else
             %small.expand_button
-                = link_to "Vendors Summary POs", { :controller => 'vendors', :action => 'vendors_purchaseorders', :format => :js, :id => vendor.id, :summary => true }, { :remote => true }
+                = link_to "Vendors Summary POs", { :controller => 'vendors', :action => 'vendors_purchaseorders', :format => :js, :id => vendor.id, :summary => true, :searching => false }, { :remote => true }
         %div{ :id=>"purchaseorders_#{vendor.id}" }

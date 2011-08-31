@@ -1,6 +1,6 @@
 <div id='container' >
 
-    <%= form_tag(purchaseorder_home_path,:method => 'get' ) do %>
+    <%= form_tag(:controller => "purchaseorders", :action => "search" ,:method => 'get' ) do %>
         <div class="box">
             <label>
                 <span><%= label_tag :purchaseorder_id %></span>

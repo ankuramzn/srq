@@ -4,5 +4,9 @@ if( <%= params[:summary].nil? %> ){
     $("#asins_<%= @id %>").html("<%= escape_javascript(render(:template => 'asins/index'))%>");
 }
 else{
-    $("#purchaseorder_summary_view_asins_<%= @vendor_id %>").html("<%= escape_javascript(render(:template => 'asins/index'))%>");
+    if(<%= params[:searching].nil? %>)
+        $("#purchaseorder_summary_view_asins_<%= @vendor_id %>").html("<%= escape_javascript(render(:template => 'asins/index'))%>");
+    else
+        $("#purchaseorder_summary_view_asins_all_vendors").html("<%= escape_javascript(render(:template => 'asins/index'))%>");
+
 }
