@@ -10,8 +10,8 @@
     <%= form_tag(:controller => "purchaseorders", :action => "search" ,:method => 'get' ) do %>
         <div class="box">
             <label>
-                <span><%= label_tag :purchaseorder_id %></span>
-                <%= text_field_tag :purchaseorder_id, params[:purchaseorder_id], :class => "box_textfield" %>
+                <span>Code</span>
+                <%= text_field_tag :purchaseorder_code, params[:purchaseorder_code], :class => "box_textfield" %>
             </label>
             <br>
             <label>

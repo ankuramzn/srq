@@ -31,6 +31,11 @@ class AsinsController < ApplicationController
       # All Compliance Sets for the ASIN submitted by any Vendor
       @compliances = Compliance.by_sku(params[:sku])
     end
+
+    if @purchaseorders.blank? and @compliances.blank?
+      flash.now[:alert] = "No Matching Purchase Orders or Compliance Sets  found in the system for the ASIN."
+      render "research"
+    end
   end
 
 end

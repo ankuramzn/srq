@@ -18,6 +18,9 @@ class Purchaseorder < ActiveRecord::Base
     }
   }
 
+  scope :code_matches, lambda { |token|
+    where("purchaseorders.code LIKE ?", "%#{token}%")
+  }
 
   # Triggered as a result of a associating a compliance set with a asin on the purchase order
   # Verifying if all asins in the purchase order now have a compliance set associated (approved or not)

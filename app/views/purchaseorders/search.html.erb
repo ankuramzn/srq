@@ -1,0 +1,16 @@
+<div class="vendortable">
+  <table class="purchaseorder_list">
+  <tbody>
+    <%= render :partial => "purchaseorders/purchaseorder_summary",
+               :collection =>  @purchaseorders,
+               :locals => { :searching => true }
+    %>
+  </tbody>
+  </table>
+</div>
+
+<!--Put a div for displaying ASINs when the summary view is being pulled up -->
+<div id="purchaseorder_summary_view_asins_all_vendors" class="vendortable" >
+</div>
+
+

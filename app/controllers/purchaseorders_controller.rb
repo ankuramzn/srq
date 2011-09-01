@@ -34,10 +34,17 @@ class PurchaseordersController < ApplicationController
     if vendor_session?
       @purchaseorders = Purchaseorder.by_vendor(session[:id])
     else
-      @purchaseorders = Purchaseorder.all
+      @purchaseorders = Purchaseorder.scoped
     end
+
+    @purchaseorders = @purchaseorders.code_matches(params[:purchaseorder_code]) if !params[:purchaseorder_code].blank?
     @purchaseorders = @purchaseorders.from_date(params[:from_date]) if !params[:from_date].blank?
     @purchaseorders = @purchaseorders.to_date(params[:to_date]) if !params[:to_date].blank?
+
+    if @purchaseorders.blank?
+      flash.now[:alert] = "No Matching Purchase Orders found in the system."
+      render "research"
+    end
 
   end
 
